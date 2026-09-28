@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="230" viewBox="0 0 860 230" role="img" aria-label="kiyomasanaki — full-stack developer &amp; ethical hacker">
+<defs><pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1" fill="#262c36"/></pattern>
+<linearGradient id="fade" x1="0" x2="1"><stop offset="0.35" stop-color="#101318"/><stop offset="1" stop-color="#101318" stop-opacity="0"/></linearGradient>
+<style>.cur{animation:b 1.1s steps(1) infinite}@keyframes b{50%{opacity:0}}</style></defs>
+<rect x="0.5" y="0.5" width="859" height="229" rx="14" fill="#101318" stroke="#262c36"/>
+<rect x="0.5" y="18" width="3" height="194" rx="1.5" fill="#ff5b3a"/>
+<rect x="1" y="1" width="858" height="228" rx="14" fill="url(#dots)"/>
+<rect x="1" y="1" width="858" height="228" rx="14" fill="url(#fade)"/>
+<text x="36" y="44" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13" fill="#8c9099" dominant-baseline="central" xml:space="preserve"><tspan fill="#ff5b3a" font-weight="700">~/</tspan>kiyomasanaki  <tspan fill="#262c36">│</tspan>  full-stack dev  <tspan fill="#262c36">│</tspan>  ethical hacker</text>
+<text x="32" y="96" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="50" font-weight="800" fill="#ece6da" dominant-baseline="central" textLength="360" lengthAdjust="spacingAndGlyphs">kiyomasanaki</text>
+<rect class="cur" x="400" y="74" width="24" height="46" fill="#ff5b3a"/>
+<text x="36" y="140" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="15" fill="#ece6da" dominant-baseline="central" xml:space="preserve">Breaking stuff <tspan fill="#ff5b3a" font-weight="700">to make it stronger.</tspan></text>
+<rect x="36" y="170" width="47" height="28" rx="7" fill="#171b22" stroke="#262c36"/>
+<text x="48" y="184" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12.5" font-weight="600" fill="#ff5b3a" dominant-baseline="central" textLength="23">PHP</text><rect x="93" y="170" width="54" height="28" rx="7" fill="#171b22" stroke="#262c36"/>
+<text x="105" y="184" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12.5" font-weight="600" fill="#e9b949" dominant-baseline="central" textLength="30">Web3</text><rect x="157" y="170" width="39" height="28" rx="7" fill="#171b22" stroke="#262c36"/>
+<text x="169" y="184" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12.5" font-weight="600" fill="#ff5b3a" dominant-baseline="central" textLength="15">AI</text><rect x="206" y="170" width="159" height="28" rx="7" fill="#171b22" stroke="#262c36"/>
+<text x="218" y="184" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12.5" font-weight="600" fill="#e9b949" dominant-baseline="central" textLength="135">Offensive Security</text>
+<g transform="rotate(-6 765 107)">
+<rect x="710" y="52" width="110" height="110" rx="12" fill="none" stroke="#ff5b3a" stroke-width="3"/>
+<rect x="718" y="60" width="94" height="94" rx="7" fill="#ff5b3a" fill-opacity="0.12" stroke="#ff5b3a" stroke-opacity="0.5"/>
+<text x="765" y="105" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="40" font-weight="800" fill="#ff5b3a" text-anchor="middle" dominant-baseline="central">KM</text>
+<text x="765" y="140" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="9.5" font-weight="700" fill="#ff5b3a" text-anchor="middle" dominant-baseline="central" letter-spacing="2">EST·FR</text>
+</g>
+</svg>

@@ -1,23 +1,18 @@
 <div align="center">
 
-<a href="https://wespify.com">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=34&duration=2800&pause=900&color=00E5FF&center=true&vCenter=true&width=900&height=70&lines=%3E+kiyomasanaki_;Full-Stack+Dev+%2F%2F+Ethical+Hacker;Breaking+stuff+to+make+it+stronger;PHP+%E2%80%A2+Web3+%E2%80%A2+AI+%E2%80%A2+Offensive+Security" alt="kiyomasanaki — full-stack developer & ethical hacker" />
-</a>
+<a href="https://github.com/kiyomasanaki"><img src="assets/hero.svg" alt="kiyomasanaki — full-stack developer &amp; ethical hacker. Breaking stuff to make it stronger." width="100%" /></a>
 
-<br/>
-
-![banner](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12&height=120&section=header&reversal=true)
-
-[![Website](https://img.shields.io/badge/wespify.com-0D1117?style=for-the-badge&logo=googlechrome&logoColor=00E5FF&labelColor=0D1117)](https://wespify.com)
-[![Contact](https://img.shields.io/badge/github%40wespify.com-0D1117?style=for-the-badge&logo=protonmail&logoColor=BD00FF&labelColor=0D1117)](mailto:github@wespify.com)
-[![Location](https://img.shields.io/badge/Made_in_France-0D1117?style=for-the-badge&logo=openstreetmap&logoColor=00E5FF&labelColor=0D1117)](#)
-[![PGP](https://img.shields.io/badge/PGP-A0B6_3B54_A0D3_3C06-0D1117?style=for-the-badge&logo=gnuprivacyguard&logoColor=BD00FF&labelColor=0D1117)](#-gpg---list-keys)
+[![Website](https://img.shields.io/badge/wespify.com-101318?style=for-the-badge&logo=googlechrome&logoColor=FF5B3A&labelColor=101318)](https://wespify.com)
+[![Contact](https://img.shields.io/badge/github%40wespify.com-101318?style=for-the-badge&logo=protonmail&logoColor=E9B949&labelColor=101318)](mailto:github@wespify.com)
+[![Location](https://img.shields.io/badge/Made_in_France-101318?style=for-the-badge&logo=openstreetmap&logoColor=FF5B3A&labelColor=101318)](#)
+[![PGP](https://img.shields.io/badge/PGP-A0B6_3B54_A0D3_3C06-101318?style=for-the-badge&logo=gnuprivacyguard&logoColor=E9B949&labelColor=101318)](#pgp)
 
 </div>
 
 ---
 
 <div align="center">
+  <img src="assets/header-whoami.svg" alt="01 whoami — whoami --verbose" width="100%" />
 
   <img src="assets/whoami.svg" alt="Full-stack developer based in France, building at the intersection of Web, Blockchain and AI — and an ethical hacker on challenge platforms and bug bounty programs." width="100%" />
 
@@ -51,7 +46,7 @@ PHP 8.x client for the Discogs API — direct access to the world's largest musi
 
 `PHP 8.x` · `REST` · `OAuth`
 
-![Status](https://img.shields.io/badge/status-Active-BD00FF?style=flat-square&labelColor=0D1117)
+![Status](https://img.shields.io/badge/status-Active-E9B949?style=flat-square&labelColor=101318)
 
 </td>
 <td width="50%" valign="top">
@@ -62,7 +57,7 @@ API client for the BSC blockchain explorer — real-time DeFi data extraction.
 
 `PHP` · `Web3` · `Blockchain`
 
-![Status](https://img.shields.io/badge/status-Production-00E5FF?style=flat-square&labelColor=0D1117)
+![Status](https://img.shields.io/badge/status-Production-5CC8A8?style=flat-square&labelColor=101318)
 
 </td>
 </tr>
@@ -75,7 +70,7 @@ Real-time object detection on mobile using TensorFlow.js and the COCO-SSD model.
 
 `JavaScript` · `TensorFlow.js` · `COCO-SSD`
 
-![Status](https://img.shields.io/badge/status-Improving-BD00FF?style=flat-square&labelColor=0D1117)
+![Status](https://img.shields.io/badge/status-Improving-FF5B3A?style=flat-square&labelColor=101318)
 
 </td>
 <td width="50%" valign="top">
@@ -84,7 +79,7 @@ Real-time object detection on mobile using TensorFlow.js and the COCO-SSD model.
 
 Got an idea, a need, a technical challenge? Let's talk.
 
-[![Get in touch](https://img.shields.io/badge/Get_in_touch-0D1117?style=for-the-badge&logo=maildotru&logoColor=00E5FF&labelColor=0D1117)](mailto:github@wespify.com)
+[![Get in touch](https://img.shields.io/badge/Get_in_touch-101318?style=for-the-badge&logo=maildotru&logoColor=FF5B3A&labelColor=101318)](mailto:github@wespify.com)
 
 </td>
 </tr>
@@ -118,7 +113,7 @@ Got an idea, a need, a technical challenge? Let's talk.
 
   <img src="assets/stat-overview.svg" alt="Overview — repositories, stars, pull requests, issues" width="100%" />
 
-  <img src="https://streak-stats.demolab.com?user=kiyomasanaki&hide_border=true&background=00000000&border=00000000&stroke=3A4658&ring=BD00FF&fire=00E5FF&currStreakLabel=00E5FF&sideLabels=C9D1D9&dates=8B98A9&currStreakNum=BD00FF&sideNums=00E5FF" alt="Contributions & streak" height="180" />
+  <img src="https://streak-stats.demolab.com?user=kiyomasanaki&hide_border=false&border_radius=14&background=101318&border=262C36&stroke=262C36&ring=FF5B3A&fire=E9B949&currStreakLabel=FF5B3A&sideLabels=ECE6DA&dates=8C9099&currStreakNum=ECE6DA&sideNums=ECE6DA" alt="Contributions &amp; streak" width="100%" />
 
   <img src="assets/stat-langs.svg" alt="Most used languages" width="100%" />
 
@@ -127,6 +122,7 @@ Got an idea, a need, a technical challenge? Let's talk.
 ---
 
 <div align="center">
+  <a id="pgp"></a>
   <img src="assets/header-gpg.svg" alt="gpg --list-keys" width="100%" />
 
 <table align="center">
@@ -171,11 +167,8 @@ VGAA
 
 **Thanks for stopping by. Explore the repos, drop me a line, let's build (or break) something.**
 
-<a href="https://github.com/kiyomasanaki"><img src="assets/btn-follow.svg" height="52" alt="Follow @kiyomasanaki" /></a>
-<a href="mailto:github@wespify.com"><img src="assets/btn-sponsor.svg" height="52" alt="Say hi" /></a>
+<a href="https://github.com/kiyomasanaki"><img src="assets/btn-follow.svg" height="48" alt="Follow @kiyomasanaki" /></a>
+<a href="mailto:github@wespify.com"><img src="assets/btn-sponsor.svg" height="48" alt="Say hi" /></a>
 
-<br/>
-
-![footer](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12&height=100&section=footer)
 
 </div>

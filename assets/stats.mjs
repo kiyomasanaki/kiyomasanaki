@@ -1,4 +1,4 @@
-// Self-hosted stats cards for the keyamasabaya profile — no flaky third-party image
+// Self-hosted stats cards for the kiyomasanaki profile — no flaky third-party image
 // services. When run inside GitHub Actions (GH_TOKEN present) it refreshes
 // assets/stats.json from the GitHub API, then renders the SVGs. Locally (no
 // token) it just re-renders from the committed stats.json.
@@ -8,16 +8,12 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
 const OUT = dirname(fileURLToPath(import.meta.url));
-const USER = process.env.STATS_USER || 'keyamasabaya';
+const USER = process.env.STATS_USER || 'kiyomasanaki';
 const TOKEN = process.env.GH_TOKEN || process.env.GITHUB_TOKEN;
 
-const CYAN = '#00e5ff', PURPLE = '#bd00ff', TEXT = '#c9d1d9', MUTED = '#8b98a9', BORDER = '#3a4658';
-const FONT = "'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace";
-const CHARW = 0.6;
-const LANG_COLORS = [CYAN, PURPLE, '#3fb950', '#f0b90b', '#58a6ff', '#ff7b72', '#a371f7', '#ffa657'];
-const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-const glow = (id, c, op = 0.14, blur = 10) =>
-  `<filter id="${id}" x="-40%" y="-60%" width="180%" height="220%" color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="0" stdDeviation="${blur}" flood-color="${c}" flood-opacity="${op}"/></filter>`;
+import { INK2, LINE, IVORY, MUTED, VERM, GOLD, JADE, FONT, W, esc, card, heading, svg } from './theme.mjs';
+
+const LANG_COLORS = [VERM, GOLD, JADE, '#7aa2f7', '#c792ea', '#f78c6c', '#89ddff', '#a6accd'];
 
 // -------- optional live fetch (GitHub Actions) --------------------------
 async function gh(path) {
@@ -57,53 +53,50 @@ async function refresh() {
 }
 
 // -------- rendering -----------------------------------------------------
-const W = 860;
+const PAD = 28;
 function overview(d) {
-  const H = 150;
+  const H = 156;
   const cells = [
-    { n: d.repos, l: 'Repositories' },
-    { n: d.stars, l: 'Stars Earned' },
-    { n: d.prs, l: 'Pull Requests' },
-    { n: d.issues, l: 'Issues Opened' },
+    { n: d.repos, l: 'repositories' },
+    { n: d.stars, l: 'stars earned' },
+    { n: d.prs, l: 'pull requests' },
+    { n: d.issues, l: 'issues opened' },
   ];
-  const cw = (W - 24) / cells.length;
-  let body = `<circle cx="25" cy="30" r="4.5" fill="${CYAN}"/><text x="40" y="30" font-family="${FONT}" font-size="16" font-weight="700" fill="${TEXT}" dominant-baseline="central"><tspan fill="${MUTED}">// </tspan>overview</text>`;
+  const gap = 12, cw = (W - PAD * 2 - gap * (cells.length - 1)) / cells.length;
+  let body = heading(PAD, 28, 'overview');
   cells.forEach((c, i) => {
-    const cx = 12 + cw * i + cw / 2;
-    const col = i % 2 === 0 ? CYAN : PURPLE;
-    if (i > 0) body += `<line x1="${12 + cw * i}" y1="66" x2="${12 + cw * i}" y2="126" stroke="${BORDER}" stroke-opacity="0.5"/>`;
-    body += `<text x="${cx}" y="94" font-family="${FONT}" font-size="34" font-weight="800" fill="${col}" text-anchor="middle" dominant-baseline="central">${c.n}</text>`;
-    body += `<text x="${cx}" y="120" font-family="${FONT}" font-size="12.5" fill="${MUTED}" text-anchor="middle" dominant-baseline="central">${esc(c.l)}</text>`;
+    const x = PAD + i * (cw + gap), col = i % 2 === 0 ? VERM : GOLD;
+    body += `<rect x="${x}" y="52" width="${cw}" height="80" rx="10" fill="${INK2}" stroke="${LINE}"/>
+<rect x="${x + 16}" y="52" width="28" height="3" rx="1.5" fill="${col}"/>
+<text x="${x + 16}" y="86" font-family="${FONT}" font-size="32" font-weight="800" fill="${IVORY}" dominant-baseline="central">${esc(c.n)}</text>
+<text x="${x + 16}" y="116" font-family="${FONT}" font-size="12" fill="${MUTED}" dominant-baseline="central" letter-spacing="0.5">${esc(c.l.toUpperCase())}</text>`;
   });
-  writeFileSync(join(OUT, 'stat-overview.svg'), `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="GitHub overview">
-<defs>${glow('o', CYAN)}</defs>
-<rect x="6" y="6" width="${W - 12}" height="${H - 12}" rx="18" fill="none" stroke="${BORDER}" stroke-opacity="0.85" stroke-width="1" filter="url(#o)"/>
-${body}</svg>`);
+  writeFileSync(join(OUT, 'stat-overview.svg'), svg(W, H, 'GitHub overview', `${card(W, H)}\n${body}`));
 }
 
 function languages(d) {
-  const H = 170, barY = 58, barH = 18, barX = 24, barW = W - 48;
   const langs = d.langs.slice(0, 6);
-  let x = barX, bar = '', legend = '';
-  const perRow = 3, colW = barW / perRow, ly0 = 100, rowH = 30;
+  const perRow = 3, rowH = 30, barY = 56, barH = 14, barW = W - PAD * 2;
+  const ly0 = 100, H = ly0 + Math.ceil(langs.length / perRow) * rowH + 10;
+  const colW = barW / perRow;
+  let x = PAD, bar = '', legend = '';
   langs.forEach((l, i) => {
     const col = LANG_COLORS[i % LANG_COLORS.length];
-    const segW = Math.max(2, (barW * l.pct) / 100);
-    bar += `<rect x="${x.toFixed(1)}" y="${barY}" width="${segW.toFixed(1)}" height="${barH}" fill="${col}" ${i === 0 ? 'rx="4"' : ''}/>`;
-    x += segW;
-    const row = Math.floor(i / perRow), c = i % perRow;
-    const lx = barX + colW * c, ly = ly0 + row * rowH;
-    legend += `<circle cx="${lx + 6}" cy="${ly}" r="5" fill="${col}"/>`;
-    legend += `<text x="${lx + 20}" y="${ly}" font-family="${FONT}" font-size="13.5" fill="${TEXT}" dominant-baseline="central">${esc(l.name)}</text>`;
-    legend += `<text x="${lx + colW - 20}" y="${ly}" font-family="${FONT}" font-size="13" font-weight="700" fill="${col}" text-anchor="end" dominant-baseline="central">${l.pct}%</text>`;
+    const segW = Math.max(3, (barW * l.pct) / 100);
+    bar += `<rect x="${x.toFixed(1)}" y="${barY}" width="${segW.toFixed(1)}" height="${barH}" fill="${col}"/>`;
+    x += segW + 2;
+    const lx = PAD + colW * (i % perRow), ly = ly0 + Math.floor(i / perRow) * rowH;
+    legend += `<rect x="${lx}" y="${ly - 5}" width="10" height="10" rx="2" fill="${col}"/>
+<text x="${lx + 20}" y="${ly}" font-family="${FONT}" font-size="13.5" fill="${IVORY}" dominant-baseline="central">${esc(l.name)}</text>
+<text x="${lx + colW - 24}" y="${ly}" font-family="${FONT}" font-size="13" font-weight="700" fill="${MUTED}" text-anchor="end" dominant-baseline="central">${l.pct}%</text>`;
   });
-  writeFileSync(join(OUT, 'stat-langs.svg'), `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Most used languages">
-<defs>${glow('l', PURPLE)}<clipPath id="bc"><rect x="${barX}" y="${barY}" width="${barW}" height="${barH}" rx="9"/></clipPath></defs>
-<rect x="6" y="6" width="${W - 12}" height="${H - 12}" rx="18" fill="none" stroke="${BORDER}" stroke-opacity="0.85" stroke-width="1" filter="url(#l)"/>
-<circle cx="25" cy="30" r="4.5" fill="${PURPLE}"/><text x="40" y="30" font-family="${FONT}" font-size="16" font-weight="700" fill="${TEXT}" dominant-baseline="central"><tspan fill="${MUTED}">// </tspan>most used languages</text>
-<rect x="${barX}" y="${barY}" width="${barW}" height="${barH}" rx="9" fill="${BORDER}" fill-opacity="0.25"/>
+  const defs = `<clipPath id="bc"><rect x="${PAD}" y="${barY}" width="${barW}" height="${barH}" rx="7"/></clipPath>`;
+  const body = `${card(W, H, { spine: GOLD })}
+${heading(PAD, 28, 'most used languages', GOLD)}
+<rect x="${PAD}" y="${barY}" width="${barW}" height="${barH}" rx="7" fill="${INK2}"/>
 <g clip-path="url(#bc)">${bar}</g>
-${legend}</svg>`);
+${legend}`;
+  writeFileSync(join(OUT, 'stat-langs.svg'), svg(W, H, 'Most used languages', body, defs));
 }
 
 // -------- main ----------------------------------------------------------

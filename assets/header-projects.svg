@@ -1,10 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="860" height="54" viewBox="0 0 860 54" role="img" aria-label="ls ~/projects/featured">
-<defs><filter id="h" x="-40%" y="-60%" width="180%" height="220%" color-interpolation-filters="sRGB">
-  <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#00e5ff" flood-opacity="0.16"/>
-</filter></defs>
-<rect x="6" y="6" width="848" height="42" rx="14" fill="none" stroke="#3a4658" stroke-opacity="0.9" stroke-width="1" filter="url(#h)"/>
-<circle cx="30" cy="27" r="5" fill="#bd00ff"/>
-<circle cx="48" cy="27" r="5" fill="#00e5ff"/>
-<circle cx="66" cy="27" r="5" fill="#3a4658"/>
-<text x="112" y="27" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14.5" dominant-baseline="central" xml:space="preserve"><tspan fill="#8b98a9" font-weight="600">keyamasabaya@wespify</tspan><tspan fill="#00e5ff" font-weight="700"> :~$ </tspan><tspan fill="#c9d1d9" font-weight="600">ls ~/projects/featured</tspan><tspan fill="#00e5ff" font-weight="700"> ▍</tspan></text>
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="56" viewBox="0 0 860 56" role="img" aria-label="03 projects — ls ~/projects/featured">
+<rect x="0.5" y="0.5" width="859" height="55" rx="12" fill="#101318" stroke="#262c36"/>
+<text x="28" y="28" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="15" font-weight="800" fill="#ff5b3a" dominant-baseline="central">03</text>
+<rect x="58" y="19" width="1.5" height="18" fill="#262c36"/>
+<text x="74" y="28" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="17" font-weight="800" fill="#ece6da" dominant-baseline="central" letter-spacing="1">PROJECTS</text>
+<rect x="632" y="14" width="200" height="28" rx="7" fill="#171b22" stroke="#262c36"/>
+<text x="642" y="28" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12.5" fill="#8c9099" dominant-baseline="central" textLength="180" xml:space="preserve">$ ls ~/projects/featured</text>
 </svg>
