@@ -18,7 +18,6 @@
 ---
 
 <div align="center">
-  <img src="assets/header-whoami.svg" alt="whoami --verbose" width="100%" />
 
   <img src="assets/whoami.svg" alt="Full-stack developer based in France, building at the intersection of Web, Blockchain and AI — and an ethical hacker on challenge platforms and bug bounty programs." width="100%" />
 
