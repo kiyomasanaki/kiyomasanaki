@@ -1,8 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="130" height="52" viewBox="0 0 130 52" role="img" aria-label="Say hi">
-<defs><filter id="b" x="-40%" y="-60%" width="180%" height="220%" color-interpolation-filters="sRGB">
-  <feDropShadow dx="0" dy="2" stdDeviation="6" flood-color="#bd00ff" flood-opacity="0.4"/>
-</filter></defs>
-<rect x="5" y="5" width="120" height="42" rx="14" fill="none" stroke="#bd00ff" stroke-opacity="0.6" stroke-width="1.3" filter="url(#b)"/>
-<g transform="translate(22,16.5) scale(0.7917)"><path d="M17.625 1.499c-2.32 0-4.354 1.203-5.625 3.03-1.271-1.827-3.305-3.03-5.625-3.03C3.129 1.499 0 4.253 0 8.249c0 4.275 3.068 7.847 5.828 10.227a33.14 33.14 0 0 0 5.616 3.876l.028.017.008.003-.001.003c.163.085.342.126.521.125.179.001.358-.041.521-.125l-.001-.003.008-.003.028-.017a33.14 33.14 0 0 0 5.616-3.876C20.932 16.096 24 12.524 24 8.249c0-3.996-3.129-6.75-6.375-6.75zm-.919 15.275a30.766 30.766 0 0 1-4.703 3.316l-.004-.002-.004.002a30.955 30.955 0 0 1-4.703-3.316c-2.677-2.307-5.047-5.298-5.047-8.523 0-2.754 2.121-4.5 4.125-4.5 2.06 0 3.914 1.479 4.544 3.684.143.495.596.797 1.086.796.49.001.943-.302 1.085-.796.63-2.205 2.484-3.684 4.544-3.684 2.004 0 4.125 1.746 4.125 4.5 0 3.225-2.37 6.216-5.048 8.523z" fill="#bd00ff"/></g>
-<text x="52" y="26" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="15" font-weight="700" fill="#c9d1d9" dominant-baseline="central" textLength="54" lengthAdjust="spacingAndGlyphs">Say hi</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="122" height="48" viewBox="0 0 122 48" role="img" aria-label="Say hi">
+<rect x="0.5" y="0.5" width="121" height="47" rx="10" fill="#101318" stroke="#262c36"/>
+<g transform="translate(20,15) scale(0.7500)"><path d="m15.24 8.998 3.656-3.073v15.81H2.482C1.11 21.735 0 20.609 0 19.223V6.944l7.58 6.38a2.186 2.186 0 0 0 2.871-.042l4.792-4.284h-.003zm-5.456 3.538 1.809-1.616a2.438 2.438 0 0 1-1.178-.533L.905 2.395A.552.552 0 0 0 0 2.826v2.811l8.226 6.923a1.186 1.186 0 0 0 1.558-.024zM23.871 2.463a.551.551 0 0 0-.776-.068l-3.199 2.688v16.653h1.623c1.371 0 2.481-1.127 2.481-2.513V2.824a.551.551 0 0 0-.129-.36z" fill="#e9b949"/></g>
+<text x="48" y="24" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14.5" font-weight="700" fill="#ece6da" dominant-baseline="central" textLength="52" lengthAdjust="spacingAndGlyphs">Say hi</text>
 </svg>

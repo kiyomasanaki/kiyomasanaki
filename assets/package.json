@@ -1,7 +1,7 @@
 {
-  "name": "keyamasabaya-profile-assets",
+  "name": "kiyomasanaki-profile-assets",
   "private": true,
-  "description": "Generator for the neumorphic SVG assets used in the profile README.",
+  "description": "Generator for the sumi & vermilion SVG assets used in the profile README.",
   "type": "module",
   "scripts": { "build": "node generate.mjs" },
   "dependencies": { "simple-icons": "^13" }
