@@ -42,10 +42,11 @@ ${defs ? `<defs>${defs}</defs>\n` : ''}${body}
 `;
 
 // ---- outline style ("no background") -----------------------------------
-// Transparent cards with an asymmetric "leaf" radius: big rounded corners on
-// top-left / bottom-right, tight ones on the other diagonal. Rendered twice
-// (dark + light) and swapped by a <picture> in the README, since there is
-// no card behind the text to guarantee contrast.
+// Transparent cards, rounded everywhere except one square corner. Across a
+// group the square corner turns counter-clockwise from one element to the
+// next (TL -> BL -> BR -> TR). Rendered twice (dark + light) and swapped by a
+// <picture> in the README, since there is no card behind the text to
+// guarantee contrast.
 export const THEMES = {
   dark:  { fg: IVORY,     muted: MUTED,     line: '#2a3756',
            acc: { [CYAN]: CYAN, [VIOLET]: VIOLET, [LIME]: LIME, [GOLD]: GOLD } },
@@ -53,6 +54,10 @@ export const THEMES = {
            acc: { [CYAN]: '#0a8f86', [VIOLET]: '#7445d6', [LIME]: '#16994a', [GOLD]: '#a87808' } },
 };
 
-export function leaf(x, y, w, h, { R = 20, r = 5 } = {}) {
-  return `M${x + R} ${y}H${x + w - r}Q${x + w} ${y} ${x + w} ${y + r}V${y + h - R}Q${x + w} ${y + h} ${x + w - R} ${y + h}H${x + r}Q${x} ${y + h} ${x} ${y + h - r}V${y + R}Q${x} ${y} ${x + R} ${y}Z`;
+export const STROKE = 1;
+
+// `sharp` = index of the square corner, in counter-clockwise order: 0 TL, 1 BL, 2 BR, 3 TR
+export function leaf(x, y, w, h, { R = 20, sharp = 0 } = {}) {
+  const [tl, bl, br, tr] = [0, 1, 2, 3].map((i) => (i === ((sharp % 4) + 4) % 4 ? 0 : R));
+  return `M${x + tl} ${y}H${x + w - tr}Q${x + w} ${y} ${x + w} ${y + tr}V${y + h - br}Q${x + w} ${y + h} ${x + w - br} ${y + h}H${x + bl}Q${x} ${y + h} ${x} ${y + h - bl}V${y + tl}Q${x} ${y} ${x + tl} ${y}Z`;
 }

@@ -5,7 +5,7 @@ import * as si from 'simple-icons';
 import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { INK, INK2, LINE, IVORY, MUTED, CYAN, VIOLET, LIME, GOLD, BLUE, FONT, W, acc, esc, tw, card, heading, svg, THEMES, leaf } from './theme.mjs';
+import { INK, INK2, LINE, IVORY, MUTED, CYAN, VIOLET, LIME, GOLD, BLUE, FONT, W, acc, esc, tw, card, heading, svg, THEMES, STROKE, leaf } from './theme.mjs';
 
 const OUT = dirname(fileURLToPath(import.meta.url));
 const out = (file, content) => writeFileSync(join(OUT, file), content);
@@ -25,11 +25,13 @@ function hero() {
   const H = 230;
   const name = USER;
   const nfs = 50, nw = tw(name, nfs);
+  const sx = W - 150, sy = 52, ss = 110;
   const dots = `<pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1" fill="${LINE}"/></pattern>
 <linearGradient id="fade" x1="0" x2="1"><stop offset="0.35" stop-color="${INK}"/><stop offset="1" stop-color="${INK}" stop-opacity="0"/></linearGradient>
 <radialGradient id="neb1" cx="0.82" cy="0.2" r="0.45"><stop offset="0" stop-color="${VIOLET}" stop-opacity="0.28"/><stop offset="1" stop-color="${VIOLET}" stop-opacity="0"/></radialGradient>
 <radialGradient id="neb2" cx="0.62" cy="1" r="0.5"><stop offset="0" stop-color="${CYAN}" stop-opacity="0.18"/><stop offset="1" stop-color="${CYAN}" stop-opacity="0"/></radialGradient>
 <linearGradient id="tag" x1="0" x2="1"><stop offset="0" stop-color="${CYAN}"/><stop offset="0.5" stop-color="${LIME}"/><stop offset="1" stop-color="${GOLD}"/></linearGradient>
+<linearGradient id="seal" gradientUnits="userSpaceOnUse" x1="${sx}" y1="${sy}" x2="${sx + ss}" y2="${sy + ss}"><stop offset="0" stop-color="${BLUE}"/><stop offset="0.5" stop-color="${VIOLET}"/><stop offset="1" stop-color="${GOLD}"/></linearGradient>
 <style>.cur{animation:b 1.1s steps(1) infinite}@keyframes b{50%{opacity:0}}</style>`;
   const tags = ['PHP', 'Web3', 'AI', 'Offensive Security'];
   let tx = PAD + 8, chips = '';
@@ -40,12 +42,11 @@ function hero() {
     tx += w + 10;
   });
   // hanko-style stamp
-  const sx = W - 150, sy = 52, ss = 110;
   const stamp = `<g transform="rotate(-6 ${sx + ss / 2} ${sy + ss / 2})">
-<rect x="${sx}" y="${sy}" width="${ss}" height="${ss}" rx="12" fill="none" stroke="${VIOLET}" stroke-width="3"/>
-<rect x="${sx + 8}" y="${sy + 8}" width="${ss - 16}" height="${ss - 16}" rx="7" fill="${VIOLET}" fill-opacity="0.12" stroke="${VIOLET}" stroke-opacity="0.5"/>
-<text x="${sx + ss / 2}" y="${sy + ss / 2 - 2}" font-family="${FONT}" font-size="40" font-weight="800" fill="${VIOLET}" text-anchor="middle" dominant-baseline="central">KM</text>
-<text x="${sx + ss / 2}" y="${sy + ss - 22}" font-family="${FONT}" font-size="9.5" font-weight="700" fill="${GOLD}" text-anchor="middle" dominant-baseline="central" letter-spacing="2">EST·FR</text>
+<rect x="${sx}" y="${sy}" width="${ss}" height="${ss}" rx="12" fill="none" stroke="url(#seal)" stroke-width="3"/>
+<rect x="${sx + 8}" y="${sy + 8}" width="${ss - 16}" height="${ss - 16}" rx="7" fill="url(#seal)" fill-opacity="0.12" stroke="url(#seal)" stroke-opacity="0.5"/>
+<text x="${sx + ss / 2}" y="${sy + ss / 2 - 6}" font-family="${FONT}" font-size="40" font-weight="800" fill="url(#seal)" text-anchor="middle" dominant-baseline="central">KM</text>
+<text x="${sx + ss / 2}" y="${sy + ss - 24}" font-family="${FONT}" font-size="8" font-weight="700" fill="url(#seal)" text-anchor="middle" dominant-baseline="central" letter-spacing="1.2">MADE IN FRANCE</text>
 </g>`;
   const body = `${card(W, H)}
 <rect x="1" y="1" width="${W - 2}" height="${H - 2}" rx="14" fill="url(#dots)"/>
@@ -159,7 +160,7 @@ function tagline(words) {
   const H = 52, gap = 40, pw = (W - 2 - gap * (words.length - 1)) / words.length;
   outline('tagline', words.join(' → '), W, H, (t) => words.map((wd, i) => {
     const x = 1 + i * (pw + gap), c = t.acc[acc(i)], last = i === words.length - 1;
-    let g = `<path d="${leaf(x, 1, pw, H - 2, { R: 16, r: 4 })}" fill="none" stroke="${c}" stroke-width="1.5"/>
+    let g = `<path d="${leaf(x, 1, pw, H - 2, { R: 16, sharp: i })}" fill="none" stroke="${c}" stroke-width="${STROKE}"/>
 <text x="${x + pw / 2}" y="${H / 2}" font-family="${FONT}" font-size="14" font-weight="700" fill="${last ? c : t.fg}" text-anchor="middle" dominant-baseline="central" letter-spacing="2">${esc(wd.toUpperCase())}</text>`;
     if (!last) g += `\n<path d="M${x + pw + gap / 2 - 4} ${H / 2 - 6}l7 6-7 6" fill="none" stroke="${t.muted}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>`;
     return g;
@@ -167,11 +168,11 @@ function tagline(words) {
 }
 
 // contact links: four outlined cards, laid side by side in the README
-function linkCard(name, { cap, value, slug, color }) {
+function linkCard(name, { cap, value, slug, color, sharp }) {
   const w = 206, h = 72;
   outline(`link-${name}`, `${cap}: ${value}`, w, h, (t) => {
     const c = t.acc[color];
-    return `<path d="${leaf(1, 1, w - 2, h - 2)}" fill="none" stroke="${c}" stroke-width="1.5"/>
+    return `<path d="${leaf(1, 1, w - 2, h - 2, { sharp })}" fill="none" stroke="${c}" stroke-width="${STROKE}"/>
 ${icon(slug, 18, h / 2 - 11, 22, c)}
 <text x="54" y="25" font-family="${FONT}" font-size="10.5" font-weight="700" fill="${c}" dominant-baseline="central" letter-spacing="2">${esc(cap.toUpperCase())}</text>
 <text x="54" y="47" font-family="${FONT}" font-size="12.5" font-weight="600" fill="${t.fg}" dominant-baseline="central" textLength="${Math.min(tw(value, 12.5), w - 70)}" lengthAdjust="spacingAndGlyphs">${esc(value)}</text>`;
@@ -179,16 +180,16 @@ ${icon(slug, 18, h / 2 - 11, 22, c)}
 }
 
 // featured project card
-function projectCard(name, { title, slug, color, desc, tags, meta }) {
+function projectCard(name, { title, slug, color, desc, tags, meta, sharp }) {
   const w = 424, h = 196, P = 24;
   outline(`project-${name}`, `${title} — ${desc}`, w, h, (t) => {
     const c = t.acc[color];
-    let g = `<path d="${leaf(1, 1, w - 2, h - 2, { R: 26, r: 6 })}" fill="none" stroke="${c}" stroke-width="1.5"/>
+    let g = `<path d="${leaf(1, 1, w - 2, h - 2, { R: 26, sharp })}" fill="none" stroke="${c}" stroke-width="${STROKE}"/>
 ${icon(slug, P, 24, 22, c)}
 <text x="${P + 34}" y="35" font-family="${FONT}" font-size="18" font-weight="800" fill="${t.fg}" dominant-baseline="central">${esc(title)}</text>`;
     if (meta) {
       const mw = tw(meta, 11) + 22;
-      g += `\n<path d="${leaf(w - P - mw, 22, mw, 26, { R: 10, r: 3 })}" fill="none" stroke="${c}" stroke-opacity="0.7"/>
+      g += `\n<path d="${leaf(w - P - mw, 22, mw, 26, { R: 10, sharp })}" fill="none" stroke="${c}" stroke-opacity="0.7" stroke-width="${STROKE}"/>
 <text x="${w - P - mw / 2}" y="35" font-family="${FONT}" font-size="11" font-weight="700" fill="${c}" text-anchor="middle" dominant-baseline="central">${esc(meta)}</text>`;
     }
     wrap(desc, 48).slice(0, 3).forEach((ln, i) => {
@@ -209,7 +210,7 @@ ${icon(slug, P, 24, 22, c)}
 function pgpCard(lines) {
   const h = 40 + lines.length * 28;
   outline('pgp', 'PGP key', W, h, (t) => {
-    let g = `<path d="${leaf(1, 1, W - 2, h - 2, { R: 26, r: 6 })}" fill="none" stroke="${t.acc[GOLD]}" stroke-width="1.5"/>`;
+    let g = `<path d="${leaf(1, 1, W - 2, h - 2, { R: 26 })}" fill="none" stroke="${t.acc[GOLD]}" stroke-width="${STROKE}"/>`;
     lines.forEach(([k, v], i) => {
       const y = 34 + i * 28, c = t.acc[acc(i)];
       g += `\n<text x="32" y="${y}" font-family="${FONT}" font-size="14" font-weight="800" fill="${c}" dominant-baseline="central">${esc(k)}</text>
@@ -263,28 +264,28 @@ skillCard('bugbounty', 'bug bounty programs', [
 
 tagline(['build', 'break', 'learn', 'share', 'repeat']);
 
-linkCard('website',  { cap: 'website',  value: 'wespify.com',         slug: 'googlechrome',    color: CYAN });
-linkCard('contact',  { cap: 'contact',  value: 'github@wespify.com',  slug: 'protonmail',      color: VIOLET });
-linkCard('location', { cap: 'location', value: 'Made in France',      slug: 'openstreetmap',   color: LIME });
-linkCard('pgp',      { cap: 'pgp',      value: 'A0B6 3B54 A0D3 3C06', slug: 'gnuprivacyguard', color: GOLD });
+linkCard('website',  { sharp: 0, cap: 'website',  value: 'wespify.com',         slug: 'googlechrome',    color: CYAN });
+linkCard('contact',  { sharp: 1, cap: 'contact',  value: 'github@wespify.com',  slug: 'protonmail',      color: VIOLET });
+linkCard('location', { sharp: 2, cap: 'location', value: 'Made in France',      slug: 'openstreetmap',   color: LIME });
+linkCard('pgp',      { sharp: 3, cap: 'pgp',      value: 'A0B6 3B54 A0D3 3C06', slug: 'gnuprivacyguard', color: GOLD });
 
 // featured = the repos with the most commits authored by me (abandoned ones excluded)
-projectCard('bigdump', {
+projectCard('bigdump', { sharp: 0,
   title: 'bigdump', slug: 'mysql', color: CYAN, meta: '161 commits',
   desc: 'Staggered MySQL dump importer for servers with strict time limits — single-file PHAR, live SSE progress, CLI optimizer.',
   tags: ['PHP 8.1+', 'MySQL', 'PHAR'],
 });
-projectCard('codepack', {
+projectCard('codepack', { sharp: 1,
   title: 'codepack', slug: 'gnubash', color: VIOLET, meta: '69 commits',
   desc: 'Ultra-efficient CLI that extracts folder structure and file contents, minified and ready for AI processing.',
   tags: ['Bash', 'CLI', 'AI-ready'],
 });
-projectCard('commeaucinema', {
+projectCard('commeaucinema', { sharp: 2,
   title: 'commeaucinema', slug: 'rss', color: LIME, meta: '19 commits',
   desc: 'PHP package exposing the commeaucinema.com feeds — weekly releases, films in theaters and cinema news.',
   tags: ['PHP', 'Composer', 'RSS'],
 });
-projectCard('next', {
+projectCard('next', { sharp: 3,
   title: "what's next?", slug: 'maildotru', color: GOLD,
   desc: "Got an idea, a need, a technical challenge? Let's talk — github@wespify.com",
   tags: ['collab', 'freelance', 'open source'],
