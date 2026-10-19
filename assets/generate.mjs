@@ -25,8 +25,10 @@ const mix = (hex, t) => [0, 2, 4].map((i) => {
   const v = parseInt(hex.slice(i, i + 2), 16);
   return Math.round(v + (255 - v) * t).toString(16).padStart(2, '0');
 }).join('');
+// logos whose simple-icons colour is missing or isn't the colour people know them by
+const BRAND_OVERRIDE = { ethereum: '627EEA', ghidra: 'E0201F' };
 function brandColor(slug) {
-  const base = si['si' + slug.charAt(0).toUpperCase() + slug.slice(1)]?.hex ?? IVORY.slice(1);
+  const base = BRAND_OVERRIDE[slug] ?? si['si' + slug.charAt(0).toUpperCase() + slug.slice(1)]?.hex ?? IVORY.slice(1);
   const bg = lum(INK2.slice(1));
   let hex = base, t = 0;
   while ((lum(hex) + 0.05) / (bg + 0.05) < 3.5 && t < 1) hex = mix(base, (t += 0.05));
@@ -107,7 +109,7 @@ ${icon(slug, x + C_PADL, y + (C_H - C_ICON) / 2, C_ICON, color)}
 <text x="${x + C_PADL + C_ICON + C_GAP}" y="${y + C_H / 2}" font-family="${FONT}" font-size="${C_FS}" font-weight="500" fill="${IVORY}" dominant-baseline="central" textLength="${tw(label, C_FS)}" lengthAdjust="spacingAndGlyphs">${esc(label)}</text>`;
 }
 // brand: chips take the logo's own colour (icon + outline) instead of the palette
-function skillCard(name, title, items, color = CYAN, { brand = false } = {}) {
+function skillCard(name, title, items, color = CYAN, { brand = true } = {}) {
   const inner = W - PAD * 2, gap = 10;
   const rows = [[]]; let rw = 0;
   const off = Math.max(0, [CYAN, VIOLET, LIME, GOLD].indexOf(color));
@@ -258,7 +260,7 @@ skillCard('languages', 'languages', [
   { label: 'PHP', slug: 'php' }, { label: 'JavaScript', slug: 'javascript' },
   { label: 'Python', slug: 'python' }, { label: 'Solidity', slug: 'solidity' },
   { label: 'Bash', slug: 'gnubash' },
-], CYAN, { brand: true });
+]);
 skillCard('frameworks', 'frameworks & runtimes', [
   { label: 'Laravel', slug: 'laravel' }, { label: 'Symfony', slug: 'symfony' },
   { label: 'Node.js', slug: 'nodedotjs' }, { label: 'React', slug: 'react' },
