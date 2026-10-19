@@ -16,6 +16,23 @@ const PAD = 28;
 // fallback glyph (hexagon target) for brands missing from simple-icons
 const FALLBACK = 'M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8zM12 7.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9zm0 2.4a2.1 2.1 0 110 4.2 2.1 2.1 0 010-4.2z';
 const iconPath = (slug) => si['si' + slug.charAt(0).toUpperCase() + slug.slice(1)]?.path ?? FALLBACK;
+// brand colour of a logo, lightened just enough to stay readable on the ink chips
+const lum = (hex) => {
+  const c = [0, 2, 4].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255).map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+  return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+};
+const mix = (hex, t) => [0, 2, 4].map((i) => {
+  const v = parseInt(hex.slice(i, i + 2), 16);
+  return Math.round(v + (255 - v) * t).toString(16).padStart(2, '0');
+}).join('');
+function brandColor(slug) {
+  const base = si['si' + slug.charAt(0).toUpperCase() + slug.slice(1)]?.hex ?? IVORY.slice(1);
+  const bg = lum(INK2.slice(1));
+  let hex = base, t = 0;
+  while ((lum(hex) + 0.05) / (bg + 0.05) < 3.5 && t < 1) hex = mix(base, (t += 0.05));
+  return '#' + hex.toLowerCase();
+}
+
 function icon(slug, x, y, size, color) {
   return `<g transform="translate(${x},${y}) scale(${(size / 24).toFixed(4)})"><path d="${iconPath(slug)}" fill="${color}"/></g>`;
 }
@@ -80,13 +97,17 @@ function header(name, n, title, command) {
 // ---- skill card (chips) ------------------------------------------------
 const C_H = 40, C_ICON = 18, C_PADL = 14, C_GAP = 10, C_PADR = 16, C_FS = 14;
 const chipW = (l) => C_PADL + C_ICON + C_GAP + tw(l, C_FS) + C_PADR;
-function chip(x, y, label, slug, color) {
-  return `<rect x="${x}" y="${y}" width="${chipW(label)}" height="${C_H}" rx="9" fill="${INK2}" stroke="${LINE}"/>
-<rect x="${x}" y="${y + C_H - 2.5}" width="${chipW(label)}" height="2.5" rx="1.2" fill="${color}" fill-opacity="0.75"/>
+function chip(x, y, label, slug, color, outlined = false) {
+  const frame = outlined
+    ? `<rect x="${x}" y="${y}" width="${chipW(label)}" height="${C_H}" rx="9" fill="${INK2}" stroke="${color}" stroke-opacity="0.85"/>`
+    : `<rect x="${x}" y="${y}" width="${chipW(label)}" height="${C_H}" rx="9" fill="${INK2}" stroke="${LINE}"/>
+<rect x="${x}" y="${y + C_H - 2.5}" width="${chipW(label)}" height="2.5" rx="1.2" fill="${color}" fill-opacity="0.75"/>`;
+  return `${frame}
 ${icon(slug, x + C_PADL, y + (C_H - C_ICON) / 2, C_ICON, color)}
 <text x="${x + C_PADL + C_ICON + C_GAP}" y="${y + C_H / 2}" font-family="${FONT}" font-size="${C_FS}" font-weight="500" fill="${IVORY}" dominant-baseline="central" textLength="${tw(label, C_FS)}" lengthAdjust="spacingAndGlyphs">${esc(label)}</text>`;
 }
-function skillCard(name, title, items, color = CYAN) {
+// brand: chips take the logo's own colour (icon + outline) instead of the palette
+function skillCard(name, title, items, color = CYAN, { brand = false } = {}) {
   const inner = W - PAD * 2, gap = 10;
   const rows = [[]]; let rw = 0;
   const off = Math.max(0, [CYAN, VIOLET, LIME, GOLD].indexOf(color));
@@ -99,7 +120,7 @@ function skillCard(name, title, items, color = CYAN) {
   let chips = '', y = top, i = 0;
   for (const row of rows) {
     let x = PAD;
-    for (const it of row) { chips += chip(x, y, it.label, it.slug, acc(off + i++)); x += it.w + gap; }
+    for (const it of row) { chips += brand ? chip(x, y, it.label, it.slug, brandColor(it.slug), true) : chip(x, y, it.label, it.slug, acc(off + i++)); x += it.w + gap; }
     y += C_H + gap;
   }
   const count = `${String(items.length).padStart(2, '0')} items`;
@@ -237,7 +258,7 @@ skillCard('languages', 'languages', [
   { label: 'PHP', slug: 'php' }, { label: 'JavaScript', slug: 'javascript' },
   { label: 'Python', slug: 'python' }, { label: 'Solidity', slug: 'solidity' },
   { label: 'Bash', slug: 'gnubash' },
-]);
+], CYAN, { brand: true });
 skillCard('frameworks', 'frameworks & runtimes', [
   { label: 'Laravel', slug: 'laravel' }, { label: 'Symfony', slug: 'symfony' },
   { label: 'Node.js', slug: 'nodedotjs' }, { label: 'React', slug: 'react' },
