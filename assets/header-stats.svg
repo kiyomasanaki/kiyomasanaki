@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="860" height="56" viewBox="0 0 860 56" role="img" aria-label="06 stats — git log --stat --all">
-<rect x="0.5" y="0.5" width="859" height="55" rx="12" fill="#101318" stroke="#262c36"/>
-<text x="28" y="28" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="15" font-weight="800" fill="#ff5b3a" dominant-baseline="central">06</text>
-<rect x="58" y="19" width="1.5" height="18" fill="#262c36"/>
-<text x="74" y="28" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="17" font-weight="800" fill="#ece6da" dominant-baseline="central" letter-spacing="1">STATS</text>
-<rect x="647" y="14" width="185" height="28" rx="7" fill="#171b22" stroke="#262c36"/>
-<text x="657" y="28" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12.5" fill="#8c9099" dominant-baseline="central" textLength="165" xml:space="preserve">$ git log --stat --all</text>
+<rect x="0.5" y="0.5" width="859" height="55" rx="12" fill="#0b1020" stroke="#24304a"/>
+<text x="28" y="28" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="15" font-weight="800" fill="#2ee6d6" dominant-baseline="central">06</text>
+<rect x="58" y="19" width="1.5" height="18" fill="#24304a"/>
+<text x="74" y="28" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="17" font-weight="800" fill="#e6edf7" dominant-baseline="central" letter-spacing="1">STATS</text>
+<rect x="647" y="14" width="185" height="28" rx="7" fill="#121a2e" stroke="#24304a"/>
+<text x="657" y="28" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12.5" fill="#8a96ad" dominant-baseline="central" textLength="165" xml:space="preserve">$ git log --stat --all</text>
 </svg>

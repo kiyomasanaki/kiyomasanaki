@@ -2,10 +2,10 @@
 
 <a href="https://github.com/kiyomasanaki"><img src="assets/hero.svg" alt="kiyomasanaki — full-stack developer &amp; ethical hacker. Breaking stuff to make it stronger." width="100%" /></a>
 
-[![Website](https://img.shields.io/badge/wespify.com-101318?style=for-the-badge&logo=googlechrome&logoColor=FF5B3A&labelColor=101318)](https://wespify.com)
-[![Contact](https://img.shields.io/badge/github%40wespify.com-101318?style=for-the-badge&logo=protonmail&logoColor=E9B949&labelColor=101318)](mailto:github@wespify.com)
-[![Location](https://img.shields.io/badge/Made_in_France-101318?style=for-the-badge&logo=openstreetmap&logoColor=FF5B3A&labelColor=101318)](#)
-[![PGP](https://img.shields.io/badge/PGP-A0B6_3B54_A0D3_3C06-101318?style=for-the-badge&logo=gnuprivacyguard&logoColor=E9B949&labelColor=101318)](#pgp)
+[![Website](https://img.shields.io/badge/wespify.com-0B1020?style=for-the-badge&logo=googlechrome&logoColor=2EE6D6&labelColor=0B1020)](https://wespify.com)
+[![Contact](https://img.shields.io/badge/github%40wespify.com-0B1020?style=for-the-badge&logo=protonmail&logoColor=B07CFF&labelColor=0B1020)](mailto:github@wespify.com)
+[![Location](https://img.shields.io/badge/Made_in_France-0B1020?style=for-the-badge&logo=openstreetmap&logoColor=5DFC8D&labelColor=0B1020)](#)
+[![PGP](https://img.shields.io/badge/PGP-A0B6_3B54_A0D3_3C06-0B1020?style=for-the-badge&logo=gnuprivacyguard&logoColor=F5C84B&labelColor=0B1020)](#pgp)
 
 </div>
 
@@ -46,7 +46,7 @@ PHP 8.x client for the Discogs API — direct access to the world's largest musi
 
 `PHP 8.x` · `REST` · `OAuth`
 
-![Status](https://img.shields.io/badge/status-Active-E9B949?style=flat-square&labelColor=101318)
+![Status](https://img.shields.io/badge/status-Active-F5C84B?style=flat-square&labelColor=0B1020)
 
 </td>
 <td width="50%" valign="top">
@@ -57,7 +57,7 @@ API client for the BSC blockchain explorer — real-time DeFi data extraction.
 
 `PHP` · `Web3` · `Blockchain`
 
-![Status](https://img.shields.io/badge/status-Production-5CC8A8?style=flat-square&labelColor=101318)
+![Status](https://img.shields.io/badge/status-Production-5DFC8D?style=flat-square&labelColor=0B1020)
 
 </td>
 </tr>
@@ -70,7 +70,7 @@ Real-time object detection on mobile using TensorFlow.js and the COCO-SSD model.
 
 `JavaScript` · `TensorFlow.js` · `COCO-SSD`
 
-![Status](https://img.shields.io/badge/status-Improving-FF5B3A?style=flat-square&labelColor=101318)
+![Status](https://img.shields.io/badge/status-Improving-B07CFF?style=flat-square&labelColor=0B1020)
 
 </td>
 <td width="50%" valign="top">
@@ -79,7 +79,7 @@ Real-time object detection on mobile using TensorFlow.js and the COCO-SSD model.
 
 Got an idea, a need, a technical challenge? Let's talk.
 
-[![Get in touch](https://img.shields.io/badge/Get_in_touch-101318?style=for-the-badge&logo=maildotru&logoColor=FF5B3A&labelColor=101318)](mailto:github@wespify.com)
+[![Get in touch](https://img.shields.io/badge/Get_in_touch-0B1020?style=for-the-badge&logo=maildotru&logoColor=2EE6D6&labelColor=0B1020)](mailto:github@wespify.com)
 
 </td>
 </tr>
@@ -113,7 +113,7 @@ Got an idea, a need, a technical challenge? Let's talk.
 
   <img src="assets/stat-overview.svg" alt="Overview — repositories, stars, pull requests, issues" width="100%" />
 
-  <img src="https://streak-stats.demolab.com?user=kiyomasanaki&hide_border=false&border_radius=14&background=101318&border=262C36&stroke=262C36&ring=FF5B3A&fire=E9B949&currStreakLabel=FF5B3A&sideLabels=ECE6DA&dates=8C9099&currStreakNum=ECE6DA&sideNums=ECE6DA" alt="Contributions &amp; streak" width="100%" />
+  <img src="https://streak-stats.demolab.com?user=kiyomasanaki&hide_border=false&border_radius=14&background=0B1020&border=24304A&stroke=24304A&ring=2EE6D6&fire=B07CFF&currStreakLabel=5DFC8D&sideLabels=E6EDF7&dates=8A96AD&currStreakNum=F5C84B&sideNums=E6EDF7" alt="Contributions &amp; streak" width="100%" />
 
   <img src="assets/stat-langs.svg" alt="Most used languages" width="100%" />
 
