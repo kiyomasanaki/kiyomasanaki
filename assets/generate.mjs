@@ -2,7 +2,7 @@
 // Solid ink cards with a neon spine — readable on every GitHub theme.
 // Run:  node assets/generate.mjs   (requires: npm i simple-icons)
 import * as si from 'simple-icons';
-import { writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { INK, INK2, LINE, IVORY, MUTED, CYAN, VIOLET, LIME, GOLD, BLUE, FONT, W, acc, esc, tw, card, heading, svg, THEMES, STROKE, leaf } from './theme.mjs';
@@ -15,6 +15,15 @@ const PAD = 28;
 
 // fallback glyph (hexagon target) for brands missing from simple-icons
 const FALLBACK = 'M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8zM12 7.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9zm0 2.4a2.1 2.1 0 110 4.2 2.1 2.1 0 010-4.2z';
+// logos missing from simple-icons, kept as the vendor's official SVG in icons/
+// (ids are prefixed so several inline logos can't collide)
+const CUSTOM_ICONS = Object.fromEntries(['caido'].map((slug) => {
+  const raw = readFileSync(join(OUT, 'icons', `${slug}.svg`), 'utf8');
+  return [slug, {
+    viewBox: raw.match(/viewBox="([^"]+)"/)[1],
+    body: raw.replace(/^[\s\S]*?<svg[^>]*>|<\/svg>\s*$/g, '').replace(/xlink:href=/g, 'href=').replace(/(id="|url\(#|href="#)/g, `$1${slug}-`),
+  }];
+}));
 const iconPath = (slug) => si['si' + slug.charAt(0).toUpperCase() + slug.slice(1)]?.path ?? FALLBACK;
 // brand colour of a logo, lightened just enough to stay readable on the ink chips
 const lum = (hex) => {
@@ -26,7 +35,7 @@ const mix = (hex, t) => [0, 2, 4].map((i) => {
   return Math.round(v + (255 - v) * t).toString(16).padStart(2, '0');
 }).join('');
 // logos whose simple-icons colour is missing or isn't the colour people know them by
-const BRAND_OVERRIDE = { ethereum: '627EEA', ghidra: 'E0201F' };
+const BRAND_OVERRIDE = { ethereum: '627EEA', ghidra: 'E0201F', caido: 'A1223F' };
 function brandColor(slug) {
   const base = BRAND_OVERRIDE[slug] ?? si['si' + slug.charAt(0).toUpperCase() + slug.slice(1)]?.hex ?? IVORY.slice(1);
   const bg = lum(INK2.slice(1));
@@ -36,6 +45,8 @@ function brandColor(slug) {
 }
 
 function icon(slug, x, y, size, color) {
+  const custom = CUSTOM_ICONS[slug];
+  if (custom) return `<svg x="${x}" y="${y}" width="${size}" height="${size}" viewBox="${custom.viewBox}">${custom.body}</svg>`;
   return `<g transform="translate(${x},${y}) scale(${(size / 24).toFixed(4)})"><path d="${iconPath(slug)}" fill="${color}"/></g>`;
 }
 
@@ -272,7 +283,7 @@ skillCard('chain', 'chain · cloud · ops', [
   { label: 'Linux', slug: 'linux' }, { label: 'Kali', slug: 'kalilinux' },
 ], LIME);
 skillCard('offsec', 'offsec toolkit', [
-  { label: 'Burp Suite', slug: 'burpsuite' }, { label: 'Wireshark', slug: 'wireshark' },
+  { label: 'Caido', slug: 'caido' }, { label: 'Burp Suite', slug: 'burpsuite' }, { label: 'Wireshark', slug: 'wireshark' },
   { label: 'Nmap', slug: 'nmap' }, { label: 'Metasploit', slug: 'metasploit' },
   { label: 'Ghidra', slug: 'ghidra' },
 ], GOLD);
