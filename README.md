@@ -2,10 +2,10 @@
 
 <a href="https://github.com/kiyomasanaki"><img src="assets/hero.svg" alt="kiyomasanaki — full-stack developer &amp; ethical hacker. Breaking stuff to make it stronger." width="100%" /></a>
 
-[![Website](https://img.shields.io/badge/wespify.com-0B1020?style=for-the-badge&logo=googlechrome&logoColor=2EE6D6&labelColor=0B1020)](https://wespify.com)
-[![Contact](https://img.shields.io/badge/github%40wespify.com-0B1020?style=for-the-badge&logo=protonmail&logoColor=B07CFF&labelColor=0B1020)](mailto:github@wespify.com)
-[![Location](https://img.shields.io/badge/Made_in_France-0B1020?style=for-the-badge&logo=openstreetmap&logoColor=5DFC8D&labelColor=0B1020)](#)
-[![PGP](https://img.shields.io/badge/PGP-A0B6_3B54_A0D3_3C06-0B1020?style=for-the-badge&logo=gnuprivacyguard&logoColor=F5C84B&labelColor=0B1020)](#pgp)
+<a href="https://wespify.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/link-website-dark.svg" /><img src="assets/link-website-light.svg" alt="Website — wespify.com" width="24%" /></picture></a>
+<a href="mailto:github@wespify.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/link-contact-dark.svg" /><img src="assets/link-contact-light.svg" alt="Contact — github@wespify.com" width="24%" /></picture></a>
+<a href="#"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/link-location-dark.svg" /><img src="assets/link-location-light.svg" alt="Location — Made in France" width="24%" /></picture></a>
+<a href="#pgp"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/link-pgp-dark.svg" /><img src="assets/link-pgp-light.svg" alt="PGP — A0B6 3B54 A0D3 3C06" width="24%" /></picture></a>
 
 </div>
 
@@ -16,7 +16,7 @@
 
   <img src="assets/whoami.svg" alt="Full-stack developer based in France, building at the intersection of Web, Blockchain and AI — and an ethical hacker on challenge platforms and bug bounty programs." width="100%" />
 
-  <img src="assets/tagline.svg" alt="build · break · learn · share · repeat" />
+  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/tagline-dark.svg" /><img src="assets/tagline-light.svg" alt="build · break · learn · share · repeat" width="100%" /></picture>
 </div>
 
 ---
@@ -36,54 +36,12 @@
   <img src="assets/header-projects.svg" alt="ls ~/projects/featured" width="100%" />
 </div>
 
-<table>
-<tr>
-<td width="50%" valign="top">
-
-#### 🎵 [php-discogs-api](https://github.com/kiyomasanaki/php-discogs-api)
-
-PHP 8.x client for the Discogs API — direct access to the world's largest music database.
-
-`PHP 8.x` · `REST` · `OAuth`
-
-![Status](https://img.shields.io/badge/status-Active-F5C84B?style=flat-square&labelColor=0B1020)
-
-</td>
-<td width="50%" valign="top">
-
-#### 💰 [php-bscscan-api](https://github.com/kiyomasanaki/php-bscscan-api)
-
-API client for the BSC blockchain explorer — real-time DeFi data extraction.
-
-`PHP` · `Web3` · `Blockchain`
-
-![Status](https://img.shields.io/badge/status-Production-5DFC8D?style=flat-square&labelColor=0B1020)
-
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-
-#### 🤖 [realtime-object-detection](https://github.com/kiyomasanaki/realtime-object-detection)
-
-Real-time object detection on mobile using TensorFlow.js and the COCO-SSD model.
-
-`JavaScript` · `TensorFlow.js` · `COCO-SSD`
-
-![Status](https://img.shields.io/badge/status-Improving-B07CFF?style=flat-square&labelColor=0B1020)
-
-</td>
-<td width="50%" valign="top">
-
-#### 🔮 What's next?
-
-Got an idea, a need, a technical challenge? Let's talk.
-
-[![Get in touch](https://img.shields.io/badge/Get_in_touch-0B1020?style=for-the-badge&logo=maildotru&logoColor=2EE6D6&labelColor=0B1020)](mailto:github@wespify.com)
-
-</td>
-</tr>
-</table>
+<div align="center">
+<a href="https://github.com/kiyomasanaki/bigdump"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-bigdump-dark.svg" /><img src="assets/project-bigdump-light.svg" alt="bigdump — staggered MySQL dump importer" width="49%" /></picture></a>
+<a href="https://github.com/kiyomasanaki/codepack"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-codepack-dark.svg" /><img src="assets/project-codepack-light.svg" alt="codepack — CLI to pack a codebase for AI" width="49%" /></picture></a>
+<a href="https://github.com/kiyomasanaki/commeaucinema"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-commeaucinema-dark.svg" /><img src="assets/project-commeaucinema-light.svg" alt="commeaucinema — PHP package for commeaucinema.com feeds" width="49%" /></picture></a>
+<a href="mailto:github@wespify.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-next-dark.svg" /><img src="assets/project-next-light.svg" alt="What's next? Let's talk" width="49%" /></picture></a>
+</div>
 
 ---
 
@@ -125,14 +83,12 @@ Got an idea, a need, a technical challenge? Let's talk.
   <a id="pgp"></a>
   <img src="assets/header-gpg.svg" alt="gpg --list-keys" width="100%" />
 
-<table align="center">
-<tr><td>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/pgp-dark.svg" /><img src="assets/pgp-light.svg" alt="pub rsa4096 2025-11-14 [SC] · uid w3spi5 &lt;github@wespify.com&gt; · sub rsa4096 2025-11-14 [E]" width="100%" /></picture>
+
+<details>
+<summary>Show the full public key</summary>
 
 ```text
-pub   rsa4096 2025-11-14 [SC]
-uid   w3spi5 <github@wespify.com>
-sub   rsa4096 2025-11-14 [E]
-
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
 mDMEaReKGxYJKwYBBAHaRw8BAQdAP69WrJF2dKEn24eWMiiU2YLoXQE177zbzKkV
@@ -149,8 +105,8 @@ VGAA
 -----END PGP PUBLIC KEY BLOCK-----
 ```
 
-</td></tr>
-</table>
+</details>
+
 
 </div>
 

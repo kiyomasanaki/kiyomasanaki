@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="124" viewBox="0 0 860 124" role="img" aria-label="PGP key">
+<path d="M27 1H853Q859 1 859 7V97Q859 123 833 123H7Q1 123 1 117V27Q1 1 27 1Z" fill="none" stroke="#f5c84b" stroke-width="1.5"/>
+<text x="32" y="34" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="800" fill="#2ee6d6" dominant-baseline="central">pub</text>
+<text x="96" y="34" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" fill="#e6edf7" dominant-baseline="central" xml:space="preserve">rsa4096 2025-11-14 [SC]</text>
+<text x="32" y="62" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="800" fill="#b07cff" dominant-baseline="central">uid</text>
+<text x="96" y="62" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" fill="#e6edf7" dominant-baseline="central" xml:space="preserve">w3spi5 &lt;github@wespify.com&gt;</text>
+<text x="32" y="90" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="800" fill="#5dfc8d" dominant-baseline="central">sub</text>
+<text x="96" y="90" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" fill="#e6edf7" dominant-baseline="central" xml:space="preserve">rsa4096 2025-11-14 [E]</text>
+</svg>

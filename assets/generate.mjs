@@ -5,7 +5,7 @@ import * as si from 'simple-icons';
 import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { INK, INK2, LINE, IVORY, MUTED, CYAN, VIOLET, LIME, GOLD, BLUE, FONT, W, acc, esc, tw, card, heading, svg } from './theme.mjs';
+import { INK, INK2, LINE, IVORY, MUTED, CYAN, VIOLET, LIME, GOLD, BLUE, FONT, W, acc, esc, tw, card, heading, svg, THEMES, leaf } from './theme.mjs';
 
 const OUT = dirname(fileURLToPath(import.meta.url));
 const out = (file, content) => writeFileSync(join(OUT, file), content);
@@ -144,22 +144,79 @@ ${icon(slug, padL, (H - ic) / 2, ic, filled ? INK : color)}
   out(`btn-${name}.svg`, svg(w, H, label, body));
 }
 
-// ---- tagline (loop strip) ----------------------------------------------
+// ---- outline components (no background, light + dark) ------------------
+function outline(name, label, w, h, draw) {
+  for (const [mode, t] of Object.entries(THEMES)) out(`${name}-${mode}.svg`, svg(w, h, label, draw(t)));
+}
+const wrap = (text, max) => text.split(' ').reduce((ls, word) => {
+  const last = ls.at(-1);
+  if (last && (last + ' ' + word).length <= max) ls[ls.length - 1] = last + ' ' + word; else ls.push(word);
+  return ls;
+}, []);
+
+// tagline: one outlined pill per word, chevrons in between, full width
 function tagline(words) {
-  const H = 46, FS = 13.5, gap = 34;
-  const ws = words.map((w) => tw(w, FS));
-  const total = ws.reduce((a, b) => a + b, 0) + gap * (words.length - 1);
-  const Wt = total + 72;
-  let x = 36, body = `<rect x="0.5" y="0.5" width="${Wt - 1}" height="${H - 1}" rx="23" fill="${INK}" stroke="${LINE}"/>`;
-  words.forEach((w, i) => {
-    body += `<text x="${x}" y="${H / 2}" font-family="${FONT}" font-size="${FS}" font-weight="700" fill="${i === words.length - 1 ? CYAN : IVORY}" dominant-baseline="central" textLength="${ws[i]}" letter-spacing="1">${esc(w.toUpperCase())}</text>`;
-    x += ws[i];
-    if (i < words.length - 1) {
-      body += `<path d="M${x + gap / 2 - 4} ${H / 2 - 5}l6 5-6 5" fill="none" stroke="${VIOLET}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>`;
-      x += gap;
-    }
+  const H = 52, gap = 40, pw = (W - 2 - gap * (words.length - 1)) / words.length;
+  outline('tagline', words.join(' → '), W, H, (t) => words.map((wd, i) => {
+    const x = 1 + i * (pw + gap), c = t.acc[acc(i)], last = i === words.length - 1;
+    let g = `<path d="${leaf(x, 1, pw, H - 2, { R: 16, r: 4 })}" fill="none" stroke="${c}" stroke-width="1.5"/>
+<text x="${x + pw / 2}" y="${H / 2}" font-family="${FONT}" font-size="14" font-weight="700" fill="${last ? c : t.fg}" text-anchor="middle" dominant-baseline="central" letter-spacing="2">${esc(wd.toUpperCase())}</text>`;
+    if (!last) g += `\n<path d="M${x + pw + gap / 2 - 4} ${H / 2 - 6}l7 6-7 6" fill="none" stroke="${t.muted}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>`;
+    return g;
+  }).join('\n'));
+}
+
+// contact links: four outlined cards, laid side by side in the README
+function linkCard(name, { cap, value, slug, color }) {
+  const w = 206, h = 72;
+  outline(`link-${name}`, `${cap}: ${value}`, w, h, (t) => {
+    const c = t.acc[color];
+    return `<path d="${leaf(1, 1, w - 2, h - 2)}" fill="none" stroke="${c}" stroke-width="1.5"/>
+${icon(slug, 18, h / 2 - 11, 22, c)}
+<text x="54" y="25" font-family="${FONT}" font-size="10.5" font-weight="700" fill="${c}" dominant-baseline="central" letter-spacing="2">${esc(cap.toUpperCase())}</text>
+<text x="54" y="47" font-family="${FONT}" font-size="12.5" font-weight="600" fill="${t.fg}" dominant-baseline="central" textLength="${Math.min(tw(value, 12.5), w - 70)}" lengthAdjust="spacingAndGlyphs">${esc(value)}</text>`;
   });
-  out('tagline.svg', svg(Wt, H, words.join(' → '), body));
+}
+
+// featured project card
+function projectCard(name, { title, slug, color, desc, tags, meta }) {
+  const w = 424, h = 196, P = 24;
+  outline(`project-${name}`, `${title} — ${desc}`, w, h, (t) => {
+    const c = t.acc[color];
+    let g = `<path d="${leaf(1, 1, w - 2, h - 2, { R: 26, r: 6 })}" fill="none" stroke="${c}" stroke-width="1.5"/>
+${icon(slug, P, 24, 22, c)}
+<text x="${P + 34}" y="35" font-family="${FONT}" font-size="18" font-weight="800" fill="${t.fg}" dominant-baseline="central">${esc(title)}</text>`;
+    if (meta) {
+      const mw = tw(meta, 11) + 22;
+      g += `\n<path d="${leaf(w - P - mw, 22, mw, 26, { R: 10, r: 3 })}" fill="none" stroke="${c}" stroke-opacity="0.7"/>
+<text x="${w - P - mw / 2}" y="35" font-family="${FONT}" font-size="11" font-weight="700" fill="${c}" text-anchor="middle" dominant-baseline="central">${esc(meta)}</text>`;
+    }
+    wrap(desc, 48).slice(0, 3).forEach((ln, i) => {
+      g += `\n<text x="${P}" y="${78 + i * 22}" font-family="${FONT}" font-size="13" fill="${t.muted}" dominant-baseline="central">${esc(ln)}</text>`;
+    });
+    let x = P;
+    tags.forEach((tag, i) => {
+      const tc = t.acc[acc(i)];
+      g += `\n<circle cx="${x + 4}" cy="${h - 30}" r="3.5" fill="${tc}"/>
+<text x="${x + 14}" y="${h - 30}" font-family="${FONT}" font-size="12" font-weight="600" fill="${t.fg}" dominant-baseline="central">${esc(tag)}</text>`;
+      x += 14 + tw(tag, 12) + 22;
+    });
+    return g;
+  });
+}
+
+// pgp key summary
+function pgpCard(lines) {
+  const h = 40 + lines.length * 28;
+  outline('pgp', 'PGP key', W, h, (t) => {
+    let g = `<path d="${leaf(1, 1, W - 2, h - 2, { R: 26, r: 6 })}" fill="none" stroke="${t.acc[GOLD]}" stroke-width="1.5"/>`;
+    lines.forEach(([k, v], i) => {
+      const y = 34 + i * 28, c = t.acc[acc(i)];
+      g += `\n<text x="32" y="${y}" font-family="${FONT}" font-size="14" font-weight="800" fill="${c}" dominant-baseline="central">${esc(k)}</text>
+<text x="96" y="${y}" font-family="${FONT}" font-size="14" fill="${t.fg}" dominant-baseline="central" xml:space="preserve">${esc(v)}</text>`;
+    });
+    return g;
+  });
 }
 
 // ========================================================================
@@ -205,6 +262,39 @@ skillCard('bugbounty', 'bug bounty programs', [
 ], VIOLET);
 
 tagline(['build', 'break', 'learn', 'share', 'repeat']);
+
+linkCard('website',  { cap: 'website',  value: 'wespify.com',         slug: 'googlechrome',    color: CYAN });
+linkCard('contact',  { cap: 'contact',  value: 'github@wespify.com',  slug: 'protonmail',      color: VIOLET });
+linkCard('location', { cap: 'location', value: 'Made in France',      slug: 'openstreetmap',   color: LIME });
+linkCard('pgp',      { cap: 'pgp',      value: 'A0B6 3B54 A0D3 3C06', slug: 'gnuprivacyguard', color: GOLD });
+
+// featured = the repos with the most commits authored by me (abandoned ones excluded)
+projectCard('bigdump', {
+  title: 'bigdump', slug: 'mysql', color: CYAN, meta: '161 commits',
+  desc: 'Staggered MySQL dump importer for servers with strict time limits — single-file PHAR, live SSE progress, CLI optimizer.',
+  tags: ['PHP 8.1+', 'MySQL', 'PHAR'],
+});
+projectCard('codepack', {
+  title: 'codepack', slug: 'gnubash', color: VIOLET, meta: '69 commits',
+  desc: 'Ultra-efficient CLI that extracts folder structure and file contents, minified and ready for AI processing.',
+  tags: ['Bash', 'CLI', 'AI-ready'],
+});
+projectCard('commeaucinema', {
+  title: 'commeaucinema', slug: 'rss', color: LIME, meta: '19 commits',
+  desc: 'PHP package exposing the commeaucinema.com feeds — weekly releases, films in theaters and cinema news.',
+  tags: ['PHP', 'Composer', 'RSS'],
+});
+projectCard('next', {
+  title: "what's next?", slug: 'maildotru', color: GOLD,
+  desc: "Got an idea, a need, a technical challenge? Let's talk — github@wespify.com",
+  tags: ['collab', 'freelance', 'open source'],
+});
+
+pgpCard([
+  ['pub', 'rsa4096 2025-11-14 [SC]'],
+  ['uid', 'w3spi5 <github@wespify.com>'],
+  ['sub', 'rsa4096 2025-11-14 [E]'],
+]);
 
 panel('whoami', {
   title: 'about', label: 'About me', lh: 30,

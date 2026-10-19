@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="52" viewBox="0 0 860 52" role="img" aria-label="build → break → learn → share → repeat">
+<path d="M17 1H136.6Q140.6 1 140.6 5V35Q140.6 51 124.6 51H5Q1 51 1 47V17Q1 1 17 1Z" fill="none" stroke="#2ee6d6" stroke-width="1.5"/>
+<text x="70.8" y="26" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#e6edf7" text-anchor="middle" dominant-baseline="central" letter-spacing="2">BUILD</text>
+<path d="M156.6 20l7 6-7 6" fill="none" stroke="#8a96ad" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M196.6 1H316.2Q320.2 1 320.2 5V35Q320.2 51 304.2 51H184.6Q180.6 51 180.6 47V17Q180.6 1 196.6 1Z" fill="none" stroke="#b07cff" stroke-width="1.5"/>
+<text x="250.39999999999998" y="26" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#e6edf7" text-anchor="middle" dominant-baseline="central" letter-spacing="2">BREAK</text>
+<path d="M336.2 20l7 6-7 6" fill="none" stroke="#8a96ad" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M376.2 1H495.79999999999995Q499.79999999999995 1 499.79999999999995 5V35Q499.79999999999995 51 483.79999999999995 51H364.2Q360.2 51 360.2 47V17Q360.2 1 376.2 1Z" fill="none" stroke="#5dfc8d" stroke-width="1.5"/>
+<text x="430" y="26" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#e6edf7" text-anchor="middle" dominant-baseline="central" letter-spacing="2">LEARN</text>
+<path d="M515.8 20l7 6-7 6" fill="none" stroke="#8a96ad" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M555.8 1H675.4Q679.4 1 679.4 5V35Q679.4 51 663.4 51H543.8Q539.8 51 539.8 47V17Q539.8 1 555.8 1Z" fill="none" stroke="#f5c84b" stroke-width="1.5"/>
+<text x="609.5999999999999" y="26" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#e6edf7" text-anchor="middle" dominant-baseline="central" letter-spacing="2">SHARE</text>
+<path d="M695.4 20l7 6-7 6" fill="none" stroke="#8a96ad" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M735.4 1H855Q859 1 859 5V35Q859 51 843 51H723.4Q719.4 51 719.4 47V17Q719.4 1 735.4 1Z" fill="none" stroke="#2ee6d6" stroke-width="1.5"/>
+<text x="789.1999999999999" y="26" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#2ee6d6" text-anchor="middle" dominant-baseline="central" letter-spacing="2">REPEAT</text>
+</svg>
