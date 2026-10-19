@@ -11,9 +11,9 @@ const OUT = dirname(fileURLToPath(import.meta.url));
 const USER = process.env.STATS_USER || 'kiyomasanaki';
 const TOKEN = process.env.GH_TOKEN || process.env.GITHUB_TOKEN;
 
-import { INK2, LINE, IVORY, MUTED, VERM, GOLD, JADE, FONT, W, esc, card, heading, svg } from './theme.mjs';
+import { INK2, LINE, IVORY, MUTED, CYAN, VIOLET, LIME, GOLD, BLUE, acc, FONT, W, esc, card, heading, svg } from './theme.mjs';
 
-const LANG_COLORS = [VERM, GOLD, JADE, '#7aa2f7', '#c792ea', '#f78c6c', '#89ddff', '#a6accd'];
+const LANG_COLORS = [CYAN, VIOLET, LIME, GOLD, BLUE, '#ff79c6', '#89ddff', '#a6accd'];
 
 // -------- optional live fetch (GitHub Actions) --------------------------
 async function gh(path) {
@@ -65,7 +65,7 @@ function overview(d) {
   const gap = 12, cw = (W - PAD * 2 - gap * (cells.length - 1)) / cells.length;
   let body = heading(PAD, 28, 'overview');
   cells.forEach((c, i) => {
-    const x = PAD + i * (cw + gap), col = i % 2 === 0 ? VERM : GOLD;
+    const x = PAD + i * (cw + gap), col = acc(i);
     body += `<rect x="${x}" y="52" width="${cw}" height="80" rx="10" fill="${INK2}" stroke="${LINE}"/>
 <rect x="${x + 16}" y="52" width="28" height="3" rx="1.5" fill="${col}"/>
 <text x="${x + 16}" y="86" font-family="${FONT}" font-size="32" font-weight="800" fill="${IVORY}" dominant-baseline="central">${esc(c.n)}</text>
@@ -91,8 +91,8 @@ function languages(d) {
 <text x="${lx + colW - 24}" y="${ly}" font-family="${FONT}" font-size="13" font-weight="700" fill="${MUTED}" text-anchor="end" dominant-baseline="central">${l.pct}%</text>`;
   });
   const defs = `<clipPath id="bc"><rect x="${PAD}" y="${barY}" width="${barW}" height="${barH}" rx="7"/></clipPath>`;
-  const body = `${card(W, H, { spine: GOLD })}
-${heading(PAD, 28, 'most used languages', GOLD)}
+  const body = `${card(W, H, { spine: VIOLET })}
+${heading(PAD, 28, 'most used languages', VIOLET)}
 <rect x="${PAD}" y="${barY}" width="${barW}" height="${barH}" rx="7" fill="${INK2}"/>
 <g clip-path="url(#bc)">${bar}</g>
 ${legend}`;
