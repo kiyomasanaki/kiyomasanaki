@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="860" height="124" viewBox="0 0 860 124" role="img" aria-label="PGP key">
-<path d="M27 1H853Q859 1 859 7V97Q859 123 833 123H7Q1 123 1 117V27Q1 1 27 1Z" fill="none" stroke="#a87808" stroke-width="1.5"/>
+<path d="M1 1H833Q859 1 859 27V97Q859 123 833 123H27Q1 123 1 97V1Q1 1 1 1Z" fill="none" stroke="#a87808" stroke-width="1"/>
 <text x="32" y="34" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="800" fill="#0a8f86" dominant-baseline="central">pub</text>
 <text x="96" y="34" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" fill="#0b1020" dominant-baseline="central" xml:space="preserve">rsa4096 2025-11-14 [SC]</text>
 <text x="32" y="62" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="800" fill="#7445d6" dominant-baseline="central">uid</text>

@@ -4,6 +4,7 @@
 <radialGradient id="neb1" cx="0.82" cy="0.2" r="0.45"><stop offset="0" stop-color="#b07cff" stop-opacity="0.28"/><stop offset="1" stop-color="#b07cff" stop-opacity="0"/></radialGradient>
 <radialGradient id="neb2" cx="0.62" cy="1" r="0.5"><stop offset="0" stop-color="#2ee6d6" stop-opacity="0.18"/><stop offset="1" stop-color="#2ee6d6" stop-opacity="0"/></radialGradient>
 <linearGradient id="tag" x1="0" x2="1"><stop offset="0" stop-color="#2ee6d6"/><stop offset="0.5" stop-color="#5dfc8d"/><stop offset="1" stop-color="#f5c84b"/></linearGradient>
+<linearGradient id="seal" gradientUnits="userSpaceOnUse" x1="710" y1="52" x2="820" y2="162"><stop offset="0" stop-color="#4ea8ff"/><stop offset="0.5" stop-color="#b07cff"/><stop offset="1" stop-color="#f5c84b"/></linearGradient>
 <style>.cur{animation:b 1.1s steps(1) infinite}@keyframes b{50%{opacity:0}}</style></defs>
 <rect x="0.5" y="0.5" width="859" height="229" rx="14" fill="#0b1020" stroke="#24304a"/>
 <rect x="0.5" y="18" width="3" height="194" rx="1.5" fill="#2ee6d6"/>
@@ -21,9 +22,9 @@
 <text x="169" y="184" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12.5" font-weight="600" fill="#5dfc8d" dominant-baseline="central" textLength="15">AI</text><rect x="206" y="170" width="159" height="28" rx="7" fill="#121a2e" stroke="#24304a"/>
 <text x="218" y="184" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12.5" font-weight="600" fill="#f5c84b" dominant-baseline="central" textLength="135">Offensive Security</text>
 <g transform="rotate(-6 765 107)">
-<rect x="710" y="52" width="110" height="110" rx="12" fill="none" stroke="#b07cff" stroke-width="3"/>
-<rect x="718" y="60" width="94" height="94" rx="7" fill="#b07cff" fill-opacity="0.12" stroke="#b07cff" stroke-opacity="0.5"/>
-<text x="765" y="105" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="40" font-weight="800" fill="#b07cff" text-anchor="middle" dominant-baseline="central">KM</text>
-<text x="765" y="140" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="9.5" font-weight="700" fill="#f5c84b" text-anchor="middle" dominant-baseline="central" letter-spacing="2">EST·FR</text>
+<rect x="710" y="52" width="110" height="110" rx="12" fill="none" stroke="url(#seal)" stroke-width="3"/>
+<rect x="718" y="60" width="94" height="94" rx="7" fill="url(#seal)" fill-opacity="0.12" stroke="url(#seal)" stroke-opacity="0.5"/>
+<text x="765" y="101" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="40" font-weight="800" fill="url(#seal)" text-anchor="middle" dominant-baseline="central">KM</text>
+<text x="765" y="138" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="8" font-weight="700" fill="url(#seal)" text-anchor="middle" dominant-baseline="central" letter-spacing="1.2">MADE IN FRANCE</text>
 </g>
 </svg>
