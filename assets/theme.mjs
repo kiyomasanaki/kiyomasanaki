@@ -40,3 +40,19 @@ export const svg = (w, h, label, body, defs = '') =>
 ${defs ? `<defs>${defs}</defs>\n` : ''}${body}
 </svg>
 `;
+
+// ---- outline style ("no background") -----------------------------------
+// Transparent cards with an asymmetric "leaf" radius: big rounded corners on
+// top-left / bottom-right, tight ones on the other diagonal. Rendered twice
+// (dark + light) and swapped by a <picture> in the README, since there is
+// no card behind the text to guarantee contrast.
+export const THEMES = {
+  dark:  { fg: IVORY,     muted: MUTED,     line: '#2a3756',
+           acc: { [CYAN]: CYAN, [VIOLET]: VIOLET, [LIME]: LIME, [GOLD]: GOLD } },
+  light: { fg: '#0b1020', muted: '#525d73', line: '#cdd5e3',
+           acc: { [CYAN]: '#0a8f86', [VIOLET]: '#7445d6', [LIME]: '#16994a', [GOLD]: '#a87808' } },
+};
+
+export function leaf(x, y, w, h, { R = 20, r = 5 } = {}) {
+  return `M${x + R} ${y}H${x + w - r}Q${x + w} ${y} ${x + w} ${y + r}V${y + h - R}Q${x + w} ${y + h} ${x + w - R} ${y + h}H${x + r}Q${x} ${y + h} ${x} ${y + h - r}V${y + R}Q${x} ${y} ${x + R} ${y}Z`;
+}
