@@ -27,7 +27,7 @@
   <img src="assets/stack-languages.svg" alt="Languages: PHP, JavaScript, Python, Solidity, Bash" width="100%" />
   <img src="assets/stack-frameworks.svg" alt="Frameworks: Laravel, Symfony, Node.js, React, Vue.js, TensorFlow.js" width="100%" />
   <img src="assets/stack-chain.svg" alt="Chain, cloud & ops: Ethereum, BNB Chain, Web3.js, Docker, Linux, Kali" width="100%" />
-  <img src="assets/stack-offsec.svg" alt="Offsec toolkit: Burp Suite, Wireshark, Nmap, Metasploit, Ghidra" width="100%" />
+  <img src="assets/stack-offsec.svg" alt="Offsec toolkit: Caido, Burp Suite, Wireshark, Nmap, Metasploit, Ghidra" width="100%" />
 </div>
 
 ---

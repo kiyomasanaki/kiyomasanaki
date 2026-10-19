@@ -5,6 +5,7 @@
 <radialGradient id="neb2" cx="0.62" cy="1" r="0.5"><stop offset="0" stop-color="#2ee6d6" stop-opacity="0.18"/><stop offset="1" stop-color="#2ee6d6" stop-opacity="0"/></radialGradient>
 <linearGradient id="tag" x1="0" x2="1"><stop offset="0" stop-color="#2ee6d6"/><stop offset="0.5" stop-color="#5dfc8d"/><stop offset="1" stop-color="#f5c84b"/></linearGradient>
 <linearGradient id="seal" gradientUnits="userSpaceOnUse" x1="710" y1="52" x2="820" y2="162"><stop offset="0" stop-color="#4ea8ff"/><stop offset="0.5" stop-color="#b07cff"/><stop offset="1" stop-color="#f5c84b"/></linearGradient>
+<filter id="inked" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="0.9" result="d"/><feTurbulence type="fractalNoise" baseFrequency="0.35" numOctaves="2" seed="3" result="m"/><feColorMatrix in="m" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.6 1.6" result="mask"/><feComposite in="d" in2="mask" operator="in"/></filter>
 <style>.cur{animation:b 1.1s steps(1) infinite}@keyframes b{50%{opacity:0}}</style></defs>
 <rect x="0.5" y="0.5" width="859" height="229" rx="14" fill="#0b1020" stroke="#24304a"/>
 <rect x="0.5" y="18" width="3" height="194" rx="1.5" fill="#2ee6d6"/>
@@ -21,10 +22,15 @@
 <text x="105" y="184" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12.5" font-weight="600" fill="#b07cff" dominant-baseline="central" textLength="30">Web3</text><rect x="157" y="170" width="39" height="28" rx="7" fill="#121a2e" stroke="#24304a"/>
 <text x="169" y="184" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12.5" font-weight="600" fill="#5dfc8d" dominant-baseline="central" textLength="15">AI</text><rect x="206" y="170" width="159" height="28" rx="7" fill="#121a2e" stroke="#24304a"/>
 <text x="218" y="184" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12.5" font-weight="600" fill="#f5c84b" dominant-baseline="central" textLength="135">Offensive Security</text>
-<g transform="rotate(-6 765 107)">
-<rect x="710" y="52" width="110" height="110" rx="12" fill="none" stroke="url(#seal)" stroke-width="3"/>
-<rect x="718" y="60" width="94" height="94" rx="7" fill="url(#seal)" fill-opacity="0.12" stroke="url(#seal)" stroke-opacity="0.5"/>
-<text x="765" y="101" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="40" font-weight="800" fill="url(#seal)" text-anchor="middle" dominant-baseline="central">KM</text>
-<text x="765" y="138" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="8" font-weight="700" fill="url(#seal)" text-anchor="middle" dominant-baseline="central" letter-spacing="1.2">MADE IN FRANCE</text>
+<g transform="rotate(-8 765 107)" filter="url(#inked)">
+<polygon points="820.0,107.0 815.9,110.6 819.4,114.8 814.8,117.8 817.8,122.5 812.8,124.8 815.0,129.8 809.8,131.4 811.3,136.7 805.8,137.6 806.6,143.0 801.1,143.1 801.0,148.6 795.6,147.8 794.7,153.3 789.4,151.8 787.8,157.0 782.8,154.8 780.5,159.8 775.8,156.8 772.8,161.4 768.6,157.9 765.0,162.0 761.4,157.9 757.2,161.4 754.2,156.8 749.5,159.8 747.2,154.8 742.2,157.0 740.6,151.8 735.3,153.3 734.4,147.8 729.0,148.6 728.9,143.1 723.4,143.0 724.2,137.6 718.7,136.7 720.2,131.4 715.0,129.8 717.2,124.8 712.2,122.5 715.2,117.8 710.6,114.8 714.1,110.6 710.0,107.0 714.1,103.4 710.6,99.2 715.2,96.2 712.2,91.5 717.2,89.2 715.0,84.2 720.2,82.6 718.7,77.3 724.2,76.4 723.4,71.0 728.9,70.9 729.0,65.4 734.4,66.2 735.3,60.7 740.6,62.2 742.2,57.0 747.2,59.2 749.5,54.2 754.2,57.2 757.2,52.6 761.4,56.1 765.0,52.0 768.6,56.1 772.8,52.6 775.8,57.2 780.5,54.2 782.8,59.2 787.8,57.0 789.4,62.2 794.7,60.7 795.6,66.2 801.0,65.4 801.1,70.9 806.6,71.0 805.8,76.4 811.3,77.3 809.8,82.6 815.0,84.2 812.8,89.2 817.8,91.5 814.8,96.2 819.4,99.2 815.9,103.4" fill="none" stroke="url(#seal)" stroke-width="2.2" stroke-linejoin="round"/>
+<circle cx="765" cy="107" r="45" fill="url(#seal)" fill-opacity="0.08" stroke="url(#seal)" stroke-width="1.6"/>
+<circle cx="765" cy="107" r="25" fill="none" stroke="url(#seal)" stroke-width="1"/>
+<path id="arcTop" d="M731 107 A34 34 0 0 1 799 107" fill="none"/>
+<path id="arcBot" d="M725 107 A40 40 0 0 0 805 107" fill="none"/>
+<text font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12.5" font-weight="800" fill="url(#seal)" letter-spacing="2.5"><textPath href="#arcTop" startOffset="50%" text-anchor="middle">MADE IN</textPath></text>
+<text font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12.5" font-weight="800" fill="url(#seal)" letter-spacing="2.5"><textPath href="#arcBot" startOffset="50%" text-anchor="middle">FRANCE</textPath></text>
+<text x="730" y="107" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="9" fill="url(#seal)" text-anchor="middle" dominant-baseline="central">★</text><text x="800" y="107" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="9" fill="url(#seal)" text-anchor="middle" dominant-baseline="central">★</text>
+<polygon points="761.4,92.0 768.6,95.6 777.6,98.6 775.8,107.6 778.5,115.4 769.8,120.5 762.6,119.6 756.6,122.0 753.6,113.6 750.6,104.6 750.0,101.0 755.4,98.0" fill="url(#seal)" fill-opacity="0.85" stroke="url(#seal)" stroke-width="1" stroke-linejoin="round"/>
 </g>
 </svg>

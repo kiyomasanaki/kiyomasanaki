@@ -2,7 +2,7 @@
 // Solid ink cards with a neon spine — readable on every GitHub theme.
 // Run:  node assets/generate.mjs   (requires: npm i simple-icons)
 import * as si from 'simple-icons';
-import { writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { INK, INK2, LINE, IVORY, MUTED, CYAN, VIOLET, LIME, GOLD, BLUE, FONT, W, acc, esc, tw, card, heading, svg, THEMES, STROKE, leaf } from './theme.mjs';
@@ -15,6 +15,15 @@ const PAD = 28;
 
 // fallback glyph (hexagon target) for brands missing from simple-icons
 const FALLBACK = 'M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8zM12 7.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9zm0 2.4a2.1 2.1 0 110 4.2 2.1 2.1 0 010-4.2z';
+// logos missing from simple-icons, kept as the vendor's official SVG in icons/
+// (ids are prefixed so several inline logos can't collide)
+const CUSTOM_ICONS = Object.fromEntries(['caido'].map((slug) => {
+  const raw = readFileSync(join(OUT, 'icons', `${slug}.svg`), 'utf8');
+  return [slug, {
+    viewBox: raw.match(/viewBox="([^"]+)"/)[1],
+    body: raw.replace(/^[\s\S]*?<svg[^>]*>|<\/svg>\s*$/g, '').replace(/xlink:href=/g, 'href=').replace(/(id="|url\(#|href="#)/g, `$1${slug}-`),
+  }];
+}));
 const iconPath = (slug) => si['si' + slug.charAt(0).toUpperCase() + slug.slice(1)]?.path ?? FALLBACK;
 // brand colour of a logo, lightened just enough to stay readable on the ink chips
 const lum = (hex) => {
@@ -26,7 +35,7 @@ const mix = (hex, t) => [0, 2, 4].map((i) => {
   return Math.round(v + (255 - v) * t).toString(16).padStart(2, '0');
 }).join('');
 // logos whose simple-icons colour is missing or isn't the colour people know them by
-const BRAND_OVERRIDE = { ethereum: '627EEA', ghidra: 'E0201F' };
+const BRAND_OVERRIDE = { ethereum: '627EEA', ghidra: 'E0201F', caido: 'A1223F' };
 function brandColor(slug) {
   const base = BRAND_OVERRIDE[slug] ?? si['si' + slug.charAt(0).toUpperCase() + slug.slice(1)]?.hex ?? IVORY.slice(1);
   const bg = lum(INK2.slice(1));
@@ -36,6 +45,8 @@ function brandColor(slug) {
 }
 
 function icon(slug, x, y, size, color) {
+  const custom = CUSTOM_ICONS[slug];
+  if (custom) return `<svg x="${x}" y="${y}" width="${size}" height="${size}" viewBox="${custom.viewBox}">${custom.body}</svg>`;
   return `<g transform="translate(${x},${y}) scale(${(size / 24).toFixed(4)})"><path d="${iconPath(slug)}" fill="${color}"/></g>`;
 }
 
@@ -51,6 +62,7 @@ function hero() {
 <radialGradient id="neb2" cx="0.62" cy="1" r="0.5"><stop offset="0" stop-color="${CYAN}" stop-opacity="0.18"/><stop offset="1" stop-color="${CYAN}" stop-opacity="0"/></radialGradient>
 <linearGradient id="tag" x1="0" x2="1"><stop offset="0" stop-color="${CYAN}"/><stop offset="0.5" stop-color="${LIME}"/><stop offset="1" stop-color="${GOLD}"/></linearGradient>
 <linearGradient id="seal" gradientUnits="userSpaceOnUse" x1="${sx}" y1="${sy}" x2="${sx + ss}" y2="${sy + ss}"><stop offset="0" stop-color="${BLUE}"/><stop offset="0.5" stop-color="${VIOLET}"/><stop offset="1" stop-color="${GOLD}"/></linearGradient>
+<filter id="inked" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="0.9" result="d"/><feTurbulence type="fractalNoise" baseFrequency="0.35" numOctaves="2" seed="3" result="m"/><feColorMatrix in="m" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.6 1.6" result="mask"/><feComposite in="d" in2="mask" operator="in"/></filter>
 <style>.cur{animation:b 1.1s steps(1) infinite}@keyframes b{50%{opacity:0}}</style>`;
   const tags = ['PHP', 'Web3', 'AI', 'Offensive Security'];
   let tx = PAD + 8, chips = '';
@@ -61,11 +73,25 @@ function hero() {
     tx += w + 10;
   });
   // hanko-style stamp
-  const stamp = `<g transform="rotate(-6 ${sx + ss / 2} ${sy + ss / 2})">
-<rect x="${sx}" y="${sy}" width="${ss}" height="${ss}" rx="12" fill="none" stroke="url(#seal)" stroke-width="3"/>
-<rect x="${sx + 8}" y="${sy + 8}" width="${ss - 16}" height="${ss - 16}" rx="7" fill="url(#seal)" fill-opacity="0.12" stroke="url(#seal)" stroke-opacity="0.5"/>
-<text x="${sx + ss / 2}" y="${sy + ss / 2 - 6}" font-family="${FONT}" font-size="40" font-weight="800" fill="url(#seal)" text-anchor="middle" dominant-baseline="central">KM</text>
-<text x="${sx + ss / 2}" y="${sy + ss - 24}" font-family="${FONT}" font-size="8" font-weight="700" fill="url(#seal)" text-anchor="middle" dominant-baseline="central" letter-spacing="1.2">MADE IN FRANCE</text>
+  // rubber stamp: serrated ring, MADE IN / FRANCE on arcs, the Hexagone in the middle
+  const cx = sx + ss / 2, cy = sy + ss / 2, teeth = 44;
+  const ring = Array.from({ length: teeth * 2 }, (_, i) => {
+    const r = i % 2 ? 51 : 55, a = (Math.PI * i) / teeth;
+    return `${(cx + r * Math.cos(a)).toFixed(1)},${(cy + r * Math.sin(a)).toFixed(1)}`;
+  }).join(' ');
+  const hexagone = [[.38, 0], [.62, .12], [.92, .22], [.86, .52], [.95, .78], [.66, .95], [.42, .92], [.22, 1], [.12, .72], [.02, .42], [0, .3], [.18, .2]]
+    .map(([x, y]) => `${(cx - 15 + x * 30).toFixed(1)},${(cy - 15 + y * 30).toFixed(1)}`).join(' ');
+  const star = (x) => `<text x="${x}" y="${cy}" font-family="${FONT}" font-size="9" fill="url(#seal)" text-anchor="middle" dominant-baseline="central">★</text>`;
+  const stamp = `<g transform="rotate(-8 ${cx} ${cy})" filter="url(#inked)">
+<polygon points="${ring}" fill="none" stroke="url(#seal)" stroke-width="2.2" stroke-linejoin="round"/>
+<circle cx="${cx}" cy="${cy}" r="45" fill="url(#seal)" fill-opacity="0.08" stroke="url(#seal)" stroke-width="1.6"/>
+<circle cx="${cx}" cy="${cy}" r="25" fill="none" stroke="url(#seal)" stroke-width="1"/>
+<path id="arcTop" d="M${cx - 34} ${cy} A34 34 0 0 1 ${cx + 34} ${cy}" fill="none"/>
+<path id="arcBot" d="M${cx - 40} ${cy} A40 40 0 0 0 ${cx + 40} ${cy}" fill="none"/>
+<text font-family="${FONT}" font-size="12.5" font-weight="800" fill="url(#seal)" letter-spacing="2.5"><textPath href="#arcTop" startOffset="50%" text-anchor="middle">MADE IN</textPath></text>
+<text font-family="${FONT}" font-size="12.5" font-weight="800" fill="url(#seal)" letter-spacing="2.5"><textPath href="#arcBot" startOffset="50%" text-anchor="middle">FRANCE</textPath></text>
+${star(cx - 35)}${star(cx + 35)}
+<polygon points="${hexagone}" fill="url(#seal)" fill-opacity="0.85" stroke="url(#seal)" stroke-width="1" stroke-linejoin="round"/>
 </g>`;
   const body = `${card(W, H)}
 <rect x="1" y="1" width="${W - 2}" height="${H - 2}" rx="14" fill="url(#dots)"/>
@@ -272,7 +298,7 @@ skillCard('chain', 'chain · cloud · ops', [
   { label: 'Linux', slug: 'linux' }, { label: 'Kali', slug: 'kalilinux' },
 ], LIME);
 skillCard('offsec', 'offsec toolkit', [
-  { label: 'Burp Suite', slug: 'burpsuite' }, { label: 'Wireshark', slug: 'wireshark' },
+  { label: 'Caido', slug: 'caido' }, { label: 'Burp Suite', slug: 'burpsuite' }, { label: 'Wireshark', slug: 'wireshark' },
   { label: 'Nmap', slug: 'nmap' }, { label: 'Metasploit', slug: 'metasploit' },
   { label: 'Ghidra', slug: 'ghidra' },
 ], GOLD);
