@@ -2,10 +2,10 @@
 
 <a href="https://github.com/kiyomasanaki"><img src="assets/hero.svg" alt="kiyomasanaki — full-stack developer &amp; ethical hacker. Breaking stuff to make it stronger." width="100%" /></a>
 
-<a href="https://wespify.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/link-website-dark.svg" /><img src="assets/link-website-light.svg" alt="Website — wespify.com" width="24%" /></picture></a>
-<a href="mailto:github@wespify.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/link-contact-dark.svg" /><img src="assets/link-contact-light.svg" alt="Contact — github@wespify.com" width="24%" /></picture></a>
-<a href="#"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/link-location-dark.svg" /><img src="assets/link-location-light.svg" alt="Location — Made in France" width="24%" /></picture></a>
-<a href="#pgp"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/link-pgp-dark.svg" /><img src="assets/link-pgp-light.svg" alt="PGP — A0B6 3B54 A0D3 3C06" width="24%" /></picture></a>
+<a href="https://wespify.com"><img src="assets/link-website.svg" alt="Website — wespify.com" width="24%" /></a>
+<a href="mailto:github@wespify.com"><img src="assets/link-contact.svg" alt="Contact — github@wespify.com" width="24%" /></a>
+<a href="#"><img src="assets/link-location.svg" alt="Location — Made in France" width="24%" /></a>
+<a href="#pgp"><img src="assets/link-pgp.svg" alt="PGP — A0B6 3B54 A0D3 3C06" width="24%" /></a>
 
 </div>
 
@@ -16,7 +16,7 @@
 
   <img src="assets/whoami.svg" alt="Full-stack developer based in France, building at the intersection of Web, Blockchain and AI — and an ethical hacker on challenge platforms and bug bounty programs." width="100%" />
 
-  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/tagline-dark.svg" /><img src="assets/tagline-light.svg" alt="build · break · learn · share · repeat" width="100%" /></picture>
+  <img src="assets/tagline.svg" alt="build · break · learn · share · repeat" width="100%" />
 </div>
 
 ---
@@ -37,10 +37,10 @@
 </div>
 
 <div align="center">
-<a href="https://github.com/kiyomasanaki/bigdump"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-bigdump-dark.svg" /><img src="assets/project-bigdump-light.svg" alt="bigdump — staggered MySQL dump importer" width="49%" /></picture></a>
-<a href="https://github.com/kiyomasanaki/codepack"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-codepack-dark.svg" /><img src="assets/project-codepack-light.svg" alt="codepack — CLI to pack a codebase for AI" width="49%" /></picture></a>
-<a href="https://github.com/kiyomasanaki/commeaucinema"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-commeaucinema-dark.svg" /><img src="assets/project-commeaucinema-light.svg" alt="commeaucinema — PHP package for commeaucinema.com feeds" width="49%" /></picture></a>
-<a href="mailto:github@wespify.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-next-dark.svg" /><img src="assets/project-next-light.svg" alt="What's next? Let's talk" width="49%" /></picture></a>
+<a href="https://github.com/kiyomasanaki/bigdump"><img src="assets/project-bigdump.svg" alt="bigdump — staggered MySQL dump importer" width="49%" /></a>
+<a href="https://github.com/kiyomasanaki/codepack"><img src="assets/project-codepack.svg" alt="codepack — CLI to pack a codebase for AI" width="49%" /></a>
+<a href="https://github.com/kiyomasanaki/commeaucinema"><img src="assets/project-commeaucinema.svg" alt="commeaucinema — PHP package for commeaucinema.com feeds" width="49%" /></a>
+<a href="mailto:github@wespify.com"><img src="assets/project-next.svg" alt="What's next? Let's talk" width="49%" /></a>
 </div>
 
 ---
@@ -83,7 +83,7 @@
   <a id="pgp"></a>
   <img src="assets/header-gpg.svg" alt="gpg --list-keys" width="100%" />
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/pgp-dark.svg" /><img src="assets/pgp-light.svg" alt="pub rsa4096 2025-11-14 [SC] · uid w3spi5 &lt;github@wespify.com&gt; · sub rsa4096 2025-11-14 [E]" width="100%" /></picture>
+<img src="assets/pgp.svg" alt="pub rsa4096 2025-11-14 [SC] · uid w3spi5 &lt;github@wespify.com&gt; · sub rsa4096 2025-11-14 [E]" width="100%" />
 
 <details>
 <summary>Show the full public key</summary>

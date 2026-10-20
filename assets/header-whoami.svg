@@ -1,8 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="860" height="56" viewBox="0 0 860 56" role="img" aria-label="01 whoami — whoami --verbose">
-<rect x="0.5" y="0.5" width="859" height="55" rx="12" fill="#0b1020" stroke="#24304a"/>
+<defs><filter id="neon" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="glow" x="-10%" y="-60%" width="120%" height="220%"><feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<rect x="0.5" y="0.5" width="859" height="55" rx="12" fill="#0b1020" fill-opacity="0.82" stroke="#24304a"/>
 <text x="28" y="28" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="15" font-weight="800" fill="#2ee6d6" dominant-baseline="central">01</text>
 <rect x="58" y="19" width="1.5" height="18" fill="#24304a"/>
 <text x="74" y="28" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="17" font-weight="800" fill="#e6edf7" dominant-baseline="central" letter-spacing="1">WHOAMI</text>
-<rect x="677" y="14" width="155" height="28" rx="7" fill="#121a2e" stroke="#24304a"/>
-<text x="687" y="28" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12.5" fill="#8a96ad" dominant-baseline="central" textLength="135" xml:space="preserve">$ whoami --verbose</text>
+<rect x="669" y="13" width="163" height="30" rx="6" fill="#050811" stroke="#2ee6d6" stroke-width="1.2" filter="url(#neon)"/>
+<text x="683" y="28" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12.5" font-weight="600" fill="#2ee6d6" dominant-baseline="central" textLength="135" xml:space="preserve" filter="url(#glow)"><tspan fill="#5dfc8d">$</tspan> whoami --verbose</text>
 </svg>

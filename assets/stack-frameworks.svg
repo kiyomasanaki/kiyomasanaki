@@ -1,5 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="860" height="118" viewBox="0 0 860 118" role="img" aria-label="frameworks &amp; runtimes">
-<rect x="0.5" y="0.5" width="859" height="117" rx="14" fill="#0b1020" stroke="#24304a"/>
+<rect x="0.5" y="0.5" width="859" height="117" rx="14" fill="#0b1020" fill-opacity="0.82" stroke="#24304a"/>
+<defs><pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1" fill="#24304a"/></pattern>
+<linearGradient id="fadeg" x1="0" x2="1"><stop offset="0.35" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
+<mask id="fade"><rect width="860" height="118" fill="url(#fadeg)"/></mask></defs>
+<rect x="1" y="1" width="858" height="116" rx="14" fill="url(#dots)" mask="url(#fade)"/>
 <rect x="0.5" y="18" width="3" height="82" rx="1.5" fill="#b07cff"/>
 <rect x="28" y="24" width="8" height="8" rx="1.5" fill="#b07cff"/>
 <text x="48" y="28" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#e6edf7" dominant-baseline="central" letter-spacing="0.5">FRAMEWORKS &amp; RUNTIMES</text>

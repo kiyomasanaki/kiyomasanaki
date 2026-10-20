@@ -1,16 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="860" height="230" viewBox="0 0 860 230" role="img" aria-label="kiyomasanaki — full-stack developer &amp; ethical hacker">
-<defs><pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1" fill="#24304a"/></pattern>
-<linearGradient id="fade" x1="0" x2="1"><stop offset="0.35" stop-color="#0b1020"/><stop offset="1" stop-color="#0b1020" stop-opacity="0"/></linearGradient>
-<radialGradient id="neb1" cx="0.82" cy="0.2" r="0.45"><stop offset="0" stop-color="#b07cff" stop-opacity="0.28"/><stop offset="1" stop-color="#b07cff" stop-opacity="0"/></radialGradient>
+<defs><radialGradient id="neb1" cx="0.82" cy="0.2" r="0.45"><stop offset="0" stop-color="#b07cff" stop-opacity="0.28"/><stop offset="1" stop-color="#b07cff" stop-opacity="0"/></radialGradient>
 <radialGradient id="neb2" cx="0.62" cy="1" r="0.5"><stop offset="0" stop-color="#2ee6d6" stop-opacity="0.18"/><stop offset="1" stop-color="#2ee6d6" stop-opacity="0"/></radialGradient>
 <linearGradient id="tag" x1="0" x2="1"><stop offset="0" stop-color="#2ee6d6"/><stop offset="0.5" stop-color="#5dfc8d"/><stop offset="1" stop-color="#f5c84b"/></linearGradient>
 <linearGradient id="seal" gradientUnits="userSpaceOnUse" x1="710" y1="52" x2="820" y2="162"><stop offset="0" stop-color="#4ea8ff"/><stop offset="0.5" stop-color="#b07cff"/><stop offset="1" stop-color="#f5c84b"/></linearGradient>
 <filter id="inked" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="0.9" result="d"/><feTurbulence type="fractalNoise" baseFrequency="0.35" numOctaves="2" seed="3" result="m"/><feColorMatrix in="m" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.6 1.6" result="mask"/><feComposite in="d" in2="mask" operator="in"/></filter>
 <style>.cur{animation:b 1.1s steps(1) infinite}@keyframes b{50%{opacity:0}}</style></defs>
-<rect x="0.5" y="0.5" width="859" height="229" rx="14" fill="#0b1020" stroke="#24304a"/>
+<rect x="0.5" y="0.5" width="859" height="229" rx="14" fill="#0b1020" fill-opacity="0.82" stroke="#24304a"/>
+<defs><pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1" fill="#24304a"/></pattern>
+<linearGradient id="fadeg" x1="0" x2="1"><stop offset="0.35" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
+<mask id="fade"><rect width="860" height="230" fill="url(#fadeg)"/></mask></defs>
+<rect x="1" y="1" width="858" height="228" rx="14" fill="url(#dots)" mask="url(#fade)"/>
 <rect x="0.5" y="18" width="3" height="194" rx="1.5" fill="#2ee6d6"/>
-<rect x="1" y="1" width="858" height="228" rx="14" fill="url(#dots)"/>
-<rect x="1" y="1" width="858" height="228" rx="14" fill="url(#fade)"/>
 <rect x="1" y="1" width="858" height="228" rx="14" fill="url(#neb1)"/>
 <rect x="1" y="1" width="858" height="228" rx="14" fill="url(#neb2)"/>
 <text x="36" y="44" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13" fill="#8a96ad" dominant-baseline="central" xml:space="preserve"><tspan fill="#2ee6d6" font-weight="700">~/</tspan>kiyomasanaki  <tspan fill="#24304a">│</tspan>  full-stack dev  <tspan fill="#24304a">│</tspan>  ethical hacker</text>
