@@ -3,7 +3,7 @@
 <a href="https://github.com/kiyomasanaki"><img src="assets/hero.svg" alt="kiyomasanaki — full-stack developer &amp; ethical hacker. Breaking stuff to make it stronger." width="100%" /></a>
 
 <a href="https://wespify.com"><img src="assets/link-website.svg" alt="Website — wespify.com" width="24%" /></a>
-<a href="mailto:github@wespify.com"><img src="assets/link-contact.svg" alt="Contact — github@wespify.com" width="24%" /></a>
+<a href="mailto:%67%68%2E%70%75%62%2E%6B%6D%40%77%65%73%70%69%66%79%2E%63%6F%6D"><img src="assets/link-contact.svg" alt="Contact — email" width="24%" /></a>
 <a href="#"><img src="assets/link-location.svg" alt="Location — Made in France" width="24%" /></a>
 <a href="#pgp"><img src="assets/link-pgp.svg" alt="PGP — A0B6 3B54 A0D3 3C06" width="24%" /></a>
 
@@ -40,7 +40,7 @@
 <a href="https://github.com/kiyomasanaki/bigdump"><img src="assets/project-bigdump.svg" alt="bigdump — staggered MySQL dump importer" width="49%" /></a>
 <a href="https://github.com/kiyomasanaki/codepack"><img src="assets/project-codepack.svg" alt="codepack — CLI to pack a codebase for AI" width="49%" /></a>
 <a href="https://github.com/kiyomasanaki/commeaucinema"><img src="assets/project-commeaucinema.svg" alt="commeaucinema — PHP package for commeaucinema.com feeds" width="49%" /></a>
-<a href="mailto:github@wespify.com"><img src="assets/project-next.svg" alt="What's next? Let's talk" width="49%" /></a>
+<a href="mailto:%67%68%2E%70%75%62%2E%6B%6D%40%77%65%73%70%69%66%79%2E%63%6F%6D"><img src="assets/project-next.svg" alt="What's next? Let's talk" width="49%" /></a>
 </div>
 
 ---
@@ -124,7 +124,7 @@ VGAA
 **Thanks for stopping by. Explore the repos, drop me a line, let's build (or break) something.**
 
 <a href="https://github.com/kiyomasanaki"><img src="assets/btn-follow.svg" height="48" alt="Follow @kiyomasanaki" /></a>
-<a href="mailto:github@wespify.com"><img src="assets/btn-sponsor.svg" height="48" alt="Say hi" /></a>
+<a href="mailto:%67%68%2E%70%75%62%2E%6B%6D%40%77%65%73%70%69%66%79%2E%63%6F%6D"><img src="assets/btn-sponsor.svg" height="48" alt="Say hi by email" /></a>
 
 
 </div>
