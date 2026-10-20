@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="194" viewBox="0 0 860 194" role="img" aria-label="“Code is like humor. When you have to explain it, it's bad.” — Cory House">
+<defs><linearGradient id="qg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#2ee6d6"/><stop offset="1" stop-color="#b07cff"/></linearGradient></defs>
+<rect x="0.5" y="0.5" width="859" height="193" rx="14" fill="#0b1020" fill-opacity="0.82" stroke="#24304a"/>
+<defs><pattern id="tx26" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="13" cy="13" r="5.5" fill="none" stroke="#24304a" stroke-width="0.9"/></pattern>
+<linearGradient id="fg26" x1="0" x2="1"><stop offset="0.3" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
+<mask id="fm26"><rect x="0" y="0" width="860" height="194" fill="url(#fg26)"/></mask></defs>
+<rect x="1" y="1" width="858" height="192" rx="14" fill="url(#tx26)" mask="url(#fm26)"/>
+<rect x="0.5" y="18" width="3" height="158" rx="1.5" fill="#b07cff"/>
+<text x="28" y="30" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12.5" fill="#8a96ad" dominant-baseline="central" xml:space="preserve"><tspan fill="#5dfc8d">$</tspan> fortune -s programming</text>
+<text x="32" y="122" font-family="Georgia,serif" font-size="96" font-weight="700" fill="url(#qg)" fill-opacity="0.9">“</text>
+<text x="92" y="98" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="19" font-weight="500" fill="#e6edf7" dominant-baseline="central">Code is like humor.</text>
+<text x="92" y="128" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="19" font-weight="800" fill="#2ee6d6" dominant-baseline="central">When you have to explain it, it's bad.</text>
+<rect x="92" y="169" width="28" height="2" rx="1" fill="#b07cff"/>
+<text x="132" y="170" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13" font-weight="700" fill="#b07cff" dominant-baseline="central" letter-spacing="1">CORY HOUSE</text>
+<text x="826" y="180" font-family="Georgia,serif" font-size="96" font-weight="700" fill="url(#qg)" fill-opacity="0.9" text-anchor="end">”</text>
+</svg>

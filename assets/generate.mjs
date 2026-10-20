@@ -62,7 +62,7 @@ function hero() {
 <linearGradient id="seal" gradientUnits="userSpaceOnUse" x1="${sx}" y1="${sy}" x2="${sx + ss}" y2="${sy + ss}"><stop offset="0" stop-color="${BLUE}"/><stop offset="0.5" stop-color="${VIOLET}"/><stop offset="1" stop-color="${GOLD}"/></linearGradient>
 <filter id="inked" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="0.9" result="d"/><feTurbulence type="fractalNoise" baseFrequency="0.35" numOctaves="2" seed="3" result="m"/><feColorMatrix in="m" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.6 1.6" result="mask"/><feComposite in="d" in2="mask" operator="in"/></filter>
 <style>.cur{animation:b 1.1s steps(1) infinite}@keyframes b{50%{opacity:0}}</style>`;
-  const tags = ['PHP', 'Web3', 'AI', 'Offensive Security'];
+  const tags = ['PHP', 'JS', 'SQL', 'React', 'Laravel', 'Python', 'Solidity', 'Web3', 'AI', 'Offensive Security'];
   let tx = PAD + 8, chips = '';
   tags.forEach((t, i) => {
     const w = tw(t, 12.5) + 24;
@@ -91,7 +91,7 @@ function hero() {
 ${star(cx - 35)}${star(cx + 35)}
 <polygon points="${hexagone}" fill="url(#seal)" fill-opacity="0.85" stroke="url(#seal)" stroke-width="1" stroke-linejoin="round"/>
 </g>`;
-  const body = `${card(W, H)}
+  const body = `${card(W, H, { tex: 'dots' })}
 <rect x="1" y="1" width="${W - 2}" height="${H - 2}" rx="14" fill="url(#neb1)"/>
 <rect x="1" y="1" width="${W - 2}" height="${H - 2}" rx="14" fill="url(#neb2)"/>
 <text x="${PAD + 8}" y="44" font-family="${FONT}" font-size="13" fill="${MUTED}" dominant-baseline="central" xml:space="preserve"><tspan fill="${CYAN}" font-weight="700">~/</tspan>${USER}  <tspan fill="${LINE}">│</tspan>  full-stack dev  <tspan fill="${LINE}">│</tspan>  ethical hacker</text>
@@ -110,10 +110,13 @@ function header(name, n, title, command) {
   const cw = tw(`$ ${command}`, 12.5), bw = cw + 28, bx = W - PAD - bw;
   // the command sits in a terminal "pre" block with a neon glow
   const defs = `<filter id="neon" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-<filter id="glow" x="-10%" y="-60%" width="120%" height="220%"><feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>`;
-  const body = `<rect x="0.5" y="0.5" width="${W - 1}" height="${H - 1}" rx="12" fill="${INK}" fill-opacity="${ALPHA}" stroke="${LINE}"/>
+<filter id="glow" x="-10%" y="-60%" width="120%" height="220%"><feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<linearGradient id="hbg" x1="0" x2="1"><stop offset="0" stop-color="#3a2d66"/><stop offset="0.55" stop-color="#1f2c5a"/><stop offset="1" stop-color="#11414c"/></linearGradient>
+<linearGradient id="hst" x1="0" x2="1"><stop offset="0" stop-color="${VIOLET}" stop-opacity="0.7"/><stop offset="1" stop-color="${CYAN}" stop-opacity="0.7"/></linearGradient>`;
+  // section titles sit on a violet -> teal band so they stand out from the cards
+  const body = `<rect x="0.5" y="0.5" width="${W - 1}" height="${H - 1}" rx="12" fill="url(#hbg)" stroke="url(#hst)"/>
 <text x="${PAD}" y="${H / 2}" font-family="${FONT}" font-size="15" font-weight="800" fill="${CYAN}" dominant-baseline="central">${num}</text>
-<rect x="${PAD + 30}" y="${H / 2 - 9}" width="1.5" height="18" fill="${LINE}"/>
+<rect x="${PAD + 30}" y="${H / 2 - 9}" width="1.5" height="18" fill="${IVORY}" fill-opacity="0.35"/>
 <text x="${PAD + 46}" y="${H / 2}" font-family="${FONT}" font-size="17" font-weight="800" fill="${IVORY}" dominant-baseline="central" letter-spacing="1">${esc(title.toUpperCase())}</text>
 <rect x="${bx}" y="${H / 2 - 15}" width="${bw}" height="30" rx="6" fill="#050811" stroke="${CYAN}" stroke-width="1.2" filter="url(#neon)"/>
 <text x="${bx + 14}" y="${H / 2}" font-family="${FONT}" font-size="12.5" font-weight="600" fill="${CYAN}" dominant-baseline="central" textLength="${cw}" xml:space="preserve" filter="url(#glow)"><tspan fill="${LIME}">$</tspan> ${esc(command)}</text>`;
@@ -199,11 +202,8 @@ ${val}${cursor ? `\n<rect class="cur" x="${vx + vw + 6}" y="${H / 2 - 8}" width=
   out(`btn-${name}.svg`, svg(w, H, alt, body, style));
 }
 
-// ---- boxes (translucent ink, hairline, accent spine, no texture) ------
-function box(x, y, w, h, spine, rx = 14) {
-  return `<rect x="${x + 0.5}" y="${y + 0.5}" width="${w - 1}" height="${h - 1}" rx="${rx}" fill="${INK}" fill-opacity="${ALPHA}" stroke="${LINE}"/>
-<rect x="${x + 0.5}" y="${y + Math.min(18, h / 4)}" width="3" height="${h - 2 * Math.min(18, h / 4)}" rx="1.5" fill="${spine}"/>`;
-}
+// ---- boxes = cards placed anywhere ------------------------------------
+const box = (x, y, w, h, spine, rx = 14) => card(w, h, { spine, x, y, rx });
 
 // The address is stored encoded and drawn one glyph at a time in shuffled
 // order (each glyph keeps its own x), so it never appears as a plain string in
@@ -233,13 +233,21 @@ function tagline(words) {
 }
 
 // contact links: four outlined cards, laid side by side in the README
-function linkCard(name, { cap, value, slug, color, alt = `${cap}: ${value}`, scrambled = false }) {
-  const w = 206, h = 72, fs = 12.5, adv = Math.min(fs * 0.6, (w - 70) / value.length);
+// Row cells: N images at 100/N % each, with no whitespace between them in the
+// README. Each cell is W/N wide and its card is shifted so that the cards are
+// equal, spaced by GAP, and the row's outer edges match the full-width cards.
+const GAP = 12;
+const cell = (n, col) => {
+  const cw = W / n, w = (W - GAP * (n - 1)) / n;
+  return { cw, w, ox: col * (w + GAP - cw) };
+};
+function linkCard(name, { col, cap, value, slug, color, alt = `${cap}: ${value}`, scrambled = false }) {
+  const { cw, w, ox } = cell(4, col), h = 72, fs = 12.5, adv = Math.min(fs * 0.6, (w - 70) / value.length);
   const attrs = `font-family="${FONT}" font-size="${fs}" font-weight="600" fill="${IVORY}" dominant-baseline="central"`;
-  out(`link-${name}.svg`, svg(w, h, alt, `${box(0, 0, w, h, color)}
+  out(`link-${name}.svg`, svg(cw, h, alt, `<g transform="translate(${ox.toFixed(2)} 0)">${box(0, 0, w, h, color)}
 ${icon(slug, 18, h / 2 - 11, 22, color)}
 <text x="54" y="25" font-family="${FONT}" font-size="10.5" font-weight="700" fill="${color}" dominant-baseline="central" letter-spacing="2">${esc(cap.toUpperCase())}</text>
-${scrambled ? scramble(54, 47, value, attrs, adv) : `<text x="54" y="47" ${attrs} textLength="${Math.min(tw(value, fs), w - 70)}" lengthAdjust="spacingAndGlyphs">${esc(value)}</text>`}`));
+${scrambled ? scramble(54, 47, value, attrs, adv) : `<text x="54" y="47" ${attrs} textLength="${Math.min(tw(value, fs), w - 70)}" lengthAdjust="spacingAndGlyphs">${esc(value)}</text>`}</g>`));
 }
 
 // featured project card
@@ -271,13 +279,44 @@ ${icon(slug, P, 24, 22, c)}
 // pgp key summary
 function pgpCard(lines) {
   const h = 40 + lines.length * 28;
-  let g = card(W, h, { spine: GOLD, textured: false });
+  let g = card(W, h, { spine: GOLD });
     lines.forEach(([k, v], i) => {
       const y = 34 + i * 28, c = acc(i);
       g += `\n<text x="32" y="${y}" font-family="${FONT}" font-size="14" font-weight="800" fill="${c}" dominant-baseline="central">${esc(k)}</text>
 <text x="96" y="${y}" font-family="${FONT}" font-size="14" fill="${IVORY}" dominant-baseline="central" xml:space="preserve">${esc(v)}</text>`;
   });
   out('pgp.svg', svg(W, h, 'PGP key', g));
+}
+
+// "show the full key" toggle, used as the <summary> of the key's <details>
+function keyToggle(fpr) {
+  const H = 48, c = GOLD, cmd = `gpg --export -a ${fpr}`, cx = 50 + tw('FULL PUBLIC KEY', 13.5) + 30 + 30;
+  const w = cx + tw(`$ ${cmd}`, 12.5) + 70;
+  const body = `${box(0, 0, w, H, c, 12)}
+${icon('gnuprivacyguard', 20, (H - 18) / 2, 18, c)}
+<text x="50" y="${H / 2}" font-family="${FONT}" font-size="13.5" font-weight="800" fill="${c}" dominant-baseline="central" letter-spacing="2">FULL PUBLIC KEY</text>
+<rect x="${50 + tw('FULL PUBLIC KEY', 13.5) + 30 + 14}" y="${H / 2 - 9}" width="1.5" height="18" fill="${LINE}"/>
+<text x="${50 + tw('FULL PUBLIC KEY', 13.5) + 30 + 30}" y="${H / 2}" font-family="${FONT}" font-size="12.5" fill="${MUTED}" dominant-baseline="central" xml:space="preserve"><tspan fill="${LIME}">$</tspan> ${esc(cmd)}</text>
+<rect x="${w - 44}" y="${H / 2 - 13}" width="26" height="26" rx="7" fill="${INK2}" stroke="${LINE}"/>
+<path d="M${w - 36} ${H / 2 - 3}l5 5 5-5" fill="none" stroke="${c}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>`;
+  out('btn-pgp.svg', svg(w, H, 'Show the full public key', body));
+}
+
+// closing quote, as a fortune(6) cookie
+function quote(lines, author) {
+  const H = 98 + lines.length * 30 + 36;
+  const defs = `<linearGradient id="qg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="${CYAN}"/><stop offset="1" stop-color="${VIOLET}"/></linearGradient>`;
+  let body = `${card(W, H, { spine: VIOLET, tex: 'rings' })}
+<text x="${PAD}" y="30" font-family="${FONT}" font-size="12.5" fill="${MUTED}" dominant-baseline="central" xml:space="preserve"><tspan fill="${LIME}">$</tspan> fortune -s programming</text>
+<text x="${PAD + 4}" y="122" font-family="Georgia,serif" font-size="96" font-weight="700" fill="url(#qg)" fill-opacity="0.9">“</text>`;
+  lines.forEach((ln, i) => {
+    body += `\n<text x="${PAD + 64}" y="${98 + i * 30}" font-family="${FONT}" font-size="19" font-weight="${i === lines.length - 1 ? 800 : 500}" fill="${i === lines.length - 1 ? CYAN : IVORY}" dominant-baseline="central">${esc(ln)}</text>`;
+  });
+  const ay = 98 + lines.length * 30 + 12;
+  body += `\n<rect x="${PAD + 64}" y="${ay - 1}" width="28" height="2" rx="1" fill="${VIOLET}"/>
+<text x="${PAD + 104}" y="${ay}" font-family="${FONT}" font-size="13" font-weight="700" fill="${VIOLET}" dominant-baseline="central" letter-spacing="1">${esc(author.toUpperCase())}</text>
+<text x="${W - PAD - 6}" y="${98 + lines.length * 30 + 22}" font-family="Georgia,serif" font-size="96" font-weight="700" fill="url(#qg)" fill-opacity="0.9" text-anchor="end">”</text>`;
+  out('quote.svg', svg(W, H, `“${lines.join(' ')}” — ${author}`, body, defs));
 }
 
 // ========================================================================
@@ -324,10 +363,10 @@ skillCard('bugbounty', 'bug bounty programs', [
 
 tagline(['build', 'break', 'learn', 'share', 'repeat']);
 
-linkCard('website',  { cap: 'website',  value: 'wespify.com',         slug: 'googlechrome',    color: CYAN });
-linkCard('contact',  { cap: 'contact',  value: MAIL, slug: 'protonmail', color: VIOLET, alt: 'contact: email', scrambled: true });
-linkCard('location', { cap: 'location', value: 'Made in France',      slug: 'openstreetmap',   color: LIME });
-linkCard('pgp',      { cap: 'pgp',      value: 'A0B6 3B54 A0D3 3C06', slug: 'gnuprivacyguard', color: GOLD });
+linkCard('website',  { col: 0, cap: 'website',  value: 'wespify.com',         slug: 'googlechrome',    color: CYAN });
+linkCard('contact',  { col: 1, cap: 'contact',  value: MAIL, slug: 'protonmail', color: VIOLET, alt: 'contact: email', scrambled: true });
+linkCard('location', { col: 2, cap: 'location', value: 'Made in France',      slug: 'openstreetmap',   color: LIME });
+linkCard('pgp',      { col: 3, cap: 'pgp',      value: 'A0B6 3B54 A0D3 3C06', slug: 'gnuprivacyguard', color: GOLD });
 
 // featured = the repos with the most commits authored by me (abandoned ones excluded)
 projectCard('bigdump', {
@@ -399,6 +438,9 @@ panel('disclosure', {
     { n: 5, text: 'No public disclosure until the fix is deployed & coordinated.' },
   ],
 });
+
+keyToggle('A0B6 3B54 A0D3 3C06');
+quote(['Code is like humor.', "When you have to explain it, it's bad."], 'Cory House');
 
 button('follow',  { label: 'follow', value: `@${USER}`, slug: 'github', color: CYAN, alt: `Follow @${USER}` });
 button('sponsor', { label: 'say hi', value: MAIL, slug: 'protonmail', color: VIOLET, alt: 'Say hi by email', scrambled: true, cursor: true });

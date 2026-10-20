@@ -1,21 +1,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="860" height="52" viewBox="0 0 860 52" role="img" aria-label="build → break → learn → share → repeat">
 <rect x="1.5" y="0.5" width="138.6" height="51" rx="12" fill="#0b1020" fill-opacity="0.82" stroke="#24304a"/>
+<defs><pattern id="tx7" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1" fill="#24304a"/></pattern>
+<linearGradient id="fg7" x1="0" x2="1"><stop offset="0.3" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
+<mask id="fm7"><rect x="1" y="0" width="139.6" height="52" fill="url(#fg7)"/></mask></defs>
+<rect x="2" y="1" width="137.6" height="50" rx="12" fill="url(#tx7)" mask="url(#fm7)"/>
 <rect x="1.5" y="13" width="3" height="26" rx="1.5" fill="#2ee6d6"/>
 <text x="70.8" y="26" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#e6edf7" text-anchor="middle" dominant-baseline="central" letter-spacing="2">BUILD</text>
 <path d="M156.6 20l7 6-7 6" fill="none" stroke="#8a96ad" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="181.1" y="0.5" width="138.6" height="51" rx="12" fill="#0b1020" fill-opacity="0.82" stroke="#24304a"/>
+<defs><pattern id="tx8" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M18 0H0V18" fill="none" stroke="#24304a" stroke-width="0.8"/></pattern>
+<linearGradient id="fg8" x1="0" x2="1"><stop offset="0.3" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
+<mask id="fm8"><rect x="180.6" y="0" width="139.6" height="52" fill="url(#fg8)"/></mask></defs>
+<rect x="181.6" y="1" width="137.6" height="50" rx="12" fill="url(#tx8)" mask="url(#fm8)"/>
 <rect x="181.1" y="13" width="3" height="26" rx="1.5" fill="#b07cff"/>
 <text x="250.39999999999998" y="26" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#e6edf7" text-anchor="middle" dominant-baseline="central" letter-spacing="2">BREAK</text>
 <path d="M336.2 20l7 6-7 6" fill="none" stroke="#8a96ad" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="360.7" y="0.5" width="138.6" height="51" rx="12" fill="#0b1020" fill-opacity="0.82" stroke="#24304a"/>
+<defs><pattern id="tx9" width="9" height="9" patternUnits="userSpaceOnUse"><path d="M-1 10L10 -1" stroke="#24304a" stroke-width="0.9"/></pattern>
+<linearGradient id="fg9" x1="0" x2="1"><stop offset="0.3" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
+<mask id="fm9"><rect x="360.2" y="0" width="139.6" height="52" fill="url(#fg9)"/></mask></defs>
+<rect x="361.2" y="1" width="137.6" height="50" rx="12" fill="url(#tx9)" mask="url(#fm9)"/>
 <rect x="360.7" y="13" width="3" height="26" rx="1.5" fill="#5dfc8d"/>
 <text x="430" y="26" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#e6edf7" text-anchor="middle" dominant-baseline="central" letter-spacing="2">LEARN</text>
 <path d="M515.8 20l7 6-7 6" fill="none" stroke="#8a96ad" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="540.3" y="0.5" width="138.6" height="51" rx="12" fill="#0b1020" fill-opacity="0.82" stroke="#24304a"/>
+<defs><pattern id="tx10" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M0 9h12l6 6h18M9 36V27l6-6M27 0v6" fill="none" stroke="#24304a" stroke-width="0.9"/><circle cx="12" cy="9" r="1.6" fill="#24304a"/><circle cx="15" cy="21" r="1.6" fill="#24304a"/><circle cx="27" cy="6" r="1.6" fill="#24304a"/></pattern>
+<linearGradient id="fg10" x1="0" x2="1"><stop offset="0.3" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
+<mask id="fm10"><rect x="539.8" y="0" width="139.6" height="52" fill="url(#fg10)"/></mask></defs>
+<rect x="540.8" y="1" width="137.6" height="50" rx="12" fill="url(#tx10)" mask="url(#fm10)"/>
 <rect x="540.3" y="13" width="3" height="26" rx="1.5" fill="#f5c84b"/>
 <text x="609.5999999999999" y="26" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#e6edf7" text-anchor="middle" dominant-baseline="central" letter-spacing="2">SHARE</text>
 <path d="M695.4 20l7 6-7 6" fill="none" stroke="#8a96ad" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="719.9" y="0.5" width="138.6" height="51" rx="12" fill="#0b1020" fill-opacity="0.82" stroke="#24304a"/>
+<defs><pattern id="tx11" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M11 7.5v7M7.5 11h7" stroke="#24304a" stroke-width="1.2" stroke-linecap="round"/></pattern>
+<linearGradient id="fg11" x1="0" x2="1"><stop offset="0.3" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
+<mask id="fm11"><rect x="719.4" y="0" width="139.6" height="52" fill="url(#fg11)"/></mask></defs>
+<rect x="720.4" y="1" width="137.6" height="50" rx="12" fill="url(#tx11)" mask="url(#fm11)"/>
 <rect x="719.9" y="13" width="3" height="26" rx="1.5" fill="#2ee6d6"/>
 <text x="789.1999999999999" y="26" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#2ee6d6" text-anchor="middle" dominant-baseline="central" letter-spacing="2">REPEAT</text>
 </svg>

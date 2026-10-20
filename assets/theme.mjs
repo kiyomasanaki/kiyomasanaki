@@ -26,19 +26,35 @@ export const tw  = (s, fs) => Math.round(String(s).length * fs * CHARW);
 // translucent ink: the page shows through a little, the text stays legible
 export const ALPHA = 0.82;
 
-// dot texture fading in from the left, as on the hero (a mask, not an ink
-// overlay, so the card keeps its translucency)
-export function texture(w, h, rx = 14) {
-  return `<defs><pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1" fill="${LINE}"/></pattern>
-<linearGradient id="fadeg" x1="0" x2="1"><stop offset="0.35" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
-<mask id="fade"><rect width="${w}" height="${h}" fill="url(#fadeg)"/></mask></defs>
-<rect x="1" y="1" width="${w - 2}" height="${h - 2}" rx="${rx}" fill="url(#dots)" mask="url(#fade)"/>`;
+// Background textures, all in the hairline colour and fading in from the left
+// (a mask, not an ink overlay, so the card keeps its translucency). Cards cycle
+// through them so neighbours never share the same one.
+const TEX = {
+  dots:    [16, 16, `<circle cx="1.5" cy="1.5" r="1" fill="${LINE}"/>`],
+  grid:    [18, 18, `<path d="M18 0H0V18" fill="none" stroke="${LINE}" stroke-width="0.8"/>`],
+  hatch:   [9, 9, `<path d="M-1 10L10 -1" stroke="${LINE}" stroke-width="0.9"/>`],
+  plus:    [22, 22, `<path d="M11 7.5v7M7.5 11h7" stroke="${LINE}" stroke-width="1.2" stroke-linecap="round"/>`],
+  circuit: [36, 36, `<path d="M0 9h12l6 6h18M9 36V27l6-6M27 0v6" fill="none" stroke="${LINE}" stroke-width="0.9"/><circle cx="12" cy="9" r="1.6" fill="${LINE}"/><circle cx="15" cy="21" r="1.6" fill="${LINE}"/><circle cx="27" cy="6" r="1.6" fill="${LINE}"/>`],
+  waves:   [24, 12, `<path d="M0 6q6-6 12 0t12 0" fill="none" stroke="${LINE}" stroke-width="0.9"/>`],
+  rings:   [26, 26, `<circle cx="13" cy="13" r="5.5" fill="none" stroke="${LINE}" stroke-width="0.9"/>`],
+};
+const ORDER = ['grid', 'hatch', 'circuit', 'plus', 'waves', 'rings', 'dots'];
+let texN = 0, uid = 0;
+
+export function texture(x, y, w, h, rx = 14, kind = ORDER[texN++ % ORDER.length]) {
+  const [pw, ph, cell] = TEX[kind], k = uid++;
+  return `<defs><pattern id="tx${k}" width="${pw}" height="${ph}" patternUnits="userSpaceOnUse">${cell}</pattern>
+<linearGradient id="fg${k}" x1="0" x2="1"><stop offset="0.3" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
+<mask id="fm${k}"><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="url(#fg${k})"/></mask></defs>
+<rect x="${x + 1}" y="${y + 1}" width="${w - 2}" height="${h - 2}" rx="${rx}" fill="url(#tx${k})" mask="url(#fm${k})"/>`;
 }
 
-// translucent card + dot texture + neon spine on the left edge
-export function card(w, h, { spine = CYAN, textured = true } = {}) {
-  return `<rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" rx="14" fill="${INK}" fill-opacity="${ALPHA}" stroke="${LINE}"/>
-${textured ? texture(w, h) + '\n' : ''}<rect x="0.5" y="18" width="3" height="${Math.max(12, h - 36)}" rx="1.5" fill="${spine}"/>`;
+// translucent card + texture + neon spine on the left edge.
+// tex: a texture name, undefined for the next one in the cycle, false for none
+export function card(w, h, { spine = CYAN, tex, x = 0, y = 0, rx = 14 } = {}) {
+  const sp = Math.min(18, h / 4);
+  return `<rect x="${x + 0.5}" y="${y + 0.5}" width="${w - 1}" height="${h - 1}" rx="${rx}" fill="${INK}" fill-opacity="${ALPHA}" stroke="${LINE}"/>
+${tex === false ? '' : texture(x, y, w, h, rx, tex) + '\n'}<rect x="${x + 0.5}" y="${y + sp}" width="3" height="${h - 2 * sp}" rx="1.5" fill="${spine}"/>`;
 }
 
 // "// title" heading used inside cards

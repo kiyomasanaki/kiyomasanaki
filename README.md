@@ -2,10 +2,7 @@
 
 <a href="https://github.com/kiyomasanaki"><img src="assets/hero.svg" alt="kiyomasanaki — full-stack developer &amp; ethical hacker. Breaking stuff to make it stronger." width="100%" /></a>
 
-<a href="https://wespify.com"><img src="assets/link-website.svg" alt="Website — wespify.com" width="24%" /></a>
-<a href="mailto:%67%68%2E%70%75%62%2E%6B%6D%40%77%65%73%70%69%66%79%2E%63%6F%6D"><img src="assets/link-contact.svg" alt="Contact — email" width="24%" /></a>
-<a href="#"><img src="assets/link-location.svg" alt="Location — Made in France" width="24%" /></a>
-<a href="#pgp"><img src="assets/link-pgp.svg" alt="PGP — A0B6 3B54 A0D3 3C06" width="24%" /></a>
+<a href="https://wespify.com"><img src="assets/link-website.svg" alt="Website — wespify.com" width="25%" /></a><a href="mailto:%67%68%2E%70%75%62%2E%6B%6D%40%77%65%73%70%69%66%79%2E%63%6F%6D"><img src="assets/link-contact.svg" alt="Contact — email" width="25%" /></a><a href="#"><img src="assets/link-location.svg" alt="Location — Made in France" width="25%" /></a><a href="#pgp"><img src="assets/link-pgp.svg" alt="PGP — A0B6 3B54 A0D3 3C06" width="25%" /></a>
 
 </div>
 
@@ -86,7 +83,7 @@
 <img src="assets/pgp.svg" alt="pub rsa4096 2025-11-14 [SC] · uid w3spi5 &lt;github@wespify.com&gt; · sub rsa4096 2025-11-14 [E]" width="100%" />
 
 <details>
-<summary>Show the full public key</summary>
+<summary><img src="assets/btn-pgp.svg" height="48" alt="Show the full public key" /></summary>
 
 ```text
 -----BEGIN PGP PUBLIC KEY BLOCK-----
@@ -114,12 +111,7 @@ VGAA
 
 <div align="center">
 
-```ansi
-╔══════════════════════════════════════════════════════════════╗
-║   "Code is like humor.                                       ║
-║    When you have to explain it, it's bad."   — Cory House    ║
-╚══════════════════════════════════════════════════════════════╝
-```
+<img src="assets/quote.svg" alt="“Code is like humor. When you have to explain it, it's bad.” — Cory House" width="100%" />
 
 **Thanks for stopping by. Explore the repos, drop me a line, let's build (or break) something.**
 
