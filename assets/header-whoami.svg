@@ -1,9 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="860" height="56" viewBox="0 0 860 56" role="img" aria-label="01 whoami — whoami --verbose">
 <defs><filter id="neon" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-<filter id="glow" x="-10%" y="-60%" width="120%" height="220%"><feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-<rect x="0.5" y="0.5" width="859" height="55" rx="12" fill="#0b1020" fill-opacity="0.82" stroke="#24304a"/>
+<filter id="glow" x="-10%" y="-60%" width="120%" height="220%"><feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<linearGradient id="hbg" x1="0" x2="1"><stop offset="0" stop-color="#3a2d66"/><stop offset="0.55" stop-color="#1f2c5a"/><stop offset="1" stop-color="#11414c"/></linearGradient>
+<linearGradient id="hst" x1="0" x2="1"><stop offset="0" stop-color="#b07cff" stop-opacity="0.7"/><stop offset="1" stop-color="#2ee6d6" stop-opacity="0.7"/></linearGradient></defs>
+<rect x="0.5" y="0.5" width="859" height="55" rx="12" fill="url(#hbg)" stroke="url(#hst)"/>
 <text x="28" y="28" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="15" font-weight="800" fill="#2ee6d6" dominant-baseline="central">01</text>
-<rect x="58" y="19" width="1.5" height="18" fill="#24304a"/>
+<rect x="58" y="19" width="1.5" height="18" fill="#e6edf7" fill-opacity="0.35"/>
 <text x="74" y="28" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="17" font-weight="800" fill="#e6edf7" dominant-baseline="central" letter-spacing="1">WHOAMI</text>
 <rect x="669" y="13" width="163" height="30" rx="6" fill="#050811" stroke="#2ee6d6" stroke-width="1.2" filter="url(#neon)"/>
 <text x="683" y="28" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12.5" font-weight="600" fill="#2ee6d6" dominant-baseline="central" textLength="135" xml:space="preserve" filter="url(#glow)"><tspan fill="#5dfc8d">$</tspan> whoami --verbose</text>

@@ -1,7 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="206" height="72" viewBox="0 0 206 72" role="img" aria-label="contact: email">
-<rect x="0.5" y="0.5" width="205" height="71" rx="14" fill="#0b1020" fill-opacity="0.82" stroke="#24304a"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="215" height="72" viewBox="0 0 215 72" role="img" aria-label="contact: email">
+<g transform="translate(3.00 0)"><rect x="0.5" y="0.5" width="205" height="71" rx="14" fill="#0b1020" fill-opacity="0.82" stroke="#24304a"/>
+<defs><pattern id="tx13" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="13" cy="13" r="5.5" fill="none" stroke="#24304a" stroke-width="0.9"/></pattern>
+<linearGradient id="fg13" x1="0" x2="1"><stop offset="0.3" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
+<mask id="fm13"><rect x="0" y="0" width="206" height="72" fill="url(#fg13)"/></mask></defs>
+<rect x="1" y="1" width="204" height="70" rx="14" fill="url(#tx13)" mask="url(#fm13)"/>
 <rect x="0.5" y="18" width="3" height="36" rx="1.5" fill="#b07cff"/>
 <g transform="translate(18,25) scale(0.9167)"><path d="m15.24 8.998 3.656-3.073v15.81H2.482C1.11 21.735 0 20.609 0 19.223V6.944l7.58 6.38a2.186 2.186 0 0 0 2.871-.042l4.792-4.284h-.003zm-5.456 3.538 1.809-1.616a2.438 2.438 0 0 1-1.178-.533L.905 2.395A.552.552 0 0 0 0 2.826v2.811l8.226 6.923a1.186 1.186 0 0 0 1.558-.024zM23.871 2.463a.551.551 0 0 0-.776-.068l-3.199 2.688v16.653h1.623c1.371 0 2.481-1.127 2.481-2.513V2.824a.551.551 0 0 0-.129-.36z" fill="#b07cff"/></g>
 <text x="54" y="25" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="10.5" font-weight="700" fill="#b07cff" dominant-baseline="central" letter-spacing="2">CONTACT</text>
-<text x="177.0 105.8 164.1 92.9 151.1 79.9 138.2 67.0 125.2 54.0 183.5 112.3 170.6 99.3 157.6 86.4 144.7 73.4 131.7 60.5 118.8" y="47" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12.5" font-weight="600" fill="#e6edf7" dominant-baseline="central">om..fup.egm@ckybipshw</text>
+<text x="177.0 105.8 164.1 92.9 151.1 79.9 138.2 67.0 125.2 54.0 183.5 112.3 170.6 99.3 157.6 86.4 144.7 73.4 131.7 60.5 118.8" y="47" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12.5" font-weight="600" fill="#e6edf7" dominant-baseline="central">om..fup.egm@ckybipshw</text></g>
 </svg>

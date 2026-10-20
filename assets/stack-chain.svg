@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="860" height="118" viewBox="0 0 860 118" role="img" aria-label="chain · cloud · ops">
 <rect x="0.5" y="0.5" width="859" height="117" rx="14" fill="#0b1020" fill-opacity="0.82" stroke="#24304a"/>
-<defs><pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1" fill="#24304a"/></pattern>
-<linearGradient id="fadeg" x1="0" x2="1"><stop offset="0.35" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
-<mask id="fade"><rect width="860" height="118" fill="url(#fadeg)"/></mask></defs>
-<rect x="1" y="1" width="858" height="116" rx="14" fill="url(#dots)" mask="url(#fade)"/>
+<defs><pattern id="tx3" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M0 9h12l6 6h18M9 36V27l6-6M27 0v6" fill="none" stroke="#24304a" stroke-width="0.9"/><circle cx="12" cy="9" r="1.6" fill="#24304a"/><circle cx="15" cy="21" r="1.6" fill="#24304a"/><circle cx="27" cy="6" r="1.6" fill="#24304a"/></pattern>
+<linearGradient id="fg3" x1="0" x2="1"><stop offset="0.3" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
+<mask id="fm3"><rect x="0" y="0" width="860" height="118" fill="url(#fg3)"/></mask></defs>
+<rect x="1" y="1" width="858" height="116" rx="14" fill="url(#tx3)" mask="url(#fm3)"/>
 <rect x="0.5" y="18" width="3" height="82" rx="1.5" fill="#5dfc8d"/>
 <rect x="28" y="24" width="8" height="8" rx="1.5" fill="#5dfc8d"/>
 <text x="48" y="28" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#e6edf7" dominant-baseline="central" letter-spacing="0.5">CHAIN · CLOUD · OPS</text>
