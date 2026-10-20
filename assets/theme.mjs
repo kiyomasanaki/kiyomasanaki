@@ -52,15 +52,3 @@ export const svg = (w, h, label, body, defs = '') =>
 ${defs ? `<defs>${defs}</defs>\n` : ''}${body}
 </svg>
 `;
-
-// ---- leaf cards ----------------------------------------------------------
-// Rounded everywhere except one square corner, outlined in their accent. Across
-// a group the square corner turns counter-clockwise from one element to the
-// next (TL -> BL -> BR -> TR).
-export const STROKE = 1;
-
-// `sharp` = index of the square corner, in counter-clockwise order: 0 TL, 1 BL, 2 BR, 3 TR
-export function leaf(x, y, w, h, { R = 20, sharp = 0 } = {}) {
-  const [tl, bl, br, tr] = [0, 1, 2, 3].map((i) => (i === ((sharp % 4) + 4) % 4 ? 0 : R));
-  return `M${x + tl} ${y}H${x + w - tr}Q${x + w} ${y} ${x + w} ${y + tr}V${y + h - br}Q${x + w} ${y + h} ${x + w - br} ${y + h}H${x + bl}Q${x} ${y + h} ${x} ${y + h - bl}V${y + tl}Q${x} ${y} ${x + tl} ${y}Z`;
-}

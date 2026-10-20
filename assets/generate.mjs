@@ -5,7 +5,7 @@ import * as si from 'simple-icons';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { INK, INK2, LINE, IVORY, MUTED, CYAN, VIOLET, LIME, GOLD, BLUE, FONT, W, ALPHA, acc, esc, tw, card, heading, svg, STROKE, leaf } from './theme.mjs';
+import { INK, INK2, LINE, IVORY, MUTED, CYAN, VIOLET, LIME, GOLD, BLUE, FONT, W, ALPHA, acc, esc, tw, card, heading, svg } from './theme.mjs';
 
 const OUT = dirname(fileURLToPath(import.meta.url));
 const out = (file, content) => writeFileSync(join(OUT, file), content);
@@ -182,21 +182,38 @@ function panel(name, { title, label, lines, color = CYAN, lh = 30 }) {
 }
 
 // ---- button ------------------------------------------------------------
-function button(name, label, slug, color, filled) {
-  const H = 48, FS = 14.5, ic = 18, padL = 20, gap = 10, padR = 22;
-  const w = padL + ic + gap + tw(label, FS) + padR;
-  const fg = filled ? INK : IVORY;
-  const body = `<rect x="0.5" y="0.5" width="${w - 1}" height="${H - 1}" rx="10" fill="${filled ? color : INK}" stroke="${filled ? color : LINE}"/>
-${icon(slug, padL, (H - ic) / 2, ic, filled ? INK : color)}
-<text x="${padL + ic + gap}" y="${H / 2}" font-family="${FONT}" font-size="${FS}" font-weight="700" fill="${fg}" dominant-baseline="central" textLength="${tw(label, FS)}" lengthAdjust="spacingAndGlyphs">${esc(label)}</text>`;
-  out(`btn-${name}.svg`, svg(w, H, label, body));
+// card-style button: spine + icon + LABEL │ value (value may be scrambled)
+function button(name, { label, value, slug, color, alt, scrambled = false, cursor = false }) {
+  const H = 48, FS = 13.5, ic = 18, padL = 20, gap = 12, padR = cursor ? 34 : 22;
+  const lw = tw(label, FS) + label.length * 2, vw = tw(value, FS);
+  const sx = padL + ic + gap + lw + 14, vx = sx + 15, w = vx + vw + padR;
+  const val = scrambled
+    ? scramble(vx, H / 2, value, `font-family="${FONT}" font-size="${FS}" font-weight="600" fill="${IVORY}" dominant-baseline="central"`, FS * 0.6)
+    : `<text x="${vx}" y="${H / 2}" font-family="${FONT}" font-size="${FS}" font-weight="600" fill="${IVORY}" dominant-baseline="central">${esc(value)}</text>`;
+  const body = `${box(0, 0, w, H, color, 12)}
+${icon(slug, padL, (H - ic) / 2, ic, color)}
+<text x="${padL + ic + gap}" y="${H / 2}" font-family="${FONT}" font-size="${FS}" font-weight="800" fill="${color}" dominant-baseline="central" letter-spacing="2">${esc(label.toUpperCase())}</text>
+<rect x="${sx}" y="${H / 2 - 9}" width="1.5" height="18" fill="${LINE}"/>
+${val}${cursor ? `\n<rect class="cur" x="${vx + vw + 6}" y="${H / 2 - 8}" width="8" height="16" fill="${color}"/>` : ''}`;
+  const style = cursor ? '<style>.cur{animation:b 1.1s steps(1) infinite}@keyframes b{50%{opacity:0}}</style>' : '';
+  out(`btn-${name}.svg`, svg(w, H, alt, body, style));
 }
 
-// ---- leaf cards (translucent ink, accent outline, no texture) ----------
-const FILL = `fill="${INK}" fill-opacity="${ALPHA}"`;
-function leafCard(name, label, w, h, draw) {
-  out(`${name}.svg`, svg(w, h, label, draw()));
+// ---- boxes (translucent ink, hairline, accent spine, no texture) ------
+function box(x, y, w, h, spine, rx = 14) {
+  return `<rect x="${x + 0.5}" y="${y + 0.5}" width="${w - 1}" height="${h - 1}" rx="${rx}" fill="${INK}" fill-opacity="${ALPHA}" stroke="${LINE}"/>
+<rect x="${x + 0.5}" y="${y + Math.min(18, h / 4)}" width="3" height="${h - 2 * Math.min(18, h / 4)}" rx="1.5" fill="${spine}"/>`;
 }
+
+// The address is stored encoded and drawn one glyph at a time in shuffled
+// order (each glyph keeps its own x), so it never appears as a plain string in
+// the repo or in the SVG source.
+const MAIL = Buffer.from('bW9jLnlmaXBzZXdAbWsuYnVwLmhn', 'base64').toString().split('').reverse().join('');
+function scramble(x, y, str, attrs, adv) {
+  const order = [...str].map((_, i) => i).sort((a, b) => ((a * 7919 + 13) % 31) - ((b * 7919 + 13) % 31) || a - b);
+  return `<text x="${order.map((i) => (x + i * adv).toFixed(1)).join(' ')}" y="${y}" ${attrs}>${esc(order.map((i) => str[i]).join(''))}</text>`;
+}
+
 const wrap = (text, max) => text.split(' ').reduce((ls, word) => {
   const last = ls.at(-1);
   if (last && (last + ' ' + word).length <= max) ls[ls.length - 1] = last + ' ' + word; else ls.push(word);
@@ -206,38 +223,35 @@ const wrap = (text, max) => text.split(' ').reduce((ls, word) => {
 // tagline: one outlined pill per word, chevrons in between, full width
 function tagline(words) {
   const H = 52, gap = 40, pw = (W - 2 - gap * (words.length - 1)) / words.length;
-  leafCard('tagline', words.join(' → '), W, H, () => words.map((wd, i) => {
+  out('tagline.svg', svg(W, H, words.join(' → '), words.map((wd, i) => {
     const x = 1 + i * (pw + gap), c = acc(i), last = i === words.length - 1;
-    let g = `<path d="${leaf(x, 1, pw, H - 2, { R: 16, sharp: i })}" ${FILL} stroke="${c}" stroke-width="${STROKE}"/>
+    let g = `${box(x, 0, pw, H, c, 12)}
 <text x="${x + pw / 2}" y="${H / 2}" font-family="${FONT}" font-size="14" font-weight="700" fill="${last ? c : IVORY}" text-anchor="middle" dominant-baseline="central" letter-spacing="2">${esc(wd.toUpperCase())}</text>`;
     if (!last) g += `\n<path d="M${x + pw + gap / 2 - 4} ${H / 2 - 6}l7 6-7 6" fill="none" stroke="${MUTED}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>`;
     return g;
-  }).join('\n'));
+  }).join('\n')));
 }
 
 // contact links: four outlined cards, laid side by side in the README
-function linkCard(name, { cap, value, slug, color, sharp }) {
-  const w = 206, h = 72;
-  leafCard(`link-${name}`, `${cap}: ${value}`, w, h, () => {
-    const c = color;
-    return `<path d="${leaf(1, 1, w - 2, h - 2, { sharp })}" ${FILL} stroke="${c}" stroke-width="${STROKE}"/>
-${icon(slug, 18, h / 2 - 11, 22, c)}
-<text x="54" y="25" font-family="${FONT}" font-size="10.5" font-weight="700" fill="${c}" dominant-baseline="central" letter-spacing="2">${esc(cap.toUpperCase())}</text>
-<text x="54" y="47" font-family="${FONT}" font-size="12.5" font-weight="600" fill="${IVORY}" dominant-baseline="central" textLength="${Math.min(tw(value, 12.5), w - 70)}" lengthAdjust="spacingAndGlyphs">${esc(value)}</text>`;
-  });
+function linkCard(name, { cap, value, slug, color, alt = `${cap}: ${value}`, scrambled = false }) {
+  const w = 206, h = 72, fs = 12.5, adv = Math.min(fs * 0.6, (w - 70) / value.length);
+  const attrs = `font-family="${FONT}" font-size="${fs}" font-weight="600" fill="${IVORY}" dominant-baseline="central"`;
+  out(`link-${name}.svg`, svg(w, h, alt, `${box(0, 0, w, h, color)}
+${icon(slug, 18, h / 2 - 11, 22, color)}
+<text x="54" y="25" font-family="${FONT}" font-size="10.5" font-weight="700" fill="${color}" dominant-baseline="central" letter-spacing="2">${esc(cap.toUpperCase())}</text>
+${scrambled ? scramble(54, 47, value, attrs, adv) : `<text x="54" y="47" ${attrs} textLength="${Math.min(tw(value, fs), w - 70)}" lengthAdjust="spacingAndGlyphs">${esc(value)}</text>`}`));
 }
 
 // featured project card
-function projectCard(name, { title, slug, color, desc, tags, meta, sharp }) {
-  const w = 424, h = 196, P = 24;
-  leafCard(`project-${name}`, `${title} — ${desc}`, w, h, () => {
-    const c = color;
-    let g = `<path d="${leaf(1, 1, w - 2, h - 2, { R: 26, sharp })}" ${FILL} stroke="${c}" stroke-width="${STROKE}"/>
+function projectCard(name, { title, slug, color, desc, tags, meta }) {
+  const w = 424, h = 196, P = 24, c = color;
+  out(`project-${name}.svg`, svg(w, h, `${title} — ${desc}`, (() => {
+    let g = `${box(0, 0, w, h, c)}
 ${icon(slug, P, 24, 22, c)}
 <text x="${P + 34}" y="35" font-family="${FONT}" font-size="18" font-weight="800" fill="${IVORY}" dominant-baseline="central">${esc(title)}</text>`;
     if (meta) {
       const mw = tw(meta, 11) + 22;
-      g += `\n<path d="${leaf(w - P - mw, 22, mw, 26, { R: 10, sharp })}" fill="${INK2}" stroke="${c}" stroke-opacity="0.7" stroke-width="${STROKE}"/>
+      g += `\n<rect x="${w - P - mw}" y="22" width="${mw}" height="26" rx="7" fill="${INK2}" stroke="${LINE}"/>
 <text x="${w - P - mw / 2}" y="35" font-family="${FONT}" font-size="11" font-weight="700" fill="${c}" text-anchor="middle" dominant-baseline="central">${esc(meta)}</text>`;
     }
     wrap(desc, 48).slice(0, 3).forEach((ln, i) => {
@@ -251,21 +265,19 @@ ${icon(slug, P, 24, 22, c)}
       x += 14 + tw(tag, 12) + 22;
     });
     return g;
-  });
+  })()));
 }
 
 // pgp key summary
 function pgpCard(lines) {
   const h = 40 + lines.length * 28;
-  leafCard('pgp', 'PGP key', W, h, () => {
-    let g = `<path d="${leaf(1, 1, W - 2, h - 2, { R: 26 })}" ${FILL} stroke="${GOLD}" stroke-width="${STROKE}"/>`;
+  let g = card(W, h, { spine: GOLD, textured: false });
     lines.forEach(([k, v], i) => {
       const y = 34 + i * 28, c = acc(i);
       g += `\n<text x="32" y="${y}" font-family="${FONT}" font-size="14" font-weight="800" fill="${c}" dominant-baseline="central">${esc(k)}</text>
 <text x="96" y="${y}" font-family="${FONT}" font-size="14" fill="${IVORY}" dominant-baseline="central" xml:space="preserve">${esc(v)}</text>`;
-    });
-    return g;
   });
+  out('pgp.svg', svg(W, h, 'PGP key', g));
 }
 
 // ========================================================================
@@ -312,30 +324,30 @@ skillCard('bugbounty', 'bug bounty programs', [
 
 tagline(['build', 'break', 'learn', 'share', 'repeat']);
 
-linkCard('website',  { sharp: 0, cap: 'website',  value: 'wespify.com',         slug: 'googlechrome',    color: CYAN });
-linkCard('contact',  { sharp: 1, cap: 'contact',  value: 'github@wespify.com',  slug: 'protonmail',      color: VIOLET });
-linkCard('location', { sharp: 2, cap: 'location', value: 'Made in France',      slug: 'openstreetmap',   color: LIME });
-linkCard('pgp',      { sharp: 3, cap: 'pgp',      value: 'A0B6 3B54 A0D3 3C06', slug: 'gnuprivacyguard', color: GOLD });
+linkCard('website',  { cap: 'website',  value: 'wespify.com',         slug: 'googlechrome',    color: CYAN });
+linkCard('contact',  { cap: 'contact',  value: MAIL, slug: 'protonmail', color: VIOLET, alt: 'contact: email', scrambled: true });
+linkCard('location', { cap: 'location', value: 'Made in France',      slug: 'openstreetmap',   color: LIME });
+linkCard('pgp',      { cap: 'pgp',      value: 'A0B6 3B54 A0D3 3C06', slug: 'gnuprivacyguard', color: GOLD });
 
 // featured = the repos with the most commits authored by me (abandoned ones excluded)
-projectCard('bigdump', { sharp: 0,
+projectCard('bigdump', {
   title: 'bigdump', slug: 'mysql', color: CYAN, meta: '161 commits',
   desc: 'Staggered MySQL dump importer for servers with strict time limits — single-file PHAR, live SSE progress, CLI optimizer.',
   tags: ['PHP 8.1+', 'MySQL', 'PHAR'],
 });
-projectCard('codepack', { sharp: 1,
+projectCard('codepack', {
   title: 'codepack', slug: 'gnubash', color: VIOLET, meta: '69 commits',
   desc: 'Ultra-efficient CLI that extracts folder structure and file contents, minified and ready for AI processing.',
   tags: ['Bash', 'CLI', 'AI-ready'],
 });
-projectCard('commeaucinema', { sharp: 2,
+projectCard('commeaucinema', {
   title: 'commeaucinema', slug: 'rss', color: LIME, meta: '19 commits',
   desc: 'PHP package exposing the commeaucinema.com feeds — weekly releases, films in theaters and cinema news.',
   tags: ['PHP', 'Composer', 'RSS'],
 });
-projectCard('next', { sharp: 3,
+projectCard('next', {
   title: "what's next?", slug: 'maildotru', color: GOLD,
-  desc: "Got an idea, a need, a technical challenge? Let's talk — github@wespify.com",
+  desc: "Got an idea, a need, a technical challenge? Let's talk — drop me a line.",
   tags: ['collab', 'freelance', 'open source'],
 });
 
@@ -388,7 +400,7 @@ panel('disclosure', {
   ],
 });
 
-button('follow',  `Follow @${USER}`, 'github', CYAN, true);
-button('sponsor', 'Say hi', 'protonmail', VIOLET, false);
+button('follow',  { label: 'follow', value: `@${USER}`, slug: 'github', color: CYAN, alt: `Follow @${USER}` });
+button('sponsor', { label: 'say hi', value: MAIL, slug: 'protonmail', color: VIOLET, alt: 'Say hi by email', scrambled: true, cursor: true });
 
 console.log('generated design assets in', OUT);
