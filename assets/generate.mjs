@@ -5,7 +5,7 @@ import * as si from 'simple-icons';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { INK, INK2, LINE, IVORY, MUTED, CYAN, VIOLET, LIME, GOLD, BLUE, FONT, W, acc, esc, tw, card, heading, svg, THEMES, STROKE, leaf } from './theme.mjs';
+import { INK, INK2, LINE, IVORY, MUTED, CYAN, VIOLET, LIME, GOLD, BLUE, FONT, W, ALPHA, acc, esc, tw, card, heading, svg, STROKE, leaf } from './theme.mjs';
 
 const OUT = dirname(fileURLToPath(import.meta.url));
 const out = (file, content) => writeFileSync(join(OUT, file), content);
@@ -56,9 +56,7 @@ function hero() {
   const name = USER;
   const nfs = 50, nw = tw(name, nfs);
   const sx = W - 150, sy = 52, ss = 110;
-  const dots = `<pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1" fill="${LINE}"/></pattern>
-<linearGradient id="fade" x1="0" x2="1"><stop offset="0.35" stop-color="${INK}"/><stop offset="1" stop-color="${INK}" stop-opacity="0"/></linearGradient>
-<radialGradient id="neb1" cx="0.82" cy="0.2" r="0.45"><stop offset="0" stop-color="${VIOLET}" stop-opacity="0.28"/><stop offset="1" stop-color="${VIOLET}" stop-opacity="0"/></radialGradient>
+  const defs = `<radialGradient id="neb1" cx="0.82" cy="0.2" r="0.45"><stop offset="0" stop-color="${VIOLET}" stop-opacity="0.28"/><stop offset="1" stop-color="${VIOLET}" stop-opacity="0"/></radialGradient>
 <radialGradient id="neb2" cx="0.62" cy="1" r="0.5"><stop offset="0" stop-color="${CYAN}" stop-opacity="0.18"/><stop offset="1" stop-color="${CYAN}" stop-opacity="0"/></radialGradient>
 <linearGradient id="tag" x1="0" x2="1"><stop offset="0" stop-color="${CYAN}"/><stop offset="0.5" stop-color="${LIME}"/><stop offset="1" stop-color="${GOLD}"/></linearGradient>
 <linearGradient id="seal" gradientUnits="userSpaceOnUse" x1="${sx}" y1="${sy}" x2="${sx + ss}" y2="${sy + ss}"><stop offset="0" stop-color="${BLUE}"/><stop offset="0.5" stop-color="${VIOLET}"/><stop offset="1" stop-color="${GOLD}"/></linearGradient>
@@ -94,8 +92,6 @@ ${star(cx - 35)}${star(cx + 35)}
 <polygon points="${hexagone}" fill="url(#seal)" fill-opacity="0.85" stroke="url(#seal)" stroke-width="1" stroke-linejoin="round"/>
 </g>`;
   const body = `${card(W, H)}
-<rect x="1" y="1" width="${W - 2}" height="${H - 2}" rx="14" fill="url(#dots)"/>
-<rect x="1" y="1" width="${W - 2}" height="${H - 2}" rx="14" fill="url(#fade)"/>
 <rect x="1" y="1" width="${W - 2}" height="${H - 2}" rx="14" fill="url(#neb1)"/>
 <rect x="1" y="1" width="${W - 2}" height="${H - 2}" rx="14" fill="url(#neb2)"/>
 <text x="${PAD + 8}" y="44" font-family="${FONT}" font-size="13" fill="${MUTED}" dominant-baseline="central" xml:space="preserve"><tspan fill="${CYAN}" font-weight="700">~/</tspan>${USER}  <tspan fill="${LINE}">│</tspan>  full-stack dev  <tspan fill="${LINE}">│</tspan>  ethical hacker</text>
@@ -104,22 +100,24 @@ ${star(cx - 35)}${star(cx + 35)}
 <text x="${PAD + 8}" y="140" font-family="${FONT}" font-size="15" fill="${IVORY}" dominant-baseline="central" xml:space="preserve">Breaking stuff <tspan fill="url(#tag)" font-weight="700">to make it stronger.</tspan></text>
 ${chips}
 ${stamp}`;
-  out('hero.svg', svg(W, H, `${USER} — full-stack developer & ethical hacker`, body, dots));
+  out('hero.svg', svg(W, H, `${USER} — full-stack developer & ethical hacker`, body, defs));
 }
 
 // ---- section header ----------------------------------------------------
 function header(name, n, title, command) {
   const H = 56;
   const num = String(n).padStart(2, '0');
-  const cmd = `$ ${command}`;
-  const cw = tw(cmd, 12.5);
-  const body = `<rect x="0.5" y="0.5" width="${W - 1}" height="${H - 1}" rx="12" fill="${INK}" stroke="${LINE}"/>
+  const cw = tw(`$ ${command}`, 12.5), bw = cw + 28, bx = W - PAD - bw;
+  // the command sits in a terminal "pre" block with a neon glow
+  const defs = `<filter id="neon" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="glow" x="-10%" y="-60%" width="120%" height="220%"><feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>`;
+  const body = `<rect x="0.5" y="0.5" width="${W - 1}" height="${H - 1}" rx="12" fill="${INK}" fill-opacity="${ALPHA}" stroke="${LINE}"/>
 <text x="${PAD}" y="${H / 2}" font-family="${FONT}" font-size="15" font-weight="800" fill="${CYAN}" dominant-baseline="central">${num}</text>
 <rect x="${PAD + 30}" y="${H / 2 - 9}" width="1.5" height="18" fill="${LINE}"/>
 <text x="${PAD + 46}" y="${H / 2}" font-family="${FONT}" font-size="17" font-weight="800" fill="${IVORY}" dominant-baseline="central" letter-spacing="1">${esc(title.toUpperCase())}</text>
-<rect x="${W - PAD - cw - 20}" y="${H / 2 - 14}" width="${cw + 20}" height="28" rx="7" fill="${INK2}" stroke="${LINE}"/>
-<text x="${W - PAD - cw - 10}" y="${H / 2}" font-family="${FONT}" font-size="12.5" fill="${MUTED}" dominant-baseline="central" textLength="${cw}" xml:space="preserve">${esc(cmd)}</text>`;
-  out(`header-${name}.svg`, svg(W, H, `${num} ${title} — ${command}`, body));
+<rect x="${bx}" y="${H / 2 - 15}" width="${bw}" height="30" rx="6" fill="#050811" stroke="${CYAN}" stroke-width="1.2" filter="url(#neon)"/>
+<text x="${bx + 14}" y="${H / 2}" font-family="${FONT}" font-size="12.5" font-weight="600" fill="${CYAN}" dominant-baseline="central" textLength="${cw}" xml:space="preserve" filter="url(#glow)"><tspan fill="${LIME}">$</tspan> ${esc(command)}</text>`;
+  out(`header-${name}.svg`, svg(W, H, `${num} ${title} — ${command}`, body, defs));
 }
 
 // ---- skill card (chips) ------------------------------------------------
@@ -194,9 +192,10 @@ ${icon(slug, padL, (H - ic) / 2, ic, filled ? INK : color)}
   out(`btn-${name}.svg`, svg(w, H, label, body));
 }
 
-// ---- outline components (no background, light + dark) ------------------
-function outline(name, label, w, h, draw) {
-  for (const [mode, t] of Object.entries(THEMES)) out(`${name}-${mode}.svg`, svg(w, h, label, draw(t)));
+// ---- leaf cards (translucent ink, accent outline, no texture) ----------
+const FILL = `fill="${INK}" fill-opacity="${ALPHA}"`;
+function leafCard(name, label, w, h, draw) {
+  out(`${name}.svg`, svg(w, h, label, draw()));
 }
 const wrap = (text, max) => text.split(' ').reduce((ls, word) => {
   const last = ls.at(-1);
@@ -207,11 +206,11 @@ const wrap = (text, max) => text.split(' ').reduce((ls, word) => {
 // tagline: one outlined pill per word, chevrons in between, full width
 function tagline(words) {
   const H = 52, gap = 40, pw = (W - 2 - gap * (words.length - 1)) / words.length;
-  outline('tagline', words.join(' → '), W, H, (t) => words.map((wd, i) => {
-    const x = 1 + i * (pw + gap), c = t.acc[acc(i)], last = i === words.length - 1;
-    let g = `<path d="${leaf(x, 1, pw, H - 2, { R: 16, sharp: i })}" fill="none" stroke="${c}" stroke-width="${STROKE}"/>
-<text x="${x + pw / 2}" y="${H / 2}" font-family="${FONT}" font-size="14" font-weight="700" fill="${last ? c : t.fg}" text-anchor="middle" dominant-baseline="central" letter-spacing="2">${esc(wd.toUpperCase())}</text>`;
-    if (!last) g += `\n<path d="M${x + pw + gap / 2 - 4} ${H / 2 - 6}l7 6-7 6" fill="none" stroke="${t.muted}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>`;
+  leafCard('tagline', words.join(' → '), W, H, () => words.map((wd, i) => {
+    const x = 1 + i * (pw + gap), c = acc(i), last = i === words.length - 1;
+    let g = `<path d="${leaf(x, 1, pw, H - 2, { R: 16, sharp: i })}" ${FILL} stroke="${c}" stroke-width="${STROKE}"/>
+<text x="${x + pw / 2}" y="${H / 2}" font-family="${FONT}" font-size="14" font-weight="700" fill="${last ? c : IVORY}" text-anchor="middle" dominant-baseline="central" letter-spacing="2">${esc(wd.toUpperCase())}</text>`;
+    if (!last) g += `\n<path d="M${x + pw + gap / 2 - 4} ${H / 2 - 6}l7 6-7 6" fill="none" stroke="${MUTED}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>`;
     return g;
   }).join('\n'));
 }
@@ -219,36 +218,36 @@ function tagline(words) {
 // contact links: four outlined cards, laid side by side in the README
 function linkCard(name, { cap, value, slug, color, sharp }) {
   const w = 206, h = 72;
-  outline(`link-${name}`, `${cap}: ${value}`, w, h, (t) => {
-    const c = t.acc[color];
-    return `<path d="${leaf(1, 1, w - 2, h - 2, { sharp })}" fill="none" stroke="${c}" stroke-width="${STROKE}"/>
+  leafCard(`link-${name}`, `${cap}: ${value}`, w, h, () => {
+    const c = color;
+    return `<path d="${leaf(1, 1, w - 2, h - 2, { sharp })}" ${FILL} stroke="${c}" stroke-width="${STROKE}"/>
 ${icon(slug, 18, h / 2 - 11, 22, c)}
 <text x="54" y="25" font-family="${FONT}" font-size="10.5" font-weight="700" fill="${c}" dominant-baseline="central" letter-spacing="2">${esc(cap.toUpperCase())}</text>
-<text x="54" y="47" font-family="${FONT}" font-size="12.5" font-weight="600" fill="${t.fg}" dominant-baseline="central" textLength="${Math.min(tw(value, 12.5), w - 70)}" lengthAdjust="spacingAndGlyphs">${esc(value)}</text>`;
+<text x="54" y="47" font-family="${FONT}" font-size="12.5" font-weight="600" fill="${IVORY}" dominant-baseline="central" textLength="${Math.min(tw(value, 12.5), w - 70)}" lengthAdjust="spacingAndGlyphs">${esc(value)}</text>`;
   });
 }
 
 // featured project card
 function projectCard(name, { title, slug, color, desc, tags, meta, sharp }) {
   const w = 424, h = 196, P = 24;
-  outline(`project-${name}`, `${title} — ${desc}`, w, h, (t) => {
-    const c = t.acc[color];
-    let g = `<path d="${leaf(1, 1, w - 2, h - 2, { R: 26, sharp })}" fill="none" stroke="${c}" stroke-width="${STROKE}"/>
+  leafCard(`project-${name}`, `${title} — ${desc}`, w, h, () => {
+    const c = color;
+    let g = `<path d="${leaf(1, 1, w - 2, h - 2, { R: 26, sharp })}" ${FILL} stroke="${c}" stroke-width="${STROKE}"/>
 ${icon(slug, P, 24, 22, c)}
-<text x="${P + 34}" y="35" font-family="${FONT}" font-size="18" font-weight="800" fill="${t.fg}" dominant-baseline="central">${esc(title)}</text>`;
+<text x="${P + 34}" y="35" font-family="${FONT}" font-size="18" font-weight="800" fill="${IVORY}" dominant-baseline="central">${esc(title)}</text>`;
     if (meta) {
       const mw = tw(meta, 11) + 22;
-      g += `\n<path d="${leaf(w - P - mw, 22, mw, 26, { R: 10, sharp })}" fill="none" stroke="${c}" stroke-opacity="0.7" stroke-width="${STROKE}"/>
+      g += `\n<path d="${leaf(w - P - mw, 22, mw, 26, { R: 10, sharp })}" fill="${INK2}" stroke="${c}" stroke-opacity="0.7" stroke-width="${STROKE}"/>
 <text x="${w - P - mw / 2}" y="35" font-family="${FONT}" font-size="11" font-weight="700" fill="${c}" text-anchor="middle" dominant-baseline="central">${esc(meta)}</text>`;
     }
     wrap(desc, 48).slice(0, 3).forEach((ln, i) => {
-      g += `\n<text x="${P}" y="${78 + i * 22}" font-family="${FONT}" font-size="13" fill="${t.muted}" dominant-baseline="central">${esc(ln)}</text>`;
+      g += `\n<text x="${P}" y="${78 + i * 22}" font-family="${FONT}" font-size="13" fill="${MUTED}" dominant-baseline="central">${esc(ln)}</text>`;
     });
     let x = P;
     tags.forEach((tag, i) => {
-      const tc = t.acc[acc(i)];
+      const tc = acc(i);
       g += `\n<circle cx="${x + 4}" cy="${h - 30}" r="3.5" fill="${tc}"/>
-<text x="${x + 14}" y="${h - 30}" font-family="${FONT}" font-size="12" font-weight="600" fill="${t.fg}" dominant-baseline="central">${esc(tag)}</text>`;
+<text x="${x + 14}" y="${h - 30}" font-family="${FONT}" font-size="12" font-weight="600" fill="${IVORY}" dominant-baseline="central">${esc(tag)}</text>`;
       x += 14 + tw(tag, 12) + 22;
     });
     return g;
@@ -258,12 +257,12 @@ ${icon(slug, P, 24, 22, c)}
 // pgp key summary
 function pgpCard(lines) {
   const h = 40 + lines.length * 28;
-  outline('pgp', 'PGP key', W, h, (t) => {
-    let g = `<path d="${leaf(1, 1, W - 2, h - 2, { R: 26 })}" fill="none" stroke="${t.acc[GOLD]}" stroke-width="${STROKE}"/>`;
+  leafCard('pgp', 'PGP key', W, h, () => {
+    let g = `<path d="${leaf(1, 1, W - 2, h - 2, { R: 26 })}" ${FILL} stroke="${GOLD}" stroke-width="${STROKE}"/>`;
     lines.forEach(([k, v], i) => {
-      const y = 34 + i * 28, c = t.acc[acc(i)];
+      const y = 34 + i * 28, c = acc(i);
       g += `\n<text x="32" y="${y}" font-family="${FONT}" font-size="14" font-weight="800" fill="${c}" dominant-baseline="central">${esc(k)}</text>
-<text x="96" y="${y}" font-family="${FONT}" font-size="14" fill="${t.fg}" dominant-baseline="central" xml:space="preserve">${esc(v)}</text>`;
+<text x="96" y="${y}" font-family="${FONT}" font-size="14" fill="${IVORY}" dominant-baseline="central" xml:space="preserve">${esc(v)}</text>`;
     });
     return g;
   });

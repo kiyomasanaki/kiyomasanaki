@@ -23,10 +23,22 @@ export const acc = (i) => ACCENTS[i % ACCENTS.length];
 export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 export const tw  = (s, fs) => Math.round(String(s).length * fs * CHARW);
 
-// solid card + neon spine on the left edge
-export function card(w, h, { spine = CYAN } = {}) {
-  return `<rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" rx="14" fill="${INK}" stroke="${LINE}"/>
-<rect x="0.5" y="18" width="3" height="${Math.max(12, h - 36)}" rx="1.5" fill="${spine}"/>`;
+// translucent ink: the page shows through a little, the text stays legible
+export const ALPHA = 0.82;
+
+// dot texture fading in from the left, as on the hero (a mask, not an ink
+// overlay, so the card keeps its translucency)
+export function texture(w, h, rx = 14) {
+  return `<defs><pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1" fill="${LINE}"/></pattern>
+<linearGradient id="fadeg" x1="0" x2="1"><stop offset="0.35" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
+<mask id="fade"><rect width="${w}" height="${h}" fill="url(#fadeg)"/></mask></defs>
+<rect x="1" y="1" width="${w - 2}" height="${h - 2}" rx="${rx}" fill="url(#dots)" mask="url(#fade)"/>`;
+}
+
+// translucent card + dot texture + neon spine on the left edge
+export function card(w, h, { spine = CYAN, textured = true } = {}) {
+  return `<rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" rx="14" fill="${INK}" fill-opacity="${ALPHA}" stroke="${LINE}"/>
+${textured ? texture(w, h) + '\n' : ''}<rect x="0.5" y="18" width="3" height="${Math.max(12, h - 36)}" rx="1.5" fill="${spine}"/>`;
 }
 
 // "// title" heading used inside cards
@@ -41,19 +53,10 @@ ${defs ? `<defs>${defs}</defs>\n` : ''}${body}
 </svg>
 `;
 
-// ---- outline style ("no background") -----------------------------------
-// Transparent cards, rounded everywhere except one square corner. Across a
-// group the square corner turns counter-clockwise from one element to the
-// next (TL -> BL -> BR -> TR). Rendered twice (dark + light) and swapped by a
-// <picture> in the README, since there is no card behind the text to
-// guarantee contrast.
-export const THEMES = {
-  dark:  { fg: IVORY,     muted: MUTED,     line: '#2a3756',
-           acc: { [CYAN]: CYAN, [VIOLET]: VIOLET, [LIME]: LIME, [GOLD]: GOLD } },
-  light: { fg: '#0b1020', muted: '#525d73', line: '#cdd5e3',
-           acc: { [CYAN]: '#0a8f86', [VIOLET]: '#7445d6', [LIME]: '#16994a', [GOLD]: '#a87808' } },
-};
-
+// ---- leaf cards ----------------------------------------------------------
+// Rounded everywhere except one square corner, outlined in their accent. Across
+// a group the square corner turns counter-clockwise from one element to the
+// next (TL -> BL -> BR -> TR).
 export const STROKE = 1;
 
 // `sharp` = index of the square corner, in counter-clockwise order: 0 TL, 1 BL, 2 BR, 3 TR
