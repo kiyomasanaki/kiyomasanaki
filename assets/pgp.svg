@@ -1,14 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="860" height="124" viewBox="0 0 860 124" role="img" aria-label="PGP key">
-<rect x="0.5" y="0.5" width="859" height="123" rx="14" fill="#0b1020" fill-opacity="0.82" stroke="#24304a"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="152" viewBox="0 0 860 152" role="img" aria-label="PGP key">
+<rect x="0.5" y="0.5" width="859" height="151" rx="14" fill="#0b1020" fill-opacity="0.82" stroke="#24304a"/>
 <defs><pattern id="tx20" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="13" cy="13" r="5.5" fill="none" stroke="#24304a" stroke-width="0.9"/></pattern>
 <linearGradient id="fg20" x1="0" x2="1"><stop offset="0.3" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
-<mask id="fm20"><rect x="0" y="0" width="860" height="124" fill="url(#fg20)"/></mask></defs>
-<rect x="1" y="1" width="858" height="122" rx="14" fill="url(#tx20)" mask="url(#fm20)"/>
-<rect x="0.5" y="18" width="3" height="88" rx="1.5" fill="#f5c84b"/>
+<mask id="fm20"><rect x="0" y="0" width="860" height="152" fill="url(#fg20)"/></mask></defs>
+<rect x="1" y="1" width="858" height="150" rx="14" fill="url(#tx20)" mask="url(#fm20)"/>
+<rect x="0.5" y="18" width="3" height="116" rx="1.5" fill="#f5c84b"/>
 <text x="32" y="34" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="800" fill="#2ee6d6" dominant-baseline="central">pub</text>
-<text x="96" y="34" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" fill="#e6edf7" dominant-baseline="central" xml:space="preserve">rsa4096 2025-11-14 [SC]</text>
-<text x="32" y="62" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="800" fill="#b07cff" dominant-baseline="central">uid</text>
-<text x="96" y="62" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" fill="#e6edf7" dominant-baseline="central" xml:space="preserve">w3spi5 &lt;github@wespify.com&gt;</text>
-<text x="32" y="90" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="800" fill="#5dfc8d" dominant-baseline="central">sub</text>
-<text x="96" y="90" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" fill="#e6edf7" dominant-baseline="central" xml:space="preserve">rsa4096 2025-11-14 [E]</text>
+<text x="96" y="34" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" fill="#e6edf7" dominant-baseline="central" xml:space="preserve">ed25519 2025-11-14 [SC] [expires: 2058-11-15]</text>
+<text x="96" y="62" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#f5c84b" dominant-baseline="central" xml:space="preserve">A0B6 3B54 A0D3 3C06 FFEA  1219 840D 8AA4 98B0 5118</text>
+<text x="32" y="90" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="800" fill="#b07cff" dominant-baseline="central">uid</text>
+<text x="96" y="90" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" fill="#e6edf7" dominant-baseline="central" xml:space="preserve">github.wespify.com &lt;github@wespify.com&gt;</text>
+<text x="32" y="118" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="800" fill="#5dfc8d" dominant-baseline="central">sub</text>
+<text x="96" y="118" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" fill="#e6edf7" dominant-baseline="central" xml:space="preserve">cv25519 2025-11-14 [E] [expires: 2058-11-15]</text>
 </svg>
