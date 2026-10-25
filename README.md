@@ -2,7 +2,7 @@
 
 <a href="https://github.com/kiyomasanaki"><img src="assets/hero.svg" alt="kiyomasanaki — full-stack developer &amp; ethical hacker. Breaking stuff to make it stronger." width="100%" /></a>
 
-<a href="https://wespify.com"><img src="assets/link-website.svg" alt="Website — wespify.com" width="25%" /></a><a href="mailto:%67%68%2E%70%75%62%2E%6B%6D%40%77%65%73%70%69%66%79%2E%63%6F%6D"><img src="assets/link-contact.svg" alt="Contact — email" width="25%" /></a><a href="#"><img src="assets/link-location.svg" alt="Location — Made in France" width="25%" /></a><a href="#pgp"><img src="assets/link-pgp.svg" alt="PGP — A0B6 3B54 A0D3 3C06" width="25%" /></a>
+<a href="https://wespify.com"><img src="assets/link-website.svg" alt="Website — wespify.com" width="25%" /></a><a href="mailto:%67%68%2E%70%75%62%2E%6B%6D%40%77%65%73%70%69%66%79%2E%63%6F%6D"><img src="assets/link-contact.svg" alt="Contact — email" width="25%" /></a><img src="assets/link-location.svg" alt="Location — Made in France" width="25%" /><a href="#pgp"><img src="assets/link-pgp.svg" alt="PGP — A0B6 3B54 A0D3 3C06" width="25%" /></a>
 
 </div>
 
@@ -80,29 +80,9 @@
   <a id="pgp"></a>
   <img src="assets/header-gpg.svg" alt="gpg --list-keys" width="100%" />
 
-<img src="assets/pgp.svg" alt="pub rsa4096 2025-11-14 [SC] · uid w3spi5 &lt;github@wespify.com&gt; · sub rsa4096 2025-11-14 [E]" width="100%" />
+<img src="assets/pgp.svg" alt="pub ed25519 2025-11-14 [SC] · A0B6 3B54 A0D3 3C06 FFEA 1219 840D 8AA4 98B0 5118 · uid github.wespify.com &lt;github@wespify.com&gt; · sub cv25519 2025-11-14 [E]" width="100%" />
 
-<details>
-<summary><img src="assets/btn-pgp.svg" height="48" alt="Show the full public key" /></summary>
-
-```text
------BEGIN PGP PUBLIC KEY BLOCK-----
-
-mDMEaReKGxYJKwYBBAHaRw8BAQdAP69WrJF2dKEn24eWMiiU2YLoXQE177zbzKkV
-wzA6qO+0J2dpdGh1Yi53ZXNwaWZ5LmNvbSA8Z2l0aHViQHdlc3BpZnkuY29tPoiZ
-BBMWCgBBFiEEoLY7VKDTPAb/6hIZhA2KpJiwURgFAmkXihsCGwMFCT4SZ+UFCwkI
-BwICIgIGFQoJCAsCBBYCAwECHgcCF4AACgkQhA2KpJiwURi2EwD/RfKGV4ulJ7kp
-GbLQDRfTfwuInO9aaGJQMQs6JsBWZGoA/3/UCcbNCUTxtpm+f0qu/yIbJsuTi81K
-hsgfSYE0kdAFuDgEaReKGxIKKwYBBAGXVQEFAQEHQEMwYakHNplpdqxioB1yP42p
-911AKgHvK7ZM3UI2DWBOAwEIB4h+BBgWCgAmFiEEoLY7VKDTPAb/6hIZhA2KpJiw
-URgFAmkXihsCGwwFCT4SZ+UACgkQhA2KpJiwURj6QQEAtY1V+yx7jWZcHLztg96v
-VKvyluRaziIGyVEi+ie2WZcA/1RbR5g5yjD47R2Bl990mPmi4U3l2UjjVD+L8/Dv
-VGAA
-=E4ac
------END PGP PUBLIC KEY BLOCK-----
-```
-
-</details>
+<a href="https://github.com/kiyomasanaki/kiyomasanaki/blob/main/pgp.asc"><img src="assets/btn-pgp.svg" height="48" alt="Download the public key (pgp.asc)" /></a>
 
 
 </div>

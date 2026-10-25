@@ -276,30 +276,34 @@ ${icon(slug, P, 24, 22, c)}
   })()));
 }
 
-// pgp key summary
+// pgp key summary, laid out like `gpg --list-keys` (an empty key = indented continuation line)
 function pgpCard(lines) {
   const h = 40 + lines.length * 28;
   let g = card(W, h, { spine: GOLD });
-    lines.forEach(([k, v], i) => {
-      const y = 34 + i * 28, c = acc(i);
-      g += `\n<text x="32" y="${y}" font-family="${FONT}" font-size="14" font-weight="800" fill="${c}" dominant-baseline="central">${esc(k)}</text>
-<text x="96" y="${y}" font-family="${FONT}" font-size="14" fill="${IVORY}" dominant-baseline="central" xml:space="preserve">${esc(v)}</text>`;
+  let k = 0;
+  lines.forEach(([key, v], i) => {
+    const y = 34 + i * 28;
+    g += key
+      ? `\n<text x="32" y="${y}" font-family="${FONT}" font-size="14" font-weight="800" fill="${acc(k++)}" dominant-baseline="central">${esc(key)}</text>
+<text x="96" y="${y}" font-family="${FONT}" font-size="14" fill="${IVORY}" dominant-baseline="central" xml:space="preserve">${esc(v)}</text>`
+      : `\n<text x="96" y="${y}" font-family="${FONT}" font-size="14" font-weight="700" fill="${GOLD}" dominant-baseline="central" xml:space="preserve">${esc(v)}</text>`;
   });
   out('pgp.svg', svg(W, h, 'PGP key', g));
 }
 
-// "show the full key" toggle, used as the <summary> of the key's <details>
-function keyToggle(fpr) {
-  const H = 48, c = GOLD, cmd = `gpg --export -a ${fpr}`, cx = 50 + tw('FULL PUBLIC KEY', 13.5) + 30 + 30;
-  const w = cx + tw(`$ ${cmd}`, 12.5) + 70;
+// link to the armored key file — a plain link, so no <details> disclosure triangle next to it
+function keyButton(file) {
+  const H = 48, c = GOLD, label = 'PUBLIC KEY', cmd = `gpg --import ${file}`;
+  const sx = 50 + tw(label, 13.5) + 30 + 14, cx = sx + 16, act = 'download', chip = tw(act, 11) + act.length * 1.5 + 20;
+  const w = cx + tw(`$ ${cmd}`, 12.5) + 24 + chip + 18;
   const body = `${box(0, 0, w, H, c, 12)}
 ${icon('gnuprivacyguard', 20, (H - 18) / 2, 18, c)}
-<text x="50" y="${H / 2}" font-family="${FONT}" font-size="13.5" font-weight="800" fill="${c}" dominant-baseline="central" letter-spacing="2">FULL PUBLIC KEY</text>
-<rect x="${50 + tw('FULL PUBLIC KEY', 13.5) + 30 + 14}" y="${H / 2 - 9}" width="1.5" height="18" fill="${LINE}"/>
-<text x="${50 + tw('FULL PUBLIC KEY', 13.5) + 30 + 30}" y="${H / 2}" font-family="${FONT}" font-size="12.5" fill="${MUTED}" dominant-baseline="central" xml:space="preserve"><tspan fill="${LIME}">$</tspan> ${esc(cmd)}</text>
-<rect x="${w - 44}" y="${H / 2 - 13}" width="26" height="26" rx="7" fill="${INK2}" stroke="${LINE}"/>
-<path d="M${w - 36} ${H / 2 - 3}l5 5 5-5" fill="none" stroke="${c}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>`;
-  out('btn-pgp.svg', svg(w, H, 'Show the full public key', body));
+<text x="50" y="${H / 2}" font-family="${FONT}" font-size="13.5" font-weight="800" fill="${c}" dominant-baseline="central" letter-spacing="2">${label}</text>
+<rect x="${sx}" y="${H / 2 - 9}" width="1.5" height="18" fill="${LINE}"/>
+<text x="${cx}" y="${H / 2}" font-family="${FONT}" font-size="12.5" fill="${MUTED}" dominant-baseline="central" xml:space="preserve"><tspan fill="${LIME}">$</tspan> ${esc(cmd)}</text>
+<rect x="${w - 18 - chip}" y="${H / 2 - 13}" width="${chip}" height="26" rx="7" fill="${INK2}" stroke="${LINE}"/>
+<text x="${w - 18 - chip / 2}" y="${H / 2}" font-family="${FONT}" font-size="11" font-weight="700" fill="${c}" text-anchor="middle" dominant-baseline="central" letter-spacing="1.5">${act.toUpperCase()}</text>`;
+  out('btn-pgp.svg', svg(w, H, `Download the public key (${file})`, body));
 }
 
 // closing quote, as a fortune(6) cookie
@@ -391,9 +395,10 @@ projectCard('next', {
 });
 
 pgpCard([
-  ['pub', 'rsa4096 2025-11-14 [SC]'],
-  ['uid', 'w3spi5 <github@wespify.com>'],
-  ['sub', 'rsa4096 2025-11-14 [E]'],
+  ['pub', 'ed25519 2025-11-14 [SC] [expires: 2058-11-15]'],
+  ['',    'A0B6 3B54 A0D3 3C06 FFEA  1219 840D 8AA4 98B0 5118'],
+  ['uid', 'github.wespify.com <github@wespify.com>'],
+  ['sub', 'cv25519 2025-11-14 [E] [expires: 2058-11-15]'],
 ]);
 
 panel('whoami', {
@@ -439,7 +444,7 @@ panel('disclosure', {
   ],
 });
 
-keyToggle('A0B6 3B54 A0D3 3C06');
+keyButton('pgp.asc');
 quote(['Code is like humor.', "When you have to explain it, it's bad."], 'Cory House');
 
 button('follow',  { label: 'follow', value: `@${USER}`, slug: 'github', color: CYAN, alt: `Follow @${USER}` });
