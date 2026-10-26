@@ -1,8 +1,8 @@
 {
   "repos": 47,
-  "followers": 33,
+  "followers": 34,
   "stars": 70,
-  "prs": 96,
+  "prs": 97,
   "issues": 20,
   "langs": [
     {
@@ -11,7 +11,7 @@
     },
     {
       "name": "JavaScript",
-      "pct": 19.9
+      "pct": 20
     },
     {
       "name": "CSS",
