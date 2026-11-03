@@ -47,7 +47,8 @@ async function refresh() {
     .map(([name, v]) => ({ name, pct: Math.round((v * 1000) / total) / 10 }));
   const prs = (await gh(`/search/issues?q=author:${USER}+type:pr&per_page=1`)).total_count;
   const issues = (await gh(`/search/issues?q=author:${USER}+type:issue&per_page=1`)).total_count;
-  const data = { repos: user.public_repos, followers: user.followers, stars, prs, issues, langs };
+  // only what the cards display: any extra field would trigger a commit with no visible change
+  const data = { repos: user.public_repos, stars, prs, issues, langs };
   writeFileSync(join(OUT, 'stats.json'), JSON.stringify(data, null, 2));
   return data;
 }
@@ -103,7 +104,10 @@ ${legend}`;
 let data;
 if (TOKEN) {
   try { data = await refresh(); console.log('stats refreshed from API'); }
-  catch (e) { console.error('API refresh failed, using committed stats.json:', e.message); }
+  catch (e) {
+    // ::warning:: surfaces in the Actions run summary, so stale stats don't go unnoticed
+    console.log(`::warning title=Stats refresh failed::${e.message} (rendering from the committed stats.json)`);
+  }
 }
 if (!data) data = JSON.parse(readFileSync(join(OUT, 'stats.json'), 'utf8'));
 overview(data);

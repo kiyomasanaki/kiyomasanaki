@@ -12,6 +12,7 @@ on:
   push:
     paths:
       - 'assets/stats.mjs'
+      - 'assets/theme.mjs'
       - '.github/workflows/profile-stats.yml'
 
 permissions:
@@ -25,10 +26,10 @@ jobs:
   stats:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 24
       - name: Render stat cards
         run: node assets/stats.mjs
         env:
@@ -39,5 +40,11 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add assets/stats.json assets/stat-overview.svg assets/stat-langs.svg
-          git diff --staged --quiet || git commit -m "chore: refresh profile stats [skip ci]"
+          if git diff --staged --quiet; then
+            echo "Stats unchanged, nothing to commit."
+            exit 0
+          fi
+          git commit -m "chore: refresh profile stats [skip ci]"
+          # a push may have landed on main while the job was running
+          git pull --rebase origin "${GITHUB_REF_NAME}"
           git push
