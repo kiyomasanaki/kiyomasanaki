@@ -1,32 +1,32 @@
 {
-  "repos": 53,
+  "repos": 54,
   "stars": 71,
-  "prs": 106,
+  "prs": 109,
   "issues": 20,
   "langs": [
     {
       "name": "PHP",
-      "pct": 66.3
+      "pct": 65.1
     },
     {
       "name": "JavaScript",
-      "pct": 21.5
+      "pct": 22.8
     },
     {
       "name": "CSS",
-      "pct": 5.3
+      "pct": 5.2
     },
     {
       "name": "Shell",
-      "pct": 2.8
+      "pct": 2.7
     },
     {
       "name": "HTML",
-      "pct": 2.2
+      "pct": 2.3
     },
     {
       "name": "TypeScript",
-      "pct": 1.7
+      "pct": 1.6
     }
   ]
 }
