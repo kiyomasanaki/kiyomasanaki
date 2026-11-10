@@ -1,41 +1,46 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="860" height="52" viewBox="0 0 860 52" role="img" aria-label="build → break → learn → share → repeat">
-<rect x="1.5" y="0.5" width="138.6" height="51" rx="12" fill="#0b1020" fill-opacity="0.82" stroke="#24304a"/>
-<defs><pattern id="tx7" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1" fill="#24304a"/></pattern>
-<linearGradient id="fg7" x1="0" x2="1"><stop offset="0.3" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
-<mask id="fm7"><rect x="1" y="0" width="139.6" height="52" fill="url(#fg7)"/></mask></defs>
-<rect x="2" y="1" width="137.6" height="50" rx="12" fill="url(#tx7)" mask="url(#fm7)"/>
-<rect x="1.5" y="13" width="3" height="26" rx="1.5" fill="#2ee6d6"/>
-<text x="70.8" y="26" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#e6edf7" text-anchor="middle" dominant-baseline="central" letter-spacing="2">BUILD</text>
-<path d="M156.6 20l7 6-7 6" fill="none" stroke="#8a96ad" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-<rect x="181.1" y="0.5" width="138.6" height="51" rx="12" fill="#0b1020" fill-opacity="0.82" stroke="#24304a"/>
-<defs><pattern id="tx8" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M18 0H0V18" fill="none" stroke="#24304a" stroke-width="0.8"/></pattern>
-<linearGradient id="fg8" x1="0" x2="1"><stop offset="0.3" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
-<mask id="fm8"><rect x="180.6" y="0" width="139.6" height="52" fill="url(#fg8)"/></mask></defs>
-<rect x="181.6" y="1" width="137.6" height="50" rx="12" fill="url(#tx8)" mask="url(#fm8)"/>
-<rect x="181.1" y="13" width="3" height="26" rx="1.5" fill="#b07cff"/>
-<text x="250.39999999999998" y="26" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#e6edf7" text-anchor="middle" dominant-baseline="central" letter-spacing="2">BREAK</text>
-<path d="M336.2 20l7 6-7 6" fill="none" stroke="#8a96ad" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-<rect x="360.7" y="0.5" width="138.6" height="51" rx="12" fill="#0b1020" fill-opacity="0.82" stroke="#24304a"/>
-<defs><pattern id="tx9" width="9" height="9" patternUnits="userSpaceOnUse"><path d="M-1 10L10 -1" stroke="#24304a" stroke-width="0.9"/></pattern>
-<linearGradient id="fg9" x1="0" x2="1"><stop offset="0.3" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
-<mask id="fm9"><rect x="360.2" y="0" width="139.6" height="52" fill="url(#fg9)"/></mask></defs>
-<rect x="361.2" y="1" width="137.6" height="50" rx="12" fill="url(#tx9)" mask="url(#fm9)"/>
-<rect x="360.7" y="13" width="3" height="26" rx="1.5" fill="#5dfc8d"/>
-<text x="430" y="26" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#e6edf7" text-anchor="middle" dominant-baseline="central" letter-spacing="2">LEARN</text>
-<path d="M515.8 20l7 6-7 6" fill="none" stroke="#8a96ad" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-<rect x="540.3" y="0.5" width="138.6" height="51" rx="12" fill="#0b1020" fill-opacity="0.82" stroke="#24304a"/>
-<defs><pattern id="tx10" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M0 9h12l6 6h18M9 36V27l6-6M27 0v6" fill="none" stroke="#24304a" stroke-width="0.9"/><circle cx="12" cy="9" r="1.6" fill="#24304a"/><circle cx="15" cy="21" r="1.6" fill="#24304a"/><circle cx="27" cy="6" r="1.6" fill="#24304a"/></pattern>
-<linearGradient id="fg10" x1="0" x2="1"><stop offset="0.3" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
-<mask id="fm10"><rect x="539.8" y="0" width="139.6" height="52" fill="url(#fg10)"/></mask></defs>
-<rect x="540.8" y="1" width="137.6" height="50" rx="12" fill="url(#tx10)" mask="url(#fm10)"/>
-<rect x="540.3" y="13" width="3" height="26" rx="1.5" fill="#f5c84b"/>
-<text x="609.5999999999999" y="26" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#e6edf7" text-anchor="middle" dominant-baseline="central" letter-spacing="2">SHARE</text>
-<path d="M695.4 20l7 6-7 6" fill="none" stroke="#8a96ad" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-<rect x="719.9" y="0.5" width="138.6" height="51" rx="12" fill="#0b1020" fill-opacity="0.82" stroke="#24304a"/>
-<defs><pattern id="tx11" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M11 7.5v7M7.5 11h7" stroke="#24304a" stroke-width="1.2" stroke-linecap="round"/></pattern>
-<linearGradient id="fg11" x1="0" x2="1"><stop offset="0.3" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
-<mask id="fm11"><rect x="719.4" y="0" width="139.6" height="52" fill="url(#fg11)"/></mask></defs>
-<rect x="720.4" y="1" width="137.6" height="50" rx="12" fill="url(#tx11)" mask="url(#fm11)"/>
-<rect x="719.9" y="13" width="3" height="26" rx="1.5" fill="#2ee6d6"/>
-<text x="789.1999999999999" y="26" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#2ee6d6" text-anchor="middle" dominant-baseline="central" letter-spacing="2">REPEAT</text>
+<rect x="1.5" y="0.5" width="138.6" height="51" rx="6" fill="#070c14" fill-opacity="0.93"/>
+<rect x="1.5" y="0.5" width="138.6" height="51" rx="6" fill="#35e3ea" fill-opacity="0.045" stroke="#35e3ea" stroke-opacity="0.3"/>
+<defs><pattern id="tx22" width="6" height="4" patternUnits="userSpaceOnUse"><path d="M0 1.5H6" stroke="#1d3344" stroke-width="0.8"/></pattern>
+<linearGradient id="fg22" x1="0" x2="1"><stop offset="0.3" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
+<mask id="fm22"><rect x="1" y="0" width="139.6" height="52" fill="url(#fg22)"/></mask></defs>
+<rect x="2" y="1" width="137.6" height="50" rx="6" fill="url(#tx22)" mask="url(#fm22)"/>
+<path d="M1.75 13.75V6.75a6 6 0 0 1 6-6H14.75M126.85 0.75H133.85a6 6 0 0 1 6 6V13.75M139.85 38.25V45.25a6 6 0 0 1-6 6H126.85M14.75 51.25H7.75a6 6 0 0 1-6-6V38.25" fill="none" stroke="#35e3ea" stroke-width="1.5" stroke-linecap="round"/>
+<text x="70.8" y="26" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#e4f6f8" text-anchor="middle" dominant-baseline="central" letter-spacing="2">BUILD</text>
+<path d="M156.6 20l7 6-7 6" fill="none" stroke="#7f97a8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="181.1" y="0.5" width="138.6" height="51" rx="6" fill="#070c14" fill-opacity="0.93"/>
+<rect x="181.1" y="0.5" width="138.6" height="51" rx="6" fill="#ff4fcf" fill-opacity="0.045" stroke="#ff4fcf" stroke-opacity="0.3"/>
+<defs><pattern id="tx23" width="44" height="14" patternUnits="userSpaceOnUse"><rect x="2" y="3" width="40" height="8" rx="1.5" fill="none" stroke="#1d3344" stroke-width="0.8"/><circle cx="8" cy="7" r="1.2" fill="#1d3344"/><circle cx="13" cy="7" r="1.2" fill="#1d3344"/><path d="M22 7h16" stroke="#1d3344" stroke-width="0.8"/></pattern>
+<linearGradient id="fg23" x1="0" x2="1"><stop offset="0.3" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
+<mask id="fm23"><rect x="180.6" y="0" width="139.6" height="52" fill="url(#fg23)"/></mask></defs>
+<rect x="181.6" y="1" width="137.6" height="50" rx="6" fill="url(#tx23)" mask="url(#fm23)"/>
+<path d="M181.35 13.75V6.75a6 6 0 0 1 6-6H194.35M306.45 0.75H313.45a6 6 0 0 1 6 6V13.75M319.45 38.25V45.25a6 6 0 0 1-6 6H306.45M194.35 51.25H187.35a6 6 0 0 1-6-6V38.25" fill="none" stroke="#ff4fcf" stroke-width="1.5" stroke-linecap="round"/>
+<text x="250.39999999999998" y="26" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#e4f6f8" text-anchor="middle" dominant-baseline="central" letter-spacing="2">BREAK</text>
+<path d="M336.2 20l7 6-7 6" fill="none" stroke="#7f97a8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="360.7" y="0.5" width="138.6" height="51" rx="6" fill="#070c14" fill-opacity="0.93"/>
+<rect x="360.7" y="0.5" width="138.6" height="51" rx="6" fill="#6dff8a" fill-opacity="0.045" stroke="#6dff8a" stroke-opacity="0.3"/>
+<defs><pattern id="tx24" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M18 0H0V18" fill="none" stroke="#1d3344" stroke-width="0.8"/></pattern>
+<linearGradient id="fg24" x1="0" x2="1"><stop offset="0.3" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
+<mask id="fm24"><rect x="360.2" y="0" width="139.6" height="52" fill="url(#fg24)"/></mask></defs>
+<rect x="361.2" y="1" width="137.6" height="50" rx="6" fill="url(#tx24)" mask="url(#fm24)"/>
+<path d="M360.95 13.75V6.75a6 6 0 0 1 6-6H373.95M486.04999999999995 0.75H493.04999999999995a6 6 0 0 1 6 6V13.75M499.04999999999995 38.25V45.25a6 6 0 0 1-6 6H486.04999999999995M373.95 51.25H366.95a6 6 0 0 1-6-6V38.25" fill="none" stroke="#6dff8a" stroke-width="1.5" stroke-linecap="round"/>
+<text x="430" y="26" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#e4f6f8" text-anchor="middle" dominant-baseline="central" letter-spacing="2">LEARN</text>
+<path d="M515.8 20l7 6-7 6" fill="none" stroke="#7f97a8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="540.3" y="0.5" width="138.6" height="51" rx="6" fill="#070c14" fill-opacity="0.93"/>
+<rect x="540.3" y="0.5" width="138.6" height="51" rx="6" fill="#ff9a3c" fill-opacity="0.045" stroke="#ff9a3c" stroke-opacity="0.3"/>
+<defs><pattern id="tx25" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M0 9h12l6 6h18M9 36V27l6-6M27 0v6" fill="none" stroke="#1d3344" stroke-width="0.9"/><circle cx="12" cy="9" r="1.6" fill="#1d3344"/><circle cx="15" cy="21" r="1.6" fill="#1d3344"/><circle cx="27" cy="6" r="1.6" fill="#1d3344"/></pattern>
+<linearGradient id="fg25" x1="0" x2="1"><stop offset="0.3" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
+<mask id="fm25"><rect x="539.8" y="0" width="139.6" height="52" fill="url(#fg25)"/></mask></defs>
+<rect x="540.8" y="1" width="137.6" height="50" rx="6" fill="url(#tx25)" mask="url(#fm25)"/>
+<path d="M540.55 13.75V6.75a6 6 0 0 1 6-6H553.55M665.65 0.75H672.65a6 6 0 0 1 6 6V13.75M678.65 38.25V45.25a6 6 0 0 1-6 6H665.65M553.55 51.25H546.55a6 6 0 0 1-6-6V38.25" fill="none" stroke="#ff9a3c" stroke-width="1.5" stroke-linecap="round"/>
+<text x="609.5999999999999" y="26" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#e4f6f8" text-anchor="middle" dominant-baseline="central" letter-spacing="2">SHARE</text>
+<path d="M695.4 20l7 6-7 6" fill="none" stroke="#7f97a8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="719.9" y="0.5" width="138.6" height="51" rx="6" fill="#070c14" fill-opacity="0.93"/>
+<rect x="719.9" y="0.5" width="138.6" height="51" rx="6" fill="#35e3ea" fill-opacity="0.045" stroke="#35e3ea" stroke-opacity="0.3"/>
+<defs><pattern id="tx26" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M11 7.5v7M7.5 11h7" stroke="#1d3344" stroke-width="1.2" stroke-linecap="round"/></pattern>
+<linearGradient id="fg26" x1="0" x2="1"><stop offset="0.3" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
+<mask id="fm26"><rect x="719.4" y="0" width="139.6" height="52" fill="url(#fg26)"/></mask></defs>
+<rect x="720.4" y="1" width="137.6" height="50" rx="6" fill="url(#tx26)" mask="url(#fm26)"/>
+<path d="M720.15 13.75V6.75a6 6 0 0 1 6-6H733.15M845.25 0.75H852.25a6 6 0 0 1 6 6V13.75M858.25 38.25V45.25a6 6 0 0 1-6 6H845.25M733.15 51.25H726.15a6 6 0 0 1-6-6V38.25" fill="none" stroke="#35e3ea" stroke-width="1.5" stroke-linecap="round"/>
+<text x="789.1999999999999" y="26" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#35e3ea" text-anchor="middle" dominant-baseline="central" letter-spacing="2">REPEAT</text>
 </svg>

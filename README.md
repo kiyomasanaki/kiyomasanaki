@@ -68,7 +68,7 @@
 
   <img src="assets/stat-overview.svg" alt="Overview — repositories, stars, pull requests, issues" width="100%" />
 
-  <img src="https://streak-stats.demolab.com?user=kiyomasanaki&hide_border=false&border_radius=14&background=0B1020&border=24304A&stroke=24304A&ring=2EE6D6&fire=B07CFF&currStreakLabel=5DFC8D&sideLabels=E6EDF7&dates=8A96AD&currStreakNum=F5C84B&sideNums=E6EDF7" alt="Contributions &amp; streak" width="100%" />
+  <img src="https://streak-stats.demolab.com?user=kiyomasanaki&hide_border=false&border_radius=6&background=070C14&border=1D3344&stroke=1D3344&ring=35E3EA&fire=FF4FCF&currStreakLabel=6DFF8A&sideLabels=E4F6F8&dates=7F97A8&currStreakNum=FF9A3C&sideNums=E4F6F8" alt="Contributions &amp; streak" width="100%" />
 
   <img src="assets/stat-langs.svg" alt="Most used languages" width="100%" />
 

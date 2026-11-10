@@ -1,11 +1,11 @@
-// SVG asset generator for the kiyomasanaki GitHub profile ("neon nebula").
-// Solid ink cards with a neon spine — readable on every GitHub theme.
+// SVG asset generator for the kiyomasanaki GitHub profile ("core net").
+// Dark hologram panels wired with fiber-optic cables — readable on every GitHub theme.
 // Run:  node assets/generate.mjs   (requires: npm i simple-icons)
 import * as si from 'simple-icons';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { INK, INK2, LINE, IVORY, MUTED, CYAN, VIOLET, LIME, GOLD, BLUE, FONT, W, ALPHA, acc, esc, tw, card, heading, svg } from './theme.mjs';
+import { INK, INK2, LINE, IVORY, MUTED, CYAN, MAGENTA, LIME, AMBER, BLUE, FONT, W, acc, esc, tw, card, heading, svg, fibers, FIBER_CSS, RX } from './theme.mjs';
 
 const OUT = dirname(fileURLToPath(import.meta.url));
 const out = (file, content) => writeFileSync(join(OUT, file), content);
@@ -51,75 +51,70 @@ function icon(slug, x, y, size, color) {
 }
 
 // ---- hero --------------------------------------------------------------
+// the server hall: name + tags on the left, the CORE NET hologram on the right,
+// and the fiber trunk running along the floor of the panel
 function hero() {
-  const H = 230;
+  const H = 262;
   const name = USER;
   const nfs = 50, nw = tw(name, nfs);
-  const sx = W - 150, sy = 52, ss = 110;
-  const defs = `<radialGradient id="neb1" cx="0.82" cy="0.2" r="0.45"><stop offset="0" stop-color="${VIOLET}" stop-opacity="0.28"/><stop offset="1" stop-color="${VIOLET}" stop-opacity="0"/></radialGradient>
-<radialGradient id="neb2" cx="0.62" cy="1" r="0.5"><stop offset="0" stop-color="${CYAN}" stop-opacity="0.18"/><stop offset="1" stop-color="${CYAN}" stop-opacity="0"/></radialGradient>
-<linearGradient id="tag" x1="0" x2="1"><stop offset="0" stop-color="${CYAN}"/><stop offset="0.5" stop-color="${LIME}"/><stop offset="1" stop-color="${GOLD}"/></linearGradient>
-<linearGradient id="seal" gradientUnits="userSpaceOnUse" x1="${sx}" y1="${sy}" x2="${sx + ss}" y2="${sy + ss}"><stop offset="0" stop-color="${BLUE}"/><stop offset="0.5" stop-color="${VIOLET}"/><stop offset="1" stop-color="${GOLD}"/></linearGradient>
-<filter id="inked" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="0.9" result="d"/><feTurbulence type="fractalNoise" baseFrequency="0.35" numOctaves="2" seed="3" result="m"/><feColorMatrix in="m" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.6 1.6" result="mask"/><feComposite in="d" in2="mask" operator="in"/></filter>
-<style>.cur{animation:b 1.1s steps(1) infinite}@keyframes b{50%{opacity:0}}</style>`;
+  const defs = `<radialGradient id="neb1" cx="0.86" cy="0.3" r="0.45"><stop offset="0" stop-color="${MAGENTA}" stop-opacity="0.22"/><stop offset="1" stop-color="${MAGENTA}" stop-opacity="0"/></radialGradient>
+<radialGradient id="neb2" cx="0.3" cy="1" r="0.6"><stop offset="0" stop-color="${CYAN}" stop-opacity="0.16"/><stop offset="1" stop-color="${CYAN}" stop-opacity="0"/></radialGradient>
+<linearGradient id="tag" x1="0" x2="1"><stop offset="0" stop-color="${CYAN}"/><stop offset="0.55" stop-color="${MAGENTA}"/><stop offset="1" stop-color="${AMBER}"/></linearGradient>
+<clipPath id="hall"><rect x="1" y="1" width="${W - 2}" height="${H - 2}" rx="${RX}"/></clipPath>
+<style>.cur{animation:b 1.1s steps(1) infinite}@keyframes b{50%{opacity:0}}.spin{transform-box:fill-box;transform-origin:center;animation:r 24s linear infinite}@keyframes r{to{transform:rotate(360deg)}}${FIBER_CSS}</style>`;
   const tags = ['PHP', 'JS', 'SQL', 'React', 'Laravel', 'Python', 'Solidity', 'Web3', 'AI', 'Offensive Security'];
   let tx = PAD + 8, chips = '';
   tags.forEach((t, i) => {
     const w = tw(t, 12.5) + 24;
-    chips += `<rect x="${tx}" y="170" width="${w}" height="28" rx="7" fill="${INK2}" stroke="${LINE}"/>
-<text x="${tx + 12}" y="184" font-family="${FONT}" font-size="12.5" font-weight="600" fill="${acc(i)}" dominant-baseline="central" textLength="${tw(t, 12.5)}">${esc(t)}</text>`;
+    chips += `<rect x="${tx}" y="162" width="${w}" height="28" rx="4" fill="${INK2}" stroke="${LINE}"/>
+<text x="${tx + 12}" y="176" font-family="${FONT}" font-size="12.5" font-weight="600" fill="${acc(i)}" dominant-baseline="central" textLength="${tw(t, 12.5)}">${esc(t)}</text>`;
     tx += w + 10;
   });
-  // hanko-style stamp
-  // rubber stamp: serrated ring, MADE IN / FRANCE on arcs, the Hexagone in the middle
-  const cx = sx + ss / 2, cy = sy + ss / 2, teeth = 44;
-  const ring = Array.from({ length: teeth * 2 }, (_, i) => {
-    const r = i % 2 ? 51 : 55, a = (Math.PI * i) / teeth;
-    return `${(cx + r * Math.cos(a)).toFixed(1)},${(cy + r * Math.sin(a)).toFixed(1)}`;
-  }).join(' ');
-  const hexagone = [[.38, 0], [.62, .12], [.92, .22], [.86, .52], [.95, .78], [.66, .95], [.42, .92], [.22, 1], [.12, .72], [.02, .42], [0, .3], [.18, .2]]
-    .map(([x, y]) => `${(cx - 15 + x * 30).toFixed(1)},${(cy - 15 + y * 30).toFixed(1)}`).join(' ');
-  const star = (x) => `<text x="${x}" y="${cy}" font-family="${FONT}" font-size="9" fill="url(#seal)" text-anchor="middle" dominant-baseline="central">★</text>`;
-  const stamp = `<g transform="rotate(-8 ${cx} ${cy})" filter="url(#inked)">
-<polygon points="${ring}" fill="none" stroke="url(#seal)" stroke-width="2.2" stroke-linejoin="round"/>
-<circle cx="${cx}" cy="${cy}" r="45" fill="url(#seal)" fill-opacity="0.08" stroke="url(#seal)" stroke-width="1.6"/>
-<circle cx="${cx}" cy="${cy}" r="25" fill="none" stroke="url(#seal)" stroke-width="1"/>
-<path id="arcTop" d="M${cx - 34} ${cy} A34 34 0 0 1 ${cx + 34} ${cy}" fill="none"/>
-<path id="arcBot" d="M${cx - 40} ${cy} A40 40 0 0 0 ${cx + 40} ${cy}" fill="none"/>
-<text font-family="${FONT}" font-size="12.5" font-weight="800" fill="url(#seal)" letter-spacing="2.5"><textPath href="#arcTop" startOffset="50%" text-anchor="middle">MADE IN</textPath></text>
-<text font-family="${FONT}" font-size="12.5" font-weight="800" fill="url(#seal)" letter-spacing="2.5"><textPath href="#arcBot" startOffset="50%" text-anchor="middle">FRANCE</textPath></text>
-${star(cx - 35)}${star(cx + 35)}
-<polygon points="${hexagone}" fill="url(#seal)" fill-opacity="0.85" stroke="url(#seal)" stroke-width="1" stroke-linejoin="round"/>
-</g>`;
-  const body = `${card(W, H, { tex: 'dots' })}
-<rect x="1" y="1" width="${W - 2}" height="${H - 2}" rx="14" fill="url(#neb1)"/>
-<rect x="1" y="1" width="${W - 2}" height="${H - 2}" rx="14" fill="url(#neb2)"/>
-<text x="${PAD + 8}" y="44" font-family="${FONT}" font-size="13" fill="${MUTED}" dominant-baseline="central" xml:space="preserve"><tspan fill="${CYAN}" font-weight="700">~/</tspan>${USER}  <tspan fill="${LINE}">│</tspan>  full-stack dev  <tspan fill="${LINE}">│</tspan>  ethical hacker</text>
-<text x="${PAD + 4}" y="96" font-family="${FONT}" font-size="${nfs}" font-weight="800" fill="${IVORY}" dominant-baseline="central" textLength="${nw}" lengthAdjust="spacingAndGlyphs">${name}</text>
-<rect class="cur" x="${PAD + 12 + nw}" y="74" width="24" height="46" fill="${CYAN}"/>
-<text x="${PAD + 8}" y="140" font-family="${FONT}" font-size="15" fill="${IVORY}" dominant-baseline="central" xml:space="preserve">Breaking stuff <tspan fill="url(#tag)" font-weight="700">to make it stronger.</tspan></text>
+  // CORE NET hologram: a hub wired to its nodes, floating top right
+  const pw = 196, ph = 130, px = W - PAD - pw, py = 22, cx = px + pw / 2 + 6, cy = py + ph / 2 - 1;
+  const nodes = [[-78, -24], [-46, 26], [-8, -32], [40, -28], [76, -4], [54, 28], [6, 32]].map(([x, y]) => [cx + x, cy + y]);
+  const links = [[0, 1], [0, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 1], [1, 2], [3, 5], [2, 6], [0, 6], [2, 4]];
+  const net = `<rect x="${px}" y="${py}" width="${pw}" height="${ph}" rx="3" fill="${MAGENTA}" fill-opacity="0.1" stroke="${MAGENTA}" stroke-opacity="0.75"/>
+<text x="${px + 10}" y="${py + 14}" font-family="${FONT}" font-size="9.5" font-weight="700" fill="${MAGENTA}" dominant-baseline="central" letter-spacing="1.5">CORE NET</text>
+<text x="${px + pw - 10}" y="${py + 14}" font-family="${FONT}" font-size="9.5" fill="${IVORY}" fill-opacity="0.7" text-anchor="end" dominant-baseline="central" letter-spacing="1">REGION FR</text>
+<g stroke="${MAGENTA}" stroke-width="0.9" stroke-opacity="0.8">${links.map(([a, b]) => `<path d="M${nodes[a][0]} ${nodes[a][1]}L${nodes[b][0]} ${nodes[b][1]}"/>`).join('')}${nodes.map(([x, y]) => `<path d="M${cx} ${cy}L${x} ${y}"/>`).join('')}</g>
+<circle cx="${cx}" cy="${cy}" r="17" fill="${INK}" stroke="${MAGENTA}" stroke-width="1.4"/>
+<circle class="spin" cx="${cx}" cy="${cy}" r="12" fill="none" stroke="${CYAN}" stroke-width="1.6" stroke-dasharray="5 4"/>
+<circle cx="${cx}" cy="${cy}" r="6.5" fill="none" stroke="${LIME}" stroke-width="1.2"/>
+<circle cx="${cx}" cy="${cy}" r="2.4" fill="${IVORY}"/>
+${nodes.map(([x, y], i) => `<rect x="${x - 5}" y="${y - 3}" width="10" height="6" rx="2" fill="${INK}" stroke="${i % 3 ? IVORY : CYAN}" stroke-width="1.2"/>`).join('')}
+<circle class="cur" cx="${px + 13}" cy="${py + ph - 12}" r="3" fill="${LIME}"/>
+<text x="${px + 22}" y="${py + ph - 12}" font-family="${FONT}" font-size="9.5" font-weight="700" fill="${LIME}" dominant-baseline="central" letter-spacing="1">STATUS: ACTIVE</text>`;
+  const body = `${card(W, H, { tex: 'grid' })}
+<rect x="1" y="1" width="${W - 2}" height="${H - 2}" rx="${RX}" fill="url(#neb1)"/>
+<rect x="1" y="1" width="${W - 2}" height="${H - 2}" rx="${RX}" fill="url(#neb2)"/>
+<g clip-path="url(#hall)">${fibers(-10, W + 10, 229, { n: 7, spread: 26, amp: 9, seg: 86, seed: 11 })}</g>
+<text x="${PAD + 8}" y="40" font-family="${FONT}" font-size="13" fill="${MUTED}" dominant-baseline="central" xml:space="preserve"><tspan fill="${CYAN}" font-weight="700">~/</tspan>${USER}  <tspan fill="${LINE}">│</tspan>  full-stack dev  <tspan fill="${LINE}">│</tspan>  ethical hacker</text>
+<text x="${PAD + 4}" y="90" font-family="${FONT}" font-size="${nfs}" font-weight="800" fill="${IVORY}" dominant-baseline="central" textLength="${nw}" lengthAdjust="spacingAndGlyphs">${name}</text>
+<rect class="cur" x="${PAD + 12 + nw}" y="68" width="24" height="46" fill="${CYAN}"/>
+<text x="${PAD + 8}" y="134" font-family="${FONT}" font-size="15" fill="${IVORY}" dominant-baseline="central" xml:space="preserve">Breaking stuff <tspan fill="url(#tag)" font-weight="700">to make it stronger.</tspan></text>
 ${chips}
-${stamp}`;
+${net}`;
   out('hero.svg', svg(W, H, `${USER} — full-stack developer & ethical hacker`, body, defs));
 }
 
 // ---- section header ----------------------------------------------------
+// rack label: unit number tab, section name, and a fiber run patched into the
+// terminal block that holds the command
 function header(name, n, title, command) {
   const H = 56;
   const num = String(n).padStart(2, '0');
   const cw = tw(`$ ${command}`, 12.5), bw = cw + 28, bx = W - PAD - bw;
-  // the command sits in a terminal "pre" block with a neon glow
-  const defs = `<filter id="neon" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-<filter id="glow" x="-10%" y="-60%" width="120%" height="220%"><feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-<linearGradient id="hbg" x1="0" x2="1"><stop offset="0" stop-color="#3a2d66"/><stop offset="0.55" stop-color="#1f2c5a"/><stop offset="1" stop-color="#11414c"/></linearGradient>
-<linearGradient id="hst" x1="0" x2="1"><stop offset="0" stop-color="${VIOLET}" stop-opacity="0.7"/><stop offset="1" stop-color="${CYAN}" stop-opacity="0.7"/></linearGradient>`;
-  // section titles sit on a violet -> teal band so they stand out from the cards
-  const body = `<rect x="0.5" y="0.5" width="${W - 1}" height="${H - 1}" rx="12" fill="url(#hbg)" stroke="url(#hst)"/>
-<text x="${PAD}" y="${H / 2}" font-family="${FONT}" font-size="15" font-weight="800" fill="${CYAN}" dominant-baseline="central">${num}</text>
-<rect x="${PAD + 30}" y="${H / 2 - 9}" width="1.5" height="18" fill="${IVORY}" fill-opacity="0.35"/>
-<text x="${PAD + 46}" y="${H / 2}" font-family="${FONT}" font-size="17" font-weight="800" fill="${IVORY}" dominant-baseline="central" letter-spacing="1">${esc(title.toUpperCase())}</text>
-<rect x="${bx}" y="${H / 2 - 15}" width="${bw}" height="30" rx="6" fill="#050811" stroke="${CYAN}" stroke-width="1.2" filter="url(#neon)"/>
-<text x="${bx + 14}" y="${H / 2}" font-family="${FONT}" font-size="12.5" font-weight="600" fill="${CYAN}" dominant-baseline="central" textLength="${cw}" xml:space="preserve" filter="url(#glow)"><tspan fill="${LIME}">$</tspan> ${esc(command)}</text>`;
+  const tx = 74, te = tx + tw(title, 17) + title.length;
+  const defs = `<filter id="neon" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<style>${FIBER_CSS}</style>`;
+  const body = `${card(W, H, { tex: 'scan' })}
+<rect x="14" y="${H / 2 - 14}" width="42" height="28" rx="3" fill="${CYAN}"/>
+<text x="35" y="${H / 2}" font-family="${FONT}" font-size="15" font-weight="800" fill="${INK}" text-anchor="middle" dominant-baseline="central">${num}</text>
+<text x="${tx}" y="${H / 2}" font-family="${FONT}" font-size="17" font-weight="800" fill="${IVORY}" dominant-baseline="central" letter-spacing="1">${esc(title.toUpperCase())}</text>
+${fibers(te + 18, bx, H / 2, { n: 4, spread: 20, amp: 6, seg: 70, seed: n * 13 + 5, width: 1.4, fade: true, land: H / 2 })}
+<rect x="${bx}" y="${H / 2 - 15}" width="${bw}" height="30" rx="4" fill="#03060b" stroke="${CYAN}" stroke-width="1.2" filter="url(#neon)"/>
+<text x="${bx + 14}" y="${H / 2}" font-family="${FONT}" font-size="12.5" font-weight="600" fill="${CYAN}" dominant-baseline="central" textLength="${cw}" xml:space="preserve"><tspan fill="${LIME}">$</tspan> ${esc(command)}</text>`;
   out(`header-${name}.svg`, svg(W, H, `${num} ${title} — ${command}`, body, defs));
 }
 
@@ -128,8 +123,8 @@ const C_H = 40, C_ICON = 18, C_PADL = 14, C_GAP = 10, C_PADR = 16, C_FS = 14;
 const chipW = (l) => C_PADL + C_ICON + C_GAP + tw(l, C_FS) + C_PADR;
 function chip(x, y, label, slug, color, outlined = false) {
   const frame = outlined
-    ? `<rect x="${x}" y="${y}" width="${chipW(label)}" height="${C_H}" rx="9" fill="${INK2}" stroke="${color}" stroke-opacity="0.85"/>`
-    : `<rect x="${x}" y="${y}" width="${chipW(label)}" height="${C_H}" rx="9" fill="${INK2}" stroke="${LINE}"/>
+    ? `<rect x="${x}" y="${y}" width="${chipW(label)}" height="${C_H}" rx="4" fill="${INK2}" stroke="${color}" stroke-opacity="0.85"/>`
+    : `<rect x="${x}" y="${y}" width="${chipW(label)}" height="${C_H}" rx="4" fill="${INK2}" stroke="${LINE}"/>
 <rect x="${x}" y="${y + C_H - 2.5}" width="${chipW(label)}" height="2.5" rx="1.2" fill="${color}" fill-opacity="0.75"/>`;
   return `${frame}
 ${icon(slug, x + C_PADL, y + (C_H - C_ICON) / 2, C_ICON, color)}
@@ -139,7 +134,7 @@ ${icon(slug, x + C_PADL, y + (C_H - C_ICON) / 2, C_ICON, color)}
 function skillCard(name, title, items, color = CYAN, { brand = true } = {}) {
   const inner = W - PAD * 2, gap = 10;
   const rows = [[]]; let rw = 0;
-  const off = Math.max(0, [CYAN, VIOLET, LIME, GOLD].indexOf(color));
+  const off = Math.max(0, [CYAN, MAGENTA, LIME, AMBER].indexOf(color));
   for (const it of items) {
     const w = chipW(it.label);
     if (rw + w > inner && rows.at(-1).length) { rows.push([]); rw = 0; }
@@ -193,7 +188,7 @@ function button(name, { label, value, slug, color, alt, scrambled = false, curso
   const val = scrambled
     ? scramble(vx, H / 2, value, `font-family="${FONT}" font-size="${FS}" font-weight="600" fill="${IVORY}" dominant-baseline="central"`, FS * 0.6)
     : `<text x="${vx}" y="${H / 2}" font-family="${FONT}" font-size="${FS}" font-weight="600" fill="${IVORY}" dominant-baseline="central">${esc(value)}</text>`;
-  const body = `${box(0, 0, w, H, color, 12)}
+  const body = `${box(0, 0, w, H, color)}
 ${icon(slug, padL, (H - ic) / 2, ic, color)}
 <text x="${padL + ic + gap}" y="${H / 2}" font-family="${FONT}" font-size="${FS}" font-weight="800" fill="${color}" dominant-baseline="central" letter-spacing="2">${esc(label.toUpperCase())}</text>
 <rect x="${sx}" y="${H / 2 - 9}" width="1.5" height="18" fill="${LINE}"/>
@@ -203,7 +198,7 @@ ${val}${cursor ? `\n<rect class="cur" x="${vx + vw + 6}" y="${H / 2 - 8}" width=
 }
 
 // ---- boxes = cards placed anywhere ------------------------------------
-const box = (x, y, w, h, spine, rx = 14) => card(w, h, { spine, x, y, rx });
+const box = (x, y, w, h, spine) => card(w, h, { spine, x, y });
 
 // The address is stored encoded and drawn one glyph at a time in shuffled
 // order (each glyph keeps its own x), so it never appears as a plain string in
@@ -225,7 +220,7 @@ function tagline(words) {
   const H = 52, gap = 40, pw = (W - 2 - gap * (words.length - 1)) / words.length;
   out('tagline.svg', svg(W, H, words.join(' → '), words.map((wd, i) => {
     const x = 1 + i * (pw + gap), c = acc(i), last = i === words.length - 1;
-    let g = `${box(x, 0, pw, H, c, 12)}
+    let g = `${box(x, 0, pw, H, c)}
 <text x="${x + pw / 2}" y="${H / 2}" font-family="${FONT}" font-size="14" font-weight="700" fill="${last ? c : IVORY}" text-anchor="middle" dominant-baseline="central" letter-spacing="2">${esc(wd.toUpperCase())}</text>`;
     if (!last) g += `\n<path d="M${x + pw + gap / 2 - 4} ${H / 2 - 6}l7 6-7 6" fill="none" stroke="${MUTED}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>`;
     return g;
@@ -259,7 +254,7 @@ ${icon(slug, P, 24, 22, c)}
 <text x="${P + 34}" y="35" font-family="${FONT}" font-size="18" font-weight="800" fill="${IVORY}" dominant-baseline="central">${esc(title)}</text>`;
     if (meta) {
       const mw = tw(meta, 11) + 22;
-      g += `\n<rect x="${w - P - mw}" y="22" width="${mw}" height="26" rx="7" fill="${INK2}" stroke="${LINE}"/>
+      g += `\n<rect x="${w - P - mw}" y="22" width="${mw}" height="26" rx="4" fill="${INK2}" stroke="${LINE}"/>
 <text x="${w - P - mw / 2}" y="35" font-family="${FONT}" font-size="11" font-weight="700" fill="${c}" text-anchor="middle" dominant-baseline="central">${esc(meta)}</text>`;
     }
     wrap(desc, 48).slice(0, 3).forEach((ln, i) => {
@@ -279,29 +274,29 @@ ${icon(slug, P, 24, 22, c)}
 // pgp key summary, laid out like `gpg --list-keys` (an empty key = indented continuation line)
 function pgpCard(lines) {
   const h = 40 + lines.length * 28;
-  let g = card(W, h, { spine: GOLD });
+  let g = card(W, h, { spine: AMBER });
   let k = 0;
   lines.forEach(([key, v], i) => {
     const y = 34 + i * 28;
     g += key
       ? `\n<text x="32" y="${y}" font-family="${FONT}" font-size="14" font-weight="800" fill="${acc(k++)}" dominant-baseline="central">${esc(key)}</text>
 <text x="96" y="${y}" font-family="${FONT}" font-size="14" fill="${IVORY}" dominant-baseline="central" xml:space="preserve">${esc(v)}</text>`
-      : `\n<text x="96" y="${y}" font-family="${FONT}" font-size="14" font-weight="700" fill="${GOLD}" dominant-baseline="central" xml:space="preserve">${esc(v)}</text>`;
+      : `\n<text x="96" y="${y}" font-family="${FONT}" font-size="14" font-weight="700" fill="${AMBER}" dominant-baseline="central" xml:space="preserve">${esc(v)}</text>`;
   });
   out('pgp.svg', svg(W, h, 'PGP key', g));
 }
 
 // link to the armored key file — a plain link, so no <details> disclosure triangle next to it
 function keyButton(file) {
-  const H = 48, c = GOLD, label = 'PUBLIC KEY', cmd = `gpg --import ${file}`;
+  const H = 48, c = AMBER, label = 'PUBLIC KEY', cmd = `gpg --import ${file}`;
   const sx = 50 + tw(label, 13.5) + 30 + 14, cx = sx + 16, act = 'download', chip = tw(act, 11) + act.length * 1.5 + 20;
   const w = cx + tw(`$ ${cmd}`, 12.5) + 24 + chip + 18;
-  const body = `${box(0, 0, w, H, c, 12)}
+  const body = `${box(0, 0, w, H, c)}
 ${icon('gnuprivacyguard', 20, (H - 18) / 2, 18, c)}
 <text x="50" y="${H / 2}" font-family="${FONT}" font-size="13.5" font-weight="800" fill="${c}" dominant-baseline="central" letter-spacing="2">${label}</text>
 <rect x="${sx}" y="${H / 2 - 9}" width="1.5" height="18" fill="${LINE}"/>
 <text x="${cx}" y="${H / 2}" font-family="${FONT}" font-size="12.5" fill="${MUTED}" dominant-baseline="central" xml:space="preserve"><tspan fill="${LIME}">$</tspan> ${esc(cmd)}</text>
-<rect x="${w - 18 - chip}" y="${H / 2 - 13}" width="${chip}" height="26" rx="7" fill="${INK2}" stroke="${LINE}"/>
+<rect x="${w - 18 - chip}" y="${H / 2 - 13}" width="${chip}" height="26" rx="4" fill="${INK2}" stroke="${LINE}"/>
 <text x="${w - 18 - chip / 2}" y="${H / 2}" font-family="${FONT}" font-size="11" font-weight="700" fill="${c}" text-anchor="middle" dominant-baseline="central" letter-spacing="1.5">${act.toUpperCase()}</text>`;
   out('btn-pgp.svg', svg(w, H, `Download the public key (${file})`, body));
 }
@@ -309,16 +304,16 @@ ${icon('gnuprivacyguard', 20, (H - 18) / 2, 18, c)}
 // closing quote, as a fortune(6) cookie
 function quote(lines, author) {
   const H = 98 + lines.length * 30 + 36;
-  const defs = `<linearGradient id="qg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="${CYAN}"/><stop offset="1" stop-color="${VIOLET}"/></linearGradient>`;
-  let body = `${card(W, H, { spine: VIOLET, tex: 'rings' })}
+  const defs = `<linearGradient id="qg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="${CYAN}"/><stop offset="1" stop-color="${MAGENTA}"/></linearGradient>`;
+  let body = `${card(W, H, { spine: MAGENTA, tex: 'circuit' })}
 <text x="${PAD}" y="30" font-family="${FONT}" font-size="12.5" fill="${MUTED}" dominant-baseline="central" xml:space="preserve"><tspan fill="${LIME}">$</tspan> fortune -s programming</text>
 <text x="${PAD + 4}" y="122" font-family="Georgia,serif" font-size="96" font-weight="700" fill="url(#qg)" fill-opacity="0.9">“</text>`;
   lines.forEach((ln, i) => {
     body += `\n<text x="${PAD + 64}" y="${98 + i * 30}" font-family="${FONT}" font-size="19" font-weight="${i === lines.length - 1 ? 800 : 500}" fill="${i === lines.length - 1 ? CYAN : IVORY}" dominant-baseline="central">${esc(ln)}</text>`;
   });
   const ay = 98 + lines.length * 30 + 12;
-  body += `\n<rect x="${PAD + 64}" y="${ay - 1}" width="28" height="2" rx="1" fill="${VIOLET}"/>
-<text x="${PAD + 104}" y="${ay}" font-family="${FONT}" font-size="13" font-weight="700" fill="${VIOLET}" dominant-baseline="central" letter-spacing="1">${esc(author.toUpperCase())}</text>
+  body += `\n<rect x="${PAD + 64}" y="${ay - 1}" width="28" height="2" rx="1" fill="${MAGENTA}"/>
+<text x="${PAD + 104}" y="${ay}" font-family="${FONT}" font-size="13" font-weight="700" fill="${MAGENTA}" dominant-baseline="central" letter-spacing="1">${esc(author.toUpperCase())}</text>
 <text x="${W - PAD - 6}" y="${98 + lines.length * 30 + 22}" font-family="Georgia,serif" font-size="96" font-weight="700" fill="url(#qg)" fill-opacity="0.9" text-anchor="end">”</text>`;
   out('quote.svg', svg(W, H, `“${lines.join(' ')}” — ${author}`, body, defs));
 }
@@ -345,7 +340,7 @@ skillCard('frameworks', 'frameworks & runtimes', [
   { label: 'Laravel', slug: 'laravel' }, { label: 'Symfony', slug: 'symfony' },
   { label: 'Node.js', slug: 'nodedotjs' }, { label: 'React', slug: 'react' },
   { label: 'Vue.js', slug: 'vuedotjs' }, { label: 'TensorFlow.js', slug: 'tensorflow' },
-], VIOLET);
+], MAGENTA);
 skillCard('chain', 'chain · cloud · ops', [
   { label: 'Ethereum', slug: 'ethereum' }, { label: 'BNB Chain', slug: 'binance' },
   { label: 'Web3.js', slug: 'web3dotjs' }, { label: 'Docker', slug: 'docker' },
@@ -355,7 +350,7 @@ skillCard('offsec', 'offsec toolkit', [
   { label: 'Caido', slug: 'caido' }, { label: 'Burp Suite', slug: 'burpsuite' }, { label: 'Wireshark', slug: 'wireshark' },
   { label: 'Nmap', slug: 'nmap' }, { label: 'Metasploit', slug: 'metasploit' },
   { label: 'Ghidra', slug: 'ghidra' },
-], GOLD);
+], AMBER);
 skillCard('platforms', 'platforms — challenges & training', [
   { label: 'Hack The Box', slug: 'hackthebox' }, { label: 'TryHackMe', slug: 'tryhackme' },
   { label: 'Root-Me', slug: 'rootme' },
@@ -363,14 +358,14 @@ skillCard('platforms', 'platforms — challenges & training', [
 skillCard('bugbounty', 'bug bounty programs', [
   { label: 'HackerOne', slug: 'hackerone' }, { label: 'YesWeHack', slug: 'yeswehack' },
   { label: 'Intigriti', slug: 'intigriti' },
-], VIOLET);
+], MAGENTA);
 
 tagline(['build', 'break', 'learn', 'share', 'repeat']);
 
 linkCard('website',  { col: 0, cap: 'website',  value: 'wespify.com',         slug: 'googlechrome',    color: CYAN });
-linkCard('contact',  { col: 1, cap: 'contact',  value: MAIL, slug: 'protonmail', color: VIOLET, alt: 'contact: email', scrambled: true });
+linkCard('contact',  { col: 1, cap: 'contact',  value: MAIL, slug: 'protonmail', color: MAGENTA, alt: 'contact: email', scrambled: true });
 linkCard('location', { col: 2, cap: 'location', value: 'Made in France',      slug: 'openstreetmap',   color: LIME });
-linkCard('pgp',      { col: 3, cap: 'pgp',      value: 'A0B6 3B54 A0D3 3C06', slug: 'gnuprivacyguard', color: GOLD });
+linkCard('pgp',      { col: 3, cap: 'pgp',      value: 'A0B6 3B54 A0D3 3C06', slug: 'gnuprivacyguard', color: AMBER });
 
 // featured = the repos with the most commits authored by me (abandoned ones excluded)
 projectCard('bigdump', {
@@ -379,7 +374,7 @@ projectCard('bigdump', {
   tags: ['PHP 8.1+', 'MySQL', 'PHAR'],
 });
 projectCard('codepack', {
-  title: 'codepack', slug: 'gnubash', color: VIOLET, meta: '69 commits',
+  title: 'codepack', slug: 'gnubash', color: MAGENTA, meta: '69 commits',
   desc: 'Ultra-efficient CLI that extracts folder structure and file contents, minified and ready for AI processing.',
   tags: ['Bash', 'CLI', 'AI-ready'],
 });
@@ -389,7 +384,7 @@ projectCard('commeaucinema', {
   tags: ['PHP', 'Composer', 'RSS'],
 });
 projectCard('next', {
-  title: "what's next?", slug: 'maildotru', color: GOLD,
+  title: "what's next?", slug: 'maildotru', color: AMBER,
   desc: "Got an idea, a need, a technical challenge? Let's talk — drop me a line.",
   tags: ['collab', 'freelance', 'open source'],
 });
@@ -404,18 +399,18 @@ pgpCard([
 panel('whoami', {
   title: 'about', label: 'About me', lh: 30,
   lines: [
-    { text: [{ t: 'Full-stack developer', c: CYAN, b: true }, { t: ' based in ' }, { t: 'France', c: GOLD, b: true }, { t: ' — building robust apps at the' }] },
-    { text: [{ t: 'intersection of ' }, { t: 'Web', c: CYAN, b: true }, { t: ', ' }, { t: 'Blockchain', c: VIOLET, b: true }, { t: ' and ' }, { t: 'AI', c: LIME, b: true }, { t: '.' }] },
-    { text: [{ t: 'Flip side of the stack: ' }, { t: 'ethical hacker', c: VIOLET, b: true }, { t: ' on challenge platforms' }] },
+    { text: [{ t: 'Full-stack developer', c: CYAN, b: true }, { t: ' based in ' }, { t: 'France', c: AMBER, b: true }, { t: ' — building robust apps at the' }] },
+    { text: [{ t: 'intersection of ' }, { t: 'Web', c: CYAN, b: true }, { t: ', ' }, { t: 'Blockchain', c: MAGENTA, b: true }, { t: ' and ' }, { t: 'AI', c: LIME, b: true }, { t: '.' }] },
+    { text: [{ t: 'Flip side of the stack: ' }, { t: 'ethical hacker', c: MAGENTA, b: true }, { t: ' on challenge platforms' }] },
     { text: [{ t: 'and ' }, { t: 'bug bounty', c: CYAN, b: true }, { t: ' programs. Break cleanly to build stronger.' }] },
   ],
 });
 
 panel('scope', {
-  title: 'scope & rules of engagement', color: VIOLET, lh: 34,
+  title: 'scope & rules of engagement', color: MAGENTA, lh: 34,
   lines: [
     { tag: 'FOCUS', c: CYAN,  text: 'web app security · api abuse · smart-contract auditing' },
-    { tag: 'SCOPE', c: VIOLET,  text: 'responsible disclosure only — coordinated, scoped, ethical' },
+    { tag: 'SCOPE', c: MAGENTA,  text: 'responsible disclosure only — coordinated, scoped, ethical' },
     { tag: 'RULES', c: MUTED, text: 'no scope-creep · no PII exfil · no public PoCs before patch' },
   ],
 });
@@ -427,9 +422,9 @@ panel('focuslog', {
     { tag: 'INFO ', c: LIME, text: 'designing & integrating APIs' },
     { tag: 'TASK ', c: CYAN, text: 'hunting bugs — responsibly' },
     { tag: 'INFO ', c: LIME, text: 'contributing to open source' },
-    { tag: 'DEBUG', c: VIOLET, text: 'exploring AI / ML' },
+    { tag: 'DEBUG', c: MAGENTA, text: 'exploring AI / ML' },
     { tag: 'INFO ', c: LIME, text: 'crafting high-performance solutions' },
-    { tag: 'WARN ', c: GOLD, text: 'coffee level critical... refilling', tc: MUTED },
+    { tag: 'WARN ', c: AMBER, text: 'coffee level critical... refilling', tc: MUTED },
   ],
 });
 
@@ -448,6 +443,6 @@ keyButton('pgp.asc');
 quote(['Code is like humor.', "When you have to explain it, it's bad."], 'Cory House');
 
 button('follow',  { label: 'follow', value: `@${USER}`, slug: 'github', color: CYAN, alt: `Follow @${USER}` });
-button('sponsor', { label: 'say hi', value: MAIL, slug: 'protonmail', color: VIOLET, alt: 'Say hi by email', scrambled: true, cursor: true });
+button('sponsor', { label: 'say hi', value: MAIL, slug: 'protonmail', color: MAGENTA, alt: 'Say hi by email', scrambled: true, cursor: true });
 
 console.log('generated design assets in', OUT);

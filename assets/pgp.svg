@@ -1,15 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="860" height="152" viewBox="0 0 860 152" role="img" aria-label="PGP key">
-<rect x="0.5" y="0.5" width="859" height="151" rx="14" fill="#0b1020" fill-opacity="0.82" stroke="#24304a"/>
-<defs><pattern id="tx20" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="13" cy="13" r="5.5" fill="none" stroke="#24304a" stroke-width="0.9"/></pattern>
-<linearGradient id="fg20" x1="0" x2="1"><stop offset="0.3" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
-<mask id="fm20"><rect x="0" y="0" width="860" height="152" fill="url(#fg20)"/></mask></defs>
-<rect x="1" y="1" width="858" height="150" rx="14" fill="url(#tx20)" mask="url(#fm20)"/>
-<rect x="0.5" y="18" width="3" height="116" rx="1.5" fill="#f5c84b"/>
-<text x="32" y="34" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="800" fill="#2ee6d6" dominant-baseline="central">pub</text>
-<text x="96" y="34" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" fill="#e6edf7" dominant-baseline="central" xml:space="preserve">ed25519 2025-11-14 [SC] [expires: 2058-11-15]</text>
-<text x="96" y="62" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#f5c84b" dominant-baseline="central" xml:space="preserve">A0B6 3B54 A0D3 3C06 FFEA  1219 840D 8AA4 98B0 5118</text>
-<text x="32" y="90" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="800" fill="#b07cff" dominant-baseline="central">uid</text>
-<text x="96" y="90" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" fill="#e6edf7" dominant-baseline="central" xml:space="preserve">github.wespify.com &lt;github@wespify.com&gt;</text>
-<text x="32" y="118" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="800" fill="#5dfc8d" dominant-baseline="central">sub</text>
-<text x="96" y="118" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" fill="#e6edf7" dominant-baseline="central" xml:space="preserve">cv25519 2025-11-14 [E] [expires: 2058-11-15]</text>
+<rect x="0.5" y="0.5" width="859" height="151" rx="6" fill="#070c14" fill-opacity="0.93"/>
+<rect x="0.5" y="0.5" width="859" height="151" rx="6" fill="#ff9a3c" fill-opacity="0.045" stroke="#ff9a3c" stroke-opacity="0.3"/>
+<defs><pattern id="tx35" width="44" height="14" patternUnits="userSpaceOnUse"><rect x="2" y="3" width="40" height="8" rx="1.5" fill="none" stroke="#1d3344" stroke-width="0.8"/><circle cx="8" cy="7" r="1.2" fill="#1d3344"/><circle cx="13" cy="7" r="1.2" fill="#1d3344"/><path d="M22 7h16" stroke="#1d3344" stroke-width="0.8"/></pattern>
+<linearGradient id="fg35" x1="0" x2="1"><stop offset="0.3" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
+<mask id="fm35"><rect x="0" y="0" width="860" height="152" fill="url(#fg35)"/></mask></defs>
+<rect x="1" y="1" width="858" height="150" rx="6" fill="url(#tx35)" mask="url(#fm35)"/>
+<path d="M0.75 14.75V6.75a6 6 0 0 1 6-6H14.75M845.25 0.75H853.25a6 6 0 0 1 6 6V14.75M859.25 137.25V145.25a6 6 0 0 1-6 6H845.25M14.75 151.25H6.75a6 6 0 0 1-6-6V137.25" fill="none" stroke="#ff9a3c" stroke-width="1.5" stroke-linecap="round"/>
+<text x="32" y="34" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="800" fill="#35e3ea" dominant-baseline="central">pub</text>
+<text x="96" y="34" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" fill="#e4f6f8" dominant-baseline="central" xml:space="preserve">ed25519 2025-11-14 [SC] [expires: 2058-11-15]</text>
+<text x="96" y="62" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#ff9a3c" dominant-baseline="central" xml:space="preserve">A0B6 3B54 A0D3 3C06 FFEA  1219 840D 8AA4 98B0 5118</text>
+<text x="32" y="90" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="800" fill="#ff4fcf" dominant-baseline="central">uid</text>
+<text x="96" y="90" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" fill="#e4f6f8" dominant-baseline="central" xml:space="preserve">github.wespify.com &lt;github@wespify.com&gt;</text>
+<text x="32" y="118" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="800" fill="#6dff8a" dominant-baseline="central">sub</text>
+<text x="96" y="118" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" fill="#e4f6f8" dominant-baseline="central" xml:space="preserve">cv25519 2025-11-14 [E] [expires: 2058-11-15]</text>
 </svg>
