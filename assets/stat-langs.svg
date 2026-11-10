@@ -1,26 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="860" height="170" viewBox="0 0 860 170" role="img" aria-label="Most used languages">
 <defs><clipPath id="bc"><rect x="28" y="56" width="804" height="14" rx="7"/></clipPath></defs>
-<rect x="0.5" y="0.5" width="859" height="169" rx="14" fill="#0b1020" fill-opacity="0.82" stroke="#24304a"/>
-<defs><pattern id="tx1" width="9" height="9" patternUnits="userSpaceOnUse"><path d="M-1 10L10 -1" stroke="#24304a" stroke-width="0.9"/></pattern>
+<rect x="0.5" y="0.5" width="859" height="169" rx="6" fill="#070c14" fill-opacity="0.93"/>
+<rect x="0.5" y="0.5" width="859" height="169" rx="6" fill="#ff4fcf" fill-opacity="0.045" stroke="#ff4fcf" stroke-opacity="0.3"/>
+<defs><pattern id="tx1" width="44" height="14" patternUnits="userSpaceOnUse"><rect x="2" y="3" width="40" height="8" rx="1.5" fill="none" stroke="#1d3344" stroke-width="0.8"/><circle cx="8" cy="7" r="1.2" fill="#1d3344"/><circle cx="13" cy="7" r="1.2" fill="#1d3344"/><path d="M22 7h16" stroke="#1d3344" stroke-width="0.8"/></pattern>
 <linearGradient id="fg1" x1="0" x2="1"><stop offset="0.3" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
 <mask id="fm1"><rect x="0" y="0" width="860" height="170" fill="url(#fg1)"/></mask></defs>
-<rect x="1" y="1" width="858" height="168" rx="14" fill="url(#tx1)" mask="url(#fm1)"/>
-<rect x="0.5" y="18" width="3" height="134" rx="1.5" fill="#b07cff"/>
-<rect x="28" y="24" width="8" height="8" rx="1.5" fill="#b07cff"/>
-<text x="48" y="28" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#e6edf7" dominant-baseline="central" letter-spacing="0.5">MOST USED LANGUAGES</text>
-<rect x="28" y="56" width="804" height="14" rx="7" fill="#121a2e"/>
-<g clip-path="url(#bc)"><rect x="28.0" y="56" width="518.6" height="14" fill="#2ee6d6"/><rect x="548.6" y="56" width="182.5" height="14" fill="#b07cff"/><rect x="733.1" y="56" width="53.1" height="14" fill="#5dfc8d"/><rect x="788.2" y="56" width="21.7" height="14" fill="#f5c84b"/><rect x="811.9" y="56" width="12.9" height="14" fill="#4ea8ff"/><rect x="826.7" y="56" width="12.9" height="14" fill="#ff79c6"/></g>
-<rect x="28" y="95" width="10" height="10" rx="2" fill="#2ee6d6"/>
-<text x="48" y="100" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13.5" fill="#e6edf7" dominant-baseline="central">PHP</text>
-<text x="272" y="100" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13" font-weight="700" fill="#8a96ad" text-anchor="end" dominant-baseline="central">64.5%</text><rect x="296" y="95" width="10" height="10" rx="2" fill="#b07cff"/>
-<text x="316" y="100" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13.5" fill="#e6edf7" dominant-baseline="central">JavaScript</text>
-<text x="540" y="100" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13" font-weight="700" fill="#8a96ad" text-anchor="end" dominant-baseline="central">22.7%</text><rect x="564" y="95" width="10" height="10" rx="2" fill="#5dfc8d"/>
-<text x="584" y="100" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13.5" fill="#e6edf7" dominant-baseline="central">CSS</text>
-<text x="808" y="100" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13" font-weight="700" fill="#8a96ad" text-anchor="end" dominant-baseline="central">6.6%</text><rect x="28" y="125" width="10" height="10" rx="2" fill="#f5c84b"/>
-<text x="48" y="130" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13.5" fill="#e6edf7" dominant-baseline="central">Shell</text>
-<text x="272" y="130" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13" font-weight="700" fill="#8a96ad" text-anchor="end" dominant-baseline="central">2.7%</text><rect x="296" y="125" width="10" height="10" rx="2" fill="#4ea8ff"/>
-<text x="316" y="130" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13.5" fill="#e6edf7" dominant-baseline="central">TypeScript</text>
-<text x="540" y="130" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13" font-weight="700" fill="#8a96ad" text-anchor="end" dominant-baseline="central">1.6%</text><rect x="564" y="125" width="10" height="10" rx="2" fill="#ff79c6"/>
-<text x="584" y="130" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13.5" fill="#e6edf7" dominant-baseline="central">HTML</text>
-<text x="808" y="130" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13" font-weight="700" fill="#8a96ad" text-anchor="end" dominant-baseline="central">1.6%</text>
+<rect x="1" y="1" width="858" height="168" rx="6" fill="url(#tx1)" mask="url(#fm1)"/>
+<path d="M0.75 14.75V6.75a6 6 0 0 1 6-6H14.75M845.25 0.75H853.25a6 6 0 0 1 6 6V14.75M859.25 155.25V163.25a6 6 0 0 1-6 6H845.25M14.75 169.25H6.75a6 6 0 0 1-6-6V155.25" fill="none" stroke="#ff4fcf" stroke-width="1.5" stroke-linecap="round"/>
+<rect x="28" y="24" width="8" height="8" rx="1.5" fill="#ff4fcf"/>
+<text x="48" y="28" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#e4f6f8" dominant-baseline="central" letter-spacing="0.5">MOST USED LANGUAGES</text>
+<rect x="28" y="56" width="804" height="14" rx="7" fill="#0e1826"/>
+<g clip-path="url(#bc)"><rect x="28.0" y="56" width="518.6" height="14" fill="#35e3ea"/><rect x="548.6" y="56" width="182.5" height="14" fill="#ff4fcf"/><rect x="733.1" y="56" width="53.1" height="14" fill="#6dff8a"/><rect x="788.2" y="56" width="21.7" height="14" fill="#ff9a3c"/><rect x="811.9" y="56" width="12.9" height="14" fill="#4d9dff"/><rect x="826.7" y="56" width="12.9" height="14" fill="#a070ff"/></g>
+<rect x="28" y="95" width="10" height="10" rx="2" fill="#35e3ea"/>
+<text x="48" y="100" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13.5" fill="#e4f6f8" dominant-baseline="central">PHP</text>
+<text x="272" y="100" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13" font-weight="700" fill="#7f97a8" text-anchor="end" dominant-baseline="central">64.5%</text><rect x="296" y="95" width="10" height="10" rx="2" fill="#ff4fcf"/>
+<text x="316" y="100" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13.5" fill="#e4f6f8" dominant-baseline="central">JavaScript</text>
+<text x="540" y="100" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13" font-weight="700" fill="#7f97a8" text-anchor="end" dominant-baseline="central">22.7%</text><rect x="564" y="95" width="10" height="10" rx="2" fill="#6dff8a"/>
+<text x="584" y="100" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13.5" fill="#e4f6f8" dominant-baseline="central">CSS</text>
+<text x="808" y="100" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13" font-weight="700" fill="#7f97a8" text-anchor="end" dominant-baseline="central">6.6%</text><rect x="28" y="125" width="10" height="10" rx="2" fill="#ff9a3c"/>
+<text x="48" y="130" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13.5" fill="#e4f6f8" dominant-baseline="central">Shell</text>
+<text x="272" y="130" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13" font-weight="700" fill="#7f97a8" text-anchor="end" dominant-baseline="central">2.7%</text><rect x="296" y="125" width="10" height="10" rx="2" fill="#4d9dff"/>
+<text x="316" y="130" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13.5" fill="#e4f6f8" dominant-baseline="central">TypeScript</text>
+<text x="540" y="130" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13" font-weight="700" fill="#7f97a8" text-anchor="end" dominant-baseline="central">1.6%</text><rect x="564" y="125" width="10" height="10" rx="2" fill="#a070ff"/>
+<text x="584" y="130" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13.5" fill="#e4f6f8" dominant-baseline="central">HTML</text>
+<text x="808" y="130" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="13" font-weight="700" fill="#7f97a8" text-anchor="end" dominant-baseline="central">1.6%</text>
 </svg>

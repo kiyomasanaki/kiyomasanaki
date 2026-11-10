@@ -1,22 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="860" height="156" viewBox="0 0 860 156" role="img" aria-label="GitHub overview">
-<rect x="0.5" y="0.5" width="859" height="155" rx="14" fill="#0b1020" fill-opacity="0.82" stroke="#24304a"/>
-<defs><pattern id="tx0" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M18 0H0V18" fill="none" stroke="#24304a" stroke-width="0.8"/></pattern>
+<rect x="0.5" y="0.5" width="859" height="155" rx="6" fill="#070c14" fill-opacity="0.93"/>
+<rect x="0.5" y="0.5" width="859" height="155" rx="6" fill="#35e3ea" fill-opacity="0.045" stroke="#35e3ea" stroke-opacity="0.3"/>
+<defs><pattern id="tx0" width="6" height="4" patternUnits="userSpaceOnUse"><path d="M0 1.5H6" stroke="#1d3344" stroke-width="0.8"/></pattern>
 <linearGradient id="fg0" x1="0" x2="1"><stop offset="0.3" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
 <mask id="fm0"><rect x="0" y="0" width="860" height="156" fill="url(#fg0)"/></mask></defs>
-<rect x="1" y="1" width="858" height="154" rx="14" fill="url(#tx0)" mask="url(#fm0)"/>
-<rect x="0.5" y="18" width="3" height="120" rx="1.5" fill="#2ee6d6"/>
-<rect x="28" y="24" width="8" height="8" rx="1.5" fill="#2ee6d6"/>
-<text x="48" y="28" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#e6edf7" dominant-baseline="central" letter-spacing="0.5">OVERVIEW</text><rect x="28" y="52" width="192" height="80" rx="10" fill="#121a2e" stroke="#24304a"/>
-<rect x="44" y="52" width="28" height="3" rx="1.5" fill="#2ee6d6"/>
-<text x="44" y="86" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="32" font-weight="800" fill="#e6edf7" dominant-baseline="central">54</text>
-<text x="44" y="116" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12" fill="#8a96ad" dominant-baseline="central" letter-spacing="0.5">REPOSITORIES</text><rect x="232" y="52" width="192" height="80" rx="10" fill="#121a2e" stroke="#24304a"/>
-<rect x="248" y="52" width="28" height="3" rx="1.5" fill="#b07cff"/>
-<text x="248" y="86" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="32" font-weight="800" fill="#e6edf7" dominant-baseline="central">71</text>
-<text x="248" y="116" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12" fill="#8a96ad" dominant-baseline="central" letter-spacing="0.5">STARS EARNED</text><rect x="436" y="52" width="192" height="80" rx="10" fill="#121a2e" stroke="#24304a"/>
-<rect x="452" y="52" width="28" height="3" rx="1.5" fill="#5dfc8d"/>
-<text x="452" y="86" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="32" font-weight="800" fill="#e6edf7" dominant-baseline="central">110</text>
-<text x="452" y="116" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12" fill="#8a96ad" dominant-baseline="central" letter-spacing="0.5">PULL REQUESTS</text><rect x="640" y="52" width="192" height="80" rx="10" fill="#121a2e" stroke="#24304a"/>
-<rect x="656" y="52" width="28" height="3" rx="1.5" fill="#f5c84b"/>
-<text x="656" y="86" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="32" font-weight="800" fill="#e6edf7" dominant-baseline="central">20</text>
-<text x="656" y="116" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12" fill="#8a96ad" dominant-baseline="central" letter-spacing="0.5">ISSUES OPENED</text>
+<rect x="1" y="1" width="858" height="154" rx="6" fill="url(#tx0)" mask="url(#fm0)"/>
+<path d="M0.75 14.75V6.75a6 6 0 0 1 6-6H14.75M845.25 0.75H853.25a6 6 0 0 1 6 6V14.75M859.25 141.25V149.25a6 6 0 0 1-6 6H845.25M14.75 155.25H6.75a6 6 0 0 1-6-6V141.25" fill="none" stroke="#35e3ea" stroke-width="1.5" stroke-linecap="round"/>
+<rect x="28" y="24" width="8" height="8" rx="1.5" fill="#35e3ea"/>
+<text x="48" y="28" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="14" font-weight="700" fill="#e4f6f8" dominant-baseline="central" letter-spacing="0.5">OVERVIEW</text><rect x="28" y="52" width="192" height="80" rx="4" fill="#0e1826" stroke="#1d3344"/>
+<rect x="44" y="52" width="28" height="3" rx="1.5" fill="#35e3ea"/>
+<text x="44" y="86" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="32" font-weight="800" fill="#e4f6f8" dominant-baseline="central">54</text>
+<text x="44" y="116" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12" fill="#7f97a8" dominant-baseline="central" letter-spacing="0.5">REPOSITORIES</text><rect x="232" y="52" width="192" height="80" rx="4" fill="#0e1826" stroke="#1d3344"/>
+<rect x="248" y="52" width="28" height="3" rx="1.5" fill="#ff4fcf"/>
+<text x="248" y="86" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="32" font-weight="800" fill="#e4f6f8" dominant-baseline="central">71</text>
+<text x="248" y="116" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12" fill="#7f97a8" dominant-baseline="central" letter-spacing="0.5">STARS EARNED</text><rect x="436" y="52" width="192" height="80" rx="4" fill="#0e1826" stroke="#1d3344"/>
+<rect x="452" y="52" width="28" height="3" rx="1.5" fill="#6dff8a"/>
+<text x="452" y="86" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="32" font-weight="800" fill="#e4f6f8" dominant-baseline="central">110</text>
+<text x="452" y="116" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12" fill="#7f97a8" dominant-baseline="central" letter-spacing="0.5">PULL REQUESTS</text><rect x="640" y="52" width="192" height="80" rx="4" fill="#0e1826" stroke="#1d3344"/>
+<rect x="656" y="52" width="28" height="3" rx="1.5" fill="#ff9a3c"/>
+<text x="656" y="86" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="32" font-weight="800" fill="#e4f6f8" dominant-baseline="central">20</text>
+<text x="656" y="116" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',ui-monospace,'Courier New',monospace" font-size="12" fill="#7f97a8" dominant-baseline="central" letter-spacing="0.5">ISSUES OPENED</text>
 </svg>

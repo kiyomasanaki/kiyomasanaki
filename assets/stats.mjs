@@ -11,9 +11,9 @@ const OUT = dirname(fileURLToPath(import.meta.url));
 const USER = process.env.STATS_USER || 'kiyomasanaki';
 const TOKEN = process.env.GH_TOKEN || process.env.GITHUB_TOKEN;
 
-import { INK2, LINE, IVORY, MUTED, CYAN, VIOLET, LIME, GOLD, BLUE, acc, FONT, W, esc, card, heading, svg } from './theme.mjs';
+import { INK2, LINE, IVORY, MUTED, CYAN, MAGENTA, LIME, AMBER, BLUE, acc, FONT, W, esc, card, heading, svg } from './theme.mjs';
 
-const LANG_COLORS = [CYAN, VIOLET, LIME, GOLD, BLUE, '#ff79c6', '#89ddff', '#a6accd'];
+const LANG_COLORS = [CYAN, MAGENTA, LIME, AMBER, BLUE, '#a070ff', '#9fe8ee', '#a6b8c8'];
 
 // -------- optional live fetch (GitHub Actions) --------------------------
 async function gh(path) {
@@ -67,7 +67,7 @@ function overview(d) {
   let body = heading(PAD, 28, 'overview');
   cells.forEach((c, i) => {
     const x = PAD + i * (cw + gap), col = acc(i);
-    body += `<rect x="${x}" y="52" width="${cw}" height="80" rx="10" fill="${INK2}" stroke="${LINE}"/>
+    body += `<rect x="${x}" y="52" width="${cw}" height="80" rx="4" fill="${INK2}" stroke="${LINE}"/>
 <rect x="${x + 16}" y="52" width="28" height="3" rx="1.5" fill="${col}"/>
 <text x="${x + 16}" y="86" font-family="${FONT}" font-size="32" font-weight="800" fill="${IVORY}" dominant-baseline="central">${esc(c.n)}</text>
 <text x="${x + 16}" y="116" font-family="${FONT}" font-size="12" fill="${MUTED}" dominant-baseline="central" letter-spacing="0.5">${esc(c.l.toUpperCase())}</text>`;
@@ -92,8 +92,8 @@ function languages(d) {
 <text x="${lx + colW - 24}" y="${ly}" font-family="${FONT}" font-size="13" font-weight="700" fill="${MUTED}" text-anchor="end" dominant-baseline="central">${l.pct}%</text>`;
   });
   const defs = `<clipPath id="bc"><rect x="${PAD}" y="${barY}" width="${barW}" height="${barH}" rx="7"/></clipPath>`;
-  const body = `${card(W, H, { spine: VIOLET })}
-${heading(PAD, 28, 'most used languages', VIOLET)}
+  const body = `${card(W, H, { spine: MAGENTA })}
+${heading(PAD, 28, 'most used languages', MAGENTA)}
 <rect x="${PAD}" y="${barY}" width="${barW}" height="${barH}" rx="7" fill="${INK2}"/>
 <g clip-path="url(#bc)">${bar}</g>
 ${legend}`;
