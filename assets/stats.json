@@ -1,20 +1,20 @@
 {
-  "repos": 54,
-  "stars": 72,
+  "repos": 53,
+  "stars": 71,
   "prs": 114,
   "issues": 20,
   "langs": [
     {
       "name": "PHP",
-      "pct": 52.1
+      "pct": 53
     },
     {
       "name": "JavaScript",
-      "pct": 35.6
+      "pct": 36.2
     },
     {
       "name": "CSS",
-      "pct": 5.9
+      "pct": 6
     },
     {
       "name": "Shell",
@@ -22,11 +22,11 @@
     },
     {
       "name": "HTML",
-      "pct": 2
+      "pct": 2.1
     },
     {
-      "name": "TypeScript",
-      "pct": 1.6
+      "name": "Python",
+      "pct": 0.3
     }
   ]
 }
